@@ -37,6 +37,8 @@ screens = [
                 widget.WindowName(
                     foreground=colors.white2,
                     padding=12,
+                    fontsize=13,
+                    max_chars=60
                 ),
                 # widget.Spacer(),
                 # widget.Prompt(),
@@ -50,6 +52,7 @@ screens = [
                 # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 widget.CurrentLayout(
                     background=colors.background,
+                    fontsize=13,
                 ),
                 lower_right_triangle(foreground=colors.white),
                 widget.CPU(
@@ -60,10 +63,9 @@ screens = [
                     update_interval=5.0,
                 ),
                 widget.Memory(
-                    format='{MemUsed: .2f}{mm}',
+                    format=' {MemUsed: .2f}{mm}',
                     # format='MEM: {MemUsed: .2f}{mm}',
                     measure_mem='G',
-                    padding=2,
                     foreground=colors.black[1:],
                     background=colors.white[1:],
                     update_interval=5.0,
@@ -110,7 +112,8 @@ screens = [
                 ),
                 lower_right_triangle(foreground=colors.white3, background=colors.white2),
                 widget.Systray(
-                    background=colors.white3
+                    background=colors.white3,
+                    padding=5,
                 ),
                 # widget.QuickExit(),
             ],
