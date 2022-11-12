@@ -47,6 +47,7 @@ keys = [
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle next layouts"),
     Key([mod, "shift"], "Tab", lazy.prev_layout(), desc="Toggle previous layouts"),
     # Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
+    # Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control", "shift"], "r", lazy.restart(), desc="Reload all the config and modules"),
@@ -61,6 +62,8 @@ keys = [
     # Screenshot
     Key(["control"], "super_r", lazy.spawn("xfce4-screenshooter -w"), desc="Screenshot a window"),
     Key(["control", "shift"], "super_r", lazy.spawn("xfce4-screenshooter -r"), desc="Screenshot part of the screen"),
+    # Clipboard
+    Key([mod], "c", lazy.spawn("xfce4-popup-clipman"), desc="Clipboard pop=up"),
     # Sound
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume 0 -10%")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume 0 +10%")),

@@ -29,6 +29,7 @@ screens = [
                   padding_x=12,
                   highlight_method='block',
                   rounded=False,
+                  font="Lato",
                   active=colors.foreground_focus,
                   inactive=colors.white4,
                   this_current_screen_border=colors.background_focus,
@@ -40,16 +41,6 @@ screens = [
                     fontsize=13,
                     max_chars=60
                 ),
-                # widget.Spacer(),
-                # widget.Prompt(),
-                # widget.Chord(
-                #     chords_colors={
-                #         "launch": ("#ff0000", "#ffffff"),
-                #     },
-                #     name_transform=lambda name: name.upper(),
-                # ),
-                # widget.TextBox("default config", name="default"),
-                # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 widget.CurrentLayout(
                     background=colors.background,
                     fontsize=13,
