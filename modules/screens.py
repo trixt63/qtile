@@ -41,11 +41,21 @@ screens = [
                     fontsize=13,
                     max_chars=60
                 ),
+                widget.WidgetBox(
+                    widgets=[
+                        widget.Systray(
+                            background=colors.background,
+                            padding=5,
+                        ),
+                    ]
+                ),
+                lower_right_triangle(foreground=colors.white2),
                 widget.CurrentLayout(
-                    background=colors.background,
+                    background=colors.white2,
+                    foreground=colors.black,
                     fontsize=13,
                 ),
-                lower_right_triangle(foreground=colors.white),
+                lower_right_triangle(foreground=colors.white, background=colors.white2),
                 widget.CPU(
                     format=' {load_percent}%  ',
                     # format='CPU: {load_percent}%  ',
@@ -101,12 +111,8 @@ screens = [
                     background=colors.white2,
                     foreground=colors.black
                 ),
-                lower_right_triangle(foreground=colors.white3, background=colors.white2),
-                widget.Systray(
-                    background=colors.white3,
-                    padding=5,
-                ),
                 # widget.QuickExit(),
+                widget.Sep(linewidth=0, padding=10, background=colors.white2),
             ],
             25,
             background=colors.background,
