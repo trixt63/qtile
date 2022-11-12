@@ -45,14 +45,15 @@ screens = [
                     background=colors.background,
                     fontsize=13,
                 ),
-                lower_right_triangle(foreground=colors.white),
+                lower_right_triangle(foreground=colors.white2),
                 widget.CPU(
-                    format=' {load_percent}%  ',
+                    format=' {load_percent}%',
                     # format='CPU: {load_percent}%  ',
                     foreground=colors.black[1:],
-                    background=colors.white[1:],
+                    background=colors.white2[1:],
                     update_interval=5.0,
                 ),
+                lower_right_triangle(foreground=colors.white, background=colors.white2),
                 widget.Memory(
                     format=' {MemUsed: .2f}{mm}',
                     # format='MEM: {MemUsed: .2f}{mm}',
