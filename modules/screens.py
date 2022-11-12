@@ -102,10 +102,19 @@ screens = [
                     foreground=colors.black
                 ),
                 lower_right_triangle(foreground=colors.white3, background=colors.white2),
-                widget.Systray(
+                widget.WidgetBox(
+                    widgets = [
+                        widget.Systray(
+                            background=colors.white3,
+                            padding=5,
+                        ),
+                    ],
+                    # close_button_location='right',
                     background=colors.white3,
-                    padding=5,
-                ),
+                    text_closed='  ',
+                    text_open='  ',
+                    fontsize=17,
+                )
                 # widget.QuickExit(),
             ],
             25,

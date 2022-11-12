@@ -64,6 +64,7 @@ keys = [
     Key(["control", "shift"], "super_r", lazy.spawn("xfce4-screenshooter -r"), desc="Screenshot part of the screen"),
     # Clipboard
     Key([mod], "c", lazy.spawn("xfce4-popup-clipman"), desc="Clipboard pop=up"),
+    Key(["mod1"], "c", lazy.spawn("xfce4-popup-clipman"), desc="Clipboard pop=up"),
     # Sound
     Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume 0 -10%")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume 0 +10%")),
