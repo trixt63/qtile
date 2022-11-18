@@ -6,7 +6,6 @@ from libqtile.config import Screen
 from modules.keys import terminal
 
 from modules.colors.github_dark import GithubDark
-from modules.colors.space_gray import SpaceGray
 
 colors = GithubDark()
 
@@ -19,17 +18,26 @@ def lower_right_triangle(background=None, foreground='#ffffff'):
         foreground=foreground
     )
 
+def upper_right_triangle(background=None, foreground='#ffffff'):
+    return widget.TextBox(
+        text='\u25E5',
+        fontsize=59,
+        padding=0,
+        background=background,
+        foreground=foreground
+    )
+
+
 screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.Sep(linewidth=0),
                 widget.GroupBox(
                   padding_y=6,
-                  padding_x=12,
+                  padding_x=9,
                   highlight_method='block',
                   rounded=False,
-                  font="Lato",
+                #   font="Lato",
                   active=colors.foreground_focus,
                   inactive=colors.white4,
                   this_current_screen_border=colors.background_focus,
@@ -118,10 +126,10 @@ screens = [
                 )
                 # widget.QuickExit(),
             ],
-            25,
+            21,
             background=colors.background,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
-    ),
+    )
 ]

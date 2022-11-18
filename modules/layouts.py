@@ -5,7 +5,7 @@ from .screens import colors
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.MonadTall(margin=3,
+    layout.MonadTall(margin=4,
                      border_width=4,
                     #  border_focus='#5294e2',
                     #  border_normal='#2c5380',
@@ -16,7 +16,6 @@ layouts = [
                      ratio=0.6),
     # Try more layouts by unleashing below layouts.
     # layout.Slice(),
-    # layout.Stack(num_stacks=3),
     # layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadWide(),
@@ -30,7 +29,13 @@ layouts = [
                    bg_color='#21262d',
                    active_bg='#5294e2',
                    urgent_bg='#8f3d3d'),
-    layout.Max(),
+    # layout.Max(),
+    layout.Columns(num_colums=1,
+                   insert_position=1,
+                   border_width=4,
+                   border_focus=colors.border_focus,
+                   border_normal=colors.border,
+                   )
     # layout.VerticalTile(),
     # layout.Zoomy(columnwidth=100),
 ]
