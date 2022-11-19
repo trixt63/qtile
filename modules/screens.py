@@ -5,15 +5,13 @@ from .widgets import *
 from libqtile.config import Screen
 from modules.keys import terminal
 
-# from modules.bar_styles.silver_bullet import screens
-# from modules.bar_styles.simple import screens
-from modules.bar_styles.colors_bullet import screens
+from modules.bar_styles.colors_blade import color_blades
+from modules.bar_styles.silver_blade import SilverBlades
 from modules.colors.github_dark import GithubDark
 
 colors = GithubDark()
 
-
-screens = screens
+screens = SilverBlades(colors=colors).screens
 # screens = [
 #     Screen(
 #         top=bar.Bar(
