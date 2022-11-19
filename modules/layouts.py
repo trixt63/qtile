@@ -23,7 +23,7 @@ layouts = [
     # layout.Tile(),
     layout.TreeTab(font="Lato",
                    fontsize=15,
-                   panel_width=120,
+                   panel_width=90,
                 #    place_right=True,
                    vspace=6,
                    bg_color='#21262d',

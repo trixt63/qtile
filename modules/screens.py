@@ -6,7 +6,8 @@ from libqtile.config import Screen
 from modules.keys import terminal
 
 # from modules.bar_styles.silver_bullet import screens
-from modules.bar_styles.simple import screens
+# from modules.bar_styles.simple import screens
+from modules.bar_styles.colors_bullet import screens
 from modules.colors.github_dark import GithubDark
 
 colors = GithubDark()

@@ -56,13 +56,14 @@ screens = [
                     padding=10,
                 ),
                 widget.CPU(
-                    format=' {load_percent}%',
+                    format=' CPU {load_percent}%',
                     foreground=colors.yellow[1:],
                     padding=10,
                     update_interval=5.0,
                 ),
                 widget.Memory(
-                    format=' {MemUsed: .2f}{mm}',
+                    # format=' {MemUsed: .2f}{mm}',
+                    format=' MEM{MemUsed: .2f}{mm}',
                     measure_mem='G',
                     foreground=colors.yellow[1:],
                     padding=10,
@@ -75,7 +76,7 @@ screens = [
                 #     foreground=colors.green[1:],
                 # ),
                 widget.Volume(
-                    fmt='VOL {}',
+                    fmt=' {}',
                     # font='Font Awesome 5 Free Solid',
                     padding=10,
                     foreground=colors.green[1:],
