@@ -5,7 +5,6 @@ from .widgets import *
 from libqtile.config import Screen
 from modules.keys import terminal
 
-from modules.bar_styles.colors_blade import color_blades
 from modules.bar_styles.silver_blade import SilverBlades
 from modules.colors.github_dark import GithubDark
 

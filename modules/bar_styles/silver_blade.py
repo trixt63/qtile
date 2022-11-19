@@ -90,7 +90,8 @@ class SilverBlades:
                         ),
                         lower_right_triangle(foreground=colors.white2, background=colors.white),
                         widget.Clock(
-                            format="%Y-%m-%d %a %I:%M %p",
+                            # format="%Y-%m-%d %a %I:%M %p",
+                            format=" %a, %b %d   %I:%M %p",
                             font='Font Awesome 5 Free Solid',
                             background=colors.white2,
                             foreground=colors.black
