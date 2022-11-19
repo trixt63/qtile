@@ -5,7 +5,7 @@ from .screens import colors
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.MonadTall(margin=4,
+    layout.MonadTall(margin=3,
                      border_width=4,
                     #  border_focus='#5294e2',
                     #  border_normal='#2c5380',
@@ -35,6 +35,8 @@ layouts = [
                    border_width=4,
                    border_focus=colors.border_focus,
                    border_normal=colors.border,
+                   margin=[4, 2, 4, 2],
+                   margin_on_single=[4, 4, 4, 4]
                    )
     # layout.VerticalTile(),
     # layout.Zoomy(columnwidth=100),
