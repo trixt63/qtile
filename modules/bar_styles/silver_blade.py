@@ -5,7 +5,6 @@ from modules.widgets import *
 from libqtile.config import Screen
 
 from modules.bar_styles.decorators import *
-# colors = GithubDark()
 
 
 class SilverBlades:
@@ -16,14 +15,14 @@ class SilverBlades:
                 top=bar.Bar(
                     [
                         widget.GroupBox(
-                        padding_y=6,
-                        padding_x=9,
-                        highlight_method='block',
-                        rounded=False,
-                        active=colors.foreground_focus,
-                        inactive=colors.white4,
-                        this_current_screen_border=colors.background_focus,
-                        this_current_screen=colors.background_alt
+                            padding_y=6,
+                            padding_x=9,
+                            highlight_method='block',
+                            rounded=False,
+                            active=colors.foreground_focus,
+                            inactive=colors.white4,
+                            this_current_screen_border=colors.background_focus,
+                            this_current_screen=colors.background_alt
                         ),
                         widget.WindowName(
                             foreground=colors.white2,
@@ -34,7 +33,7 @@ class SilverBlades:
                         widget.CurrentLayout(
                             background=colors.background,
                             fontsize=13,
-                            padding=6,
+                            padding=3,
                         ),
                         lower_right_triangle(foreground=colors.white2),
                         widget.CPU(
