@@ -7,7 +7,19 @@ def lower_right_triangle(background=None,
     return widget.TextBox(
         text='\u25E2',
         fontsize=fontsize,
-        padding=0,
+        padding=-1,
+        background=background,
+        foreground=foreground
+    )
+
+
+def lower_left_triangle(background=None,
+                        foreground='#ffffff',
+                        fontsize=42):
+    return widget.TextBox(
+        text='\u25E3',
+        fontsize=fontsize,
+        padding=-1,
         background=background,
         foreground=foreground
     )

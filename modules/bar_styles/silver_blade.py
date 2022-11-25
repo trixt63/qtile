@@ -16,25 +16,35 @@ class SilverBlades:
                     [
                         widget.GroupBox(
                             padding_y=6,
-                            padding_x=9,
+                            padding_x=7,
+                            background=colors.black3,
                             highlight_method='block',
                             rounded=False,
                             active=colors.foreground_focus,
                             inactive=colors.white4,
                             this_current_screen_border=colors.background_focus,
-                            this_current_screen=colors.background_alt
+                            this_current_screen=colors.background_alt,
+                            disable_drag=True
                         ),
-                        widget.WindowName(
-                            foreground=colors.white2,
-                            padding=12,
-                            fontsize=13,
-                            max_chars=60
-                        ),
+                        lower_left_triangle(foreground=colors.black3, background=colors.white),
                         widget.CurrentLayout(
-                            background=colors.background,
+                            background=colors.white,
+                            foreground=colors.black,
                             fontsize=13,
-                            padding=3,
+                            padding=0
                         ),
+                        lower_left_triangle(foreground=colors.white, background=colors.background+'00'),
+                        # widget.WindowName(
+                        #     foreground=colors.white2,
+                        #     # padding=12,
+                        #     fontsize=13,
+                        #     max_chars=60
+                        # ),
+                        widget.WindowTabs(),
+                        widget.Systray(
+                            padding=7,
+                        ),
+
                         lower_right_triangle(foreground=colors.white2),
                         widget.CPU(
                             format='  {load_percent}%',
@@ -95,24 +105,15 @@ class SilverBlades:
                             background=colors.white2,
                             foreground=colors.black
                         ),
-                        lower_right_triangle(foreground=colors.white3, background=colors.white2),
-                        widget.WidgetBox(
-                            widgets = [
-                                widget.Systray(
-                                    background=colors.white3,
-                                    padding=5,
-                                ),
-                            ],
-                            # close_button_location='right',
-                            background=colors.white3,
-                            text_closed='  ',
-                            text_open='  ',
-                            fontsize=17,
+                        widget.Sep(
+                            linewidth=0,
+                            background=colors.white2,
+                            padding=10
                         )
                         # widget.QuickExit(),
                     ],
                     21,
-                    background=colors.background,
+                    background=colors.background+'00',
                     # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
                     # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
                 ),
