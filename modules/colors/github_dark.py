@@ -6,6 +6,7 @@ class GithubDark(ColorScheme):
         self.black = '#0d1117'
         self.black2 = '#161b22'
         self.black3 = '#21262d'
+        self.black4 = '#31373d'
         self.white = '#ecf2f8'
         self.white2 = '#c6cdd5'
         self.white3 = '#89929b'

@@ -7,12 +7,12 @@ from libqtile.config import Screen
 from modules.bar_styles.decorators import *
 
 
-class SilverBlades:
+class SilverBlades1:
     def __init__(self, colors) -> None:
         self.colors = colors
         self.screens = [
             Screen(
-                top=bar.Bar(
+                bottom=bar.Bar(
                     [
                         widget.CurrentLayout(
                             background=colors.white,
@@ -40,10 +40,6 @@ class SilverBlades:
                             fontsize=13,
                             max_chars=60
                         ),
-                        widget.Systray(
-                            padding=6,
-                        ),
-
                         lower_right_triangle(foreground=colors.white2),
                         widget.CPU(
                             format='  {load_percent}%',
@@ -98,18 +94,19 @@ class SilverBlades:
                             # format="%Y-%m-%d %a %I:%M %p",
                             format=" %a, %b %d   %I:%M %p",
                             font='Font Awesome 5 Free Solid',
+                            padding=0,
                             background=colors.white2,
-                            foreground=colors.black
+                            foreground=colors.black,
                         ),
-                        widget.Sep(
-                            linewidth=0,
-                            background=colors.white2,
-                            padding=10
-                        )
+                        lower_right_triangle(foreground=colors.white3, background=colors.white2),
+                        widget.Systray(
+                            padding=6,
+                            background=colors.white3
+                        ),
                         # widget.QuickExit(),
                     ],
-                    20,
-                    background=colors.background+'00',
+                    23,
+                    background=colors.background,
                     # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
                     # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
                 ),
