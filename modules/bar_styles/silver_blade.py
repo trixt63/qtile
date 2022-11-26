@@ -14,6 +14,13 @@ class SilverBlades:
             Screen(
                 top=bar.Bar(
                     [
+                        widget.CurrentLayout(
+                            background=colors.white,
+                            foreground=colors.black,
+                            fontsize=13,
+                            padding=6
+                        ),
+                        lower_left_triangle(foreground=colors.white, background=colors.black3),
                         widget.GroupBox(
                             padding_y=6,
                             padding_x=7,
@@ -26,21 +33,13 @@ class SilverBlades:
                             this_current_screen=colors.background_alt,
                             disable_drag=True
                         ),
-                        lower_left_triangle(foreground=colors.black3, background=colors.white),
-                        widget.CurrentLayout(
-                            background=colors.white,
-                            foreground=colors.black,
+                        lower_left_triangle(foreground=colors.black3),
+                        widget.WindowName(
+                            foreground=colors.white2,
+                            # padding=12,
                             fontsize=13,
-                            padding=0
+                            max_chars=60
                         ),
-                        lower_left_triangle(foreground=colors.white, background=colors.background+'00'),
-                        # widget.WindowName(
-                        #     foreground=colors.white2,
-                        #     # padding=12,
-                        #     fontsize=13,
-                        #     max_chars=60
-                        # ),
-                        widget.WindowTabs(),
                         widget.Systray(
                             padding=7,
                         ),
@@ -48,7 +47,6 @@ class SilverBlades:
                         lower_right_triangle(foreground=colors.white2),
                         widget.CPU(
                             format='  {load_percent}%',
-                            # format='CPU: {load_percent}%  ',
                             foreground=colors.black[1:],
                             background=colors.white2[1:],
                             padding=0,
@@ -57,7 +55,6 @@ class SilverBlades:
                         lower_right_triangle(foreground=colors.white, background=colors.white2),
                         widget.Memory(
                             format=' {MemUsed: .2f}{mm}',
-                            # format='MEM: {MemUsed: .2f}{mm}',
                             measure_mem='G',
                             foreground=colors.black[1:],
                             background=colors.white[1:],
@@ -66,7 +63,6 @@ class SilverBlades:
                         ),
                         lower_right_triangle(foreground=colors.white2, background=colors.white),
                         widget.Volume(
-                            # fmt='VOL: {}',
                             padding=2,
                             theme_path='/usr/share/icons/Papirus-Light/24x24/panel/',
                             background=colors.white2[1:],

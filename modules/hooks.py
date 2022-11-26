@@ -1,6 +1,10 @@
-from libqtile import hook
 import subprocess
 import os
+
+from libqtile import hook
+from libqtile.command.client import InteractiveCommandClient
+
+c = InteractiveCommandClient()
 
 
 # Auto start

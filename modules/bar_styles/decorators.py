@@ -43,7 +43,19 @@ def left_triangle(background=None,
     return widget.TextBox(
         text='\u25C0',
         fontsize=fontsize,
-        padding=0,
+        padding=-1,
+        background=background,
+        foreground=foreground
+    )
+
+
+def right_triangle(background=None,
+                  foreground='#ffffff',
+                  fontsize=43):
+    return widget.TextBox(
+        text='\u25B6',
+        fontsize=fontsize,
+        padding=-1,
         background=background,
         foreground=foreground
     )
