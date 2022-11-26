@@ -14,3 +14,5 @@ killall imwheel &
 imwheel &
 #Polybar
 #sh "$HOME/.config/polybar/launch.sh"
+#Monitor
+bash $HOME/.config/qtile/monitor.sh &
