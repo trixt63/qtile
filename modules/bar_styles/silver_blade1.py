@@ -100,12 +100,12 @@ class SilverBlades1:
                         ),
                         lower_right_triangle(foreground=colors.white3, background=colors.white2),
                         widget.Systray(
-                            padding=6,
+                            padding=4,
                             background=colors.white3
                         ),
                         # widget.QuickExit(),
                     ],
-                    23,
+                    22,
                     background=colors.background,
                     # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
                     # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta

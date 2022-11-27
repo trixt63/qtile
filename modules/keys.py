@@ -5,6 +5,8 @@ from libqtile.utils import guess_terminal
 mod = "mod4"
 terminal = guess_terminal()
 
+sink_name = "alsa_output.pci-0000_07_00.6.HiFi__hw_Generic_1__sink" 
+
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
@@ -54,7 +56,6 @@ keys = [
     # Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control", "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control"], "x", lazy.spawn('i3lock -n -i /home/xuantung/Pictures/wallpapers/TheOuterWorld_MoeWanders.png'), desc="Lock screen"),
-    # Key([mod, "control"], "x", lazy.spawn('i3lock -n -i /home/xuantung/Pictures/wallpapers/morncolour-.jpg'), desc="Lock screen"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     # Rofi
     Key([mod], "d", lazy.spawn("/home/xuantung/.config/rofi/bin/launcher_text"), desc="Spawn app launcher"),
@@ -66,10 +67,10 @@ keys = [
     Key([mod], "c", lazy.spawn("xfce4-popup-clipman"), desc="Clipboard pop=up"),
     Key(["mod1"], "c", lazy.spawn("xfce4-popup-clipman"), desc="Clipboard pop=up"),
     # Sound
-    Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume 0 -10%")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume 0 +10%")),
-    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute 0 toggle")),
-    Key([], "XF86AudioMicMute", lazy.spawn("pactl set-source-mute 1 toggle")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn(f"pactl {sink_name} -10%")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn(f"pactl set-sink-volume {sink_name} +10%")),
+    Key([], "XF86AudioMute", lazy.spawn(f"pactl set-sink-mute {sink_name} toggle")),
+    Key([], "XF86AudioMicMute", lazy.spawn(f"pactl set-source-mute {sink_name} toggle")),
     # Brightness
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),

@@ -1,27 +1,26 @@
-#! /usr/bin/bash
+#!/bin/bash
 
 export DISPLAY=:0
 export XAUTHORITY=$HOME/.Xauthority
 
 function connect(){
-    /usr/bin/xrandr --output eDP --off\
-      --output DP-1 --off \
-      --output HDMI-A-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal \
-      --output VIRTUAL-1 --off
+  xrandr --output eDP --off \
+    --output HDMI-A-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal \
+    --output DisplayPort-0 --off \
+    --output DisplayPort-1 --off
+
 }
   
 function disconnect(){
-  /usr/bin/xrandr --output eDP --primary --mode 1920x1080 --pos 0x0 --rotate normal \
-    --output DP-1 --off \
+  xrandr --output eDP --primary --mode 1920x1080 --pos 0x0 --rotate normal \
     --output HDMI-A-0 --off \
-    --output VIRTUAL-1 --off
+    --output DisplayPort-0 --off --output DisplayPort-1 --off
 }
 
 function both() {
-  /usr/bin/xrandr --output eDP --mode 1920x1080 --pos 1920x312 --rotate normal \
-    --output DP-1 --off \
-    --output HDMI-A-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal \
-    --output VIRTUAL-1 --off
+  xrandr --output eDP --mode 1920x1080 --pos 1920x0 --rotate normal \
+    --output HDMI-A-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal\
+    --output DisplayPort-0 --off --output DisplayPort-1 --off
 }
    
 function HDMI_connected() {
