@@ -22,4 +22,4 @@ There are a few constants that I'm too lazy to refactor, so you will have to cha
 
     ```pacmd list-sinks | grep -e 'name:' -e 'index:'``` 
 
-    to find your audio sink's name, then assign it to the ```sink_name``` variable in **```modules/keys```**. Else, you won't be able to change your volume with keyboards.
+    to find your audio sink's name, then assign it to the ```sink_name``` variable in **```modules/keys```**. Or else, you won't be able to change your volume with keyboards if when connect your laptop with an HDMI cable.
