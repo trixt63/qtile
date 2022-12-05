@@ -17,7 +17,7 @@ class SilverBlades2:
                         widget.CurrentLayout(
                             background=colors.white,
                             foreground=colors.black,
-                            fontsize=13,
+                            fontsize=widget_defaults.get('fontsize') - 1,
                             padding=6
                         ),
                         lower_left_triangle(foreground=colors.white, background=colors.black3),
@@ -37,7 +37,7 @@ class SilverBlades2:
                         widget.WindowName(
                             foreground=colors.white2,
                             # padding=12,
-                            fontsize=13,
+                            fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=60
                         ),
                         widget.Systray(
@@ -108,7 +108,7 @@ class SilverBlades2:
                         )
                         # widget.QuickExit(),
                     ],
-                    20,
+                    18,
                     background=colors.background+'00',
                     # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
                     # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta

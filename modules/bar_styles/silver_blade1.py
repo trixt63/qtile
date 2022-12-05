@@ -17,7 +17,7 @@ class SilverBlades1:
                         widget.CurrentLayout(
                             background=colors.white,
                             foreground=colors.black,
-                            fontsize=13,
+                            fontsize=widget_defaults.get('fontsize') - 1,
                             padding=6
                         ),
                         lower_left_triangle(foreground=colors.white, background=colors.black3),
@@ -37,12 +37,12 @@ class SilverBlades1:
                         widget.WindowName(
                             foreground=colors.white2,
                             # padding=12,
-                            fontsize=13,
+                            fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=60
                         ),
                         lower_right_triangle(foreground=colors.white2),
                         widget.CPU(
-                            format='  {load_percent}%',
+                            format=' {load_percent}%',
                             foreground=colors.black[1:],
                             background=colors.white2[1:],
                             padding=0,
@@ -50,7 +50,7 @@ class SilverBlades1:
                         ),
                         lower_right_triangle(foreground=colors.white, background=colors.white2),
                         widget.Memory(
-                            format=' {MemUsed: .2f}{mm}',
+                            format='{MemUsed: .2f}{mm}',
                             measure_mem='G',
                             foreground=colors.black[1:],
                             background=colors.white[1:],
@@ -103,9 +103,14 @@ class SilverBlades1:
                             padding=4,
                             background=colors.white3
                         ),
+                        widget.Sep(
+                            linewidth=0,
+                            background=colors.white3,
+                            padding=4
+                        )
                         # widget.QuickExit(),
                     ],
-                    22,
+                    21,
                     background=colors.background,
                     # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
                     # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta

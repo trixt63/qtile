@@ -11,4 +11,4 @@ from modules.colors.github_dark import GithubDark
 
 colors = GithubDark()
 
-screens = SilverBlades1(colors=colors).screens
+screens = SilverBlades2(colors=colors).screens

@@ -15,7 +15,8 @@ groups = [
     Group("5", matches=[
         Match(wm_class=["MongoDB Compass"]),
         Match(wm_class=["Postman"])]),
-    Group("6", matches=[Match(wm_class=["libreoffice"])]),
+    Group("6", matches=[Match(wm_class=["libreoffice"]),
+                        Match(wm_class=["calibre"])]),
     Group("7", matches=[
         Match(wm_class=["thunderbird-default"]),
         Match(wm_class=["Microsoft Teams - Preview"]),
