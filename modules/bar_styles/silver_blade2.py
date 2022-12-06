@@ -41,7 +41,7 @@ class SilverBlades2:
                         max_chars=60
                     ),
                     widget.Systray(
-                        padding=6,
+                        padding=5,
                     ),
 
                     lower_right_triangle(foreground=colors.white2),
@@ -143,7 +143,16 @@ class SilverBlades2:
                             # padding=12,
                             fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=60
-                        )
+                        ),
+                        widget.Mpris2(
+                            foreground=colors.white2,
+                            name="spotify",
+                            paused_text=" Pause",
+                            playing_text=" {track}",
+                            scroll_chars=45,
+                            display_metadata=["xesam:title", "xesam:artist"],
+                            objname="org.mpris.MediaPlayer2.spotify"
+                        ),
                         # lower_right_triangle(foreground=colors.white2),
                         # widget.CPU(
                         #     format='  {load_percent}%',
@@ -161,20 +170,20 @@ class SilverBlades2:
                         #     padding=0,
                         #     update_interval=5.0,
                         # ),
-                        # lower_right_triangle(foreground=colors.white2, background=colors.white),
-                        # widget.Volume(
-                        #     padding=2,
-                        #     theme_path='/usr/share/icons/Papirus-Light/24x24/panel/',
-                        #     background=colors.white2[1:],
-                        #     foreground=colors.black[1:],
-                        # ),
-                        # widget.Volume(
-                        #     fmt='{}',
-                        #     font='Font Awesome 5 Free Solid',
-                        #     # padding=0,
-                        #     background=colors.white2[1:],
-                        #     foreground=colors.black[1:],
-                        # ),
+                        lower_right_triangle(foreground=colors.white2),
+                        widget.Volume(
+                            padding=2,
+                            theme_path='/usr/share/icons/Papirus-Light/24x24/panel/',
+                            background=colors.white2[1:],
+                            foreground=colors.black[1:],
+                        ),
+                        widget.Volume(
+                            fmt='{}',
+                            font='Font Awesome 5 Free Solid',
+                            # padding=0,
+                            background=colors.white2[1:],
+                            foreground=colors.black[1:],
+                        ),
                         # lower_right_triangle(foreground=colors.white, background=colors.white2),
                         # widget.BatteryIcon(
                         #     theme_path='/usr/share/icons/Papirus-Light/24x24/panel/',
@@ -193,19 +202,19 @@ class SilverBlades2:
                         #     background=colors.white,
                         #     foreground=colors.black
                         # ),
-                        # lower_right_triangle(foreground=colors.white2, background=colors.white),
-                        # widget.Clock(
-                        #     # format="%Y-%m-%d %a %I:%M %p",
-                        #     format=" %a, %b %d   %I:%M %p",
-                        #     font='Font Awesome 5 Free Solid',
-                        #     background=colors.white2,
-                        #     foreground=colors.black
-                        # ),
-                        # widget.Sep(
-                        #     linewidth=0,
-                        #     background=colors.white2,
-                        #     padding=10
-                        # )
+                        lower_right_triangle(foreground=colors.white, background=colors.white2),
+                        widget.Clock(
+                            # format="%Y-%m-%d %a %I:%M %p",
+                            format="  %I:%M %p",
+                            font='Font Awesome 5 Free Solid',
+                            background=colors.white,
+                            foreground=colors.black
+                        ),
+                        widget.Sep(
+                            linewidth=0,
+                            background=colors.white,
+                            padding=10
+                        )
                     ],
                     19,
                     background=colors.background+'00',

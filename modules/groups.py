@@ -21,7 +21,7 @@ groups = [
         Match(wm_class=["thunderbird-default"]),
         Match(wm_class=["Microsoft Teams - Preview"]),
         Match(wm_class=["discord"])]),
-    Group("8", matches=[Match(wm_class=["Spotify"])]),
+    Group("8", matches=[Match(wm_class=["spotify"])]),
     Group("9"),
 ]
 

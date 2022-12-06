@@ -40,6 +40,15 @@ class SilverBlades1:
                             fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=60
                         ),
+                        widget.Mpris2(
+                            foreground=colors.white2,
+                            name="spotify",
+                            paused_text=" Pause",
+                            playing_text=" {track}",
+                            scroll_chars=45,
+                            display_metadata=["xesam:title", "xesam:artist"],
+                            objname="org.mpris.MediaPlayer2.spotify"
+                        ),
                         lower_right_triangle(foreground=colors.white2),
                         widget.CPU(
                             format=' {load_percent}%',
@@ -145,6 +154,13 @@ class SilverBlades1:
                             # padding=12,
                             fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=60
+                        ),
+                        widget.Mpris2(
+                            foreground=colors.white2,
+                            name="spotify",
+                            stop_pause_text="Paused", scroll_chars=45,
+                            display_metadata=["xesam:title", "xesam:artist"],
+                            objname="org.mpris.MediaPlayer2.spotify"
                         ),
                         # lower_right_triangle(foreground=colors.white2),
                         # widget.CPU(
