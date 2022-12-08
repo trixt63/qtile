@@ -34,7 +34,7 @@ class GithubDark(ColorScheme):
     @property
     def background_alt(self):
         """Unfocused group"""
-        return self.black3
+        return self.black4
 
     @property
     def background_focus(self):
