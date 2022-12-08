@@ -42,11 +42,12 @@ class SilverBlades2:
                     ),
                     widget.Systray(
                         padding=5,
+                        icon_size=18
                     ),
 
                     lower_right_triangle(foreground=colors.white2),
                     widget.CPU(
-                        format='  {load_percent}%',
+                        format=' {load_percent}%',
                         foreground=colors.black[1:],
                         background=colors.white2[1:],
                         padding=0,
@@ -54,7 +55,7 @@ class SilverBlades2:
                     ),
                     lower_right_triangle(foreground=colors.white, background=colors.white2),
                     widget.Memory(
-                        format=' {MemUsed: .2f}{mm}',
+                        format='{MemUsed: .2f}{mm}',
                         measure_mem='G',
                         foreground=colors.black[1:],
                         background=colors.white[1:],

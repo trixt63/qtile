@@ -12,7 +12,7 @@ class SilverBlades1:
         self.colors = colors
         # screen 1
         screen1 = Screen(
-                bottom=bar.Bar(
+                top=bar.Bar(
                     [
                         widget.CurrentLayout(
                             background=colors.white,
@@ -119,7 +119,7 @@ class SilverBlades1:
                         )
                         # widget.QuickExit(),
                     ],
-                    21,
+                    18,
                     background=colors.background,
                     # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
                     # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta

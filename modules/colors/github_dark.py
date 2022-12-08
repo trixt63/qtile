@@ -32,7 +32,7 @@ class GithubDark(ColorScheme):
 
     @property
     def background_alt(self):
-        return self.white2
+        return self.black4
 
     @property
     def background_focus(self):
