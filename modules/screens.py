@@ -14,5 +14,5 @@ from modules.colors.github_light import GithubLight
 colors = GithubDark()
 # colors = GithubLight()
 
+screens = SilverBlades1(colors=colors).screens
 # screens = SimpleSlash(colors=colors).screens
-screens = SimpleSlash(colors=colors).screens

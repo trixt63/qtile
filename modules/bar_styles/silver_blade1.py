@@ -24,7 +24,7 @@ class SilverBlades1:
                         widget.GroupBox(
                             padding_y=6,
                             padding_x=7,
-                            background=colors.black3,
+                            background=colors.background_alt,
                             highlight_method='block',
                             rounded=False,
                             active=colors.foreground_focus,
@@ -33,7 +33,7 @@ class SilverBlades1:
                             this_current_screen=colors.background_alt,
                             disable_drag=True
                         ),
-                        lower_left_triangle(foreground=colors.black3),
+                        lower_left_triangle(foreground=colors.background_alt),
                         widget.WindowName(
                             foreground=colors.white2,
                             # padding=12,

@@ -6,7 +6,7 @@ class GithubDark(ColorScheme):
         self.black = '#0d1117'
         self.black2 = '#161b22'
         self.black3 = '#21262d'
-        self.black4 = '#31373d'
+        self.black4 = '#33373d'
         self.white = '#ecf2f8'
         self.white2 = '#c6cdd5'
         self.white3 = '#89929b'
@@ -20,7 +20,7 @@ class GithubDark(ColorScheme):
 
     @property
     def background(self):
-        return self.black2
+        return self.black
 
     @property
     def foreground(self):
@@ -28,11 +28,13 @@ class GithubDark(ColorScheme):
 
     @property
     def foreground_alt(self):
+        """Unfocused group"""
         return self.white3
 
     @property
     def background_alt(self):
-        return self.black4
+        """Unfocused group"""
+        return self.black3
 
     @property
     def background_focus(self):
