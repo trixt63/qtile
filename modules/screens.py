@@ -11,8 +11,8 @@ from modules.bar_styles.simple_slash import SimpleSlash
 from modules.colors.github_dark import GithubDark
 from modules.colors.github_light import GithubLight
 
-# colors = GithubDark()
-colors = GithubLight()
+colors = GithubDark()
+# colors = GithubLight()
 
 # screens = SimpleSlash(colors=colors).screens
 screens = SimpleSlash(colors=colors).screens
