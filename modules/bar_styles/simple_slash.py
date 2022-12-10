@@ -10,6 +10,19 @@ from modules.bar_styles.decorators import *
 class SimpleSlash:
     def __init__(self, colors) -> None:
         self.colors = colors
+        # widgets
+        self._group_box = widget.GroupBox(
+                            padding_y=6,
+                            padding_x=7,
+                            background=colors.background_alt,
+                            highlight_method='block',
+                            rounded=False,
+                            active=colors.foreground_focus,
+                            inactive=colors.foreground_alt,
+                            this_current_screen_border=colors.background_focus,
+                            other_screen_border=colors.white4,
+                            disable_drag=True
+                        )
         # screen 1
         screen1 = Screen(
                 top=bar.Bar(
@@ -19,18 +32,7 @@ class SimpleSlash:
                             fontsize=widget_defaults.get('fontsize') - 1,
                             padding=6
                         ),
-                        widget.GroupBox(
-                            padding_y=6,
-                            padding_x=7,
-                            background=colors.background_alt,
-                            highlight_method='block',
-                            rounded=False,
-                            active=colors.foreground_focus,
-                            inactive=colors.foreground_alt,
-                            this_current_screen_border=colors.background_focus,
-                            this_current_screen=colors.white,
-                            disable_drag=True
-                        ),
+                        self._group_box,
                         lower_left_triangle(foreground=colors.background_alt),
                         widget.WindowName(
                             foreground=colors.foreground_alt,
@@ -150,18 +152,7 @@ class SimpleSlash:
                             fontsize=widget_defaults.get('fontsize') - 1,
                             padding=6
                         ),
-                        widget.GroupBox(
-                            padding_y=6,
-                            padding_x=7,
-                            background=colors.background_alt,
-                            highlight_method='block',
-                            rounded=False,
-                            active=colors.foreground_focus,
-                            inactive=colors.white4,
-                            this_current_screen_border=colors.blue,
-                            this_current_screen=colors.blue,
-                            disable_drag=True
-                        ),
+                        self._group_box,
                         lower_left_triangle(foreground=colors.background_alt),
                         widget.WindowName(
                             foreground=colors.white2,
