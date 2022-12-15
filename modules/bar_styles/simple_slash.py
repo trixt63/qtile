@@ -13,7 +13,7 @@ class SimpleSlash:
         # widgets
         self._group_box = widget.GroupBox(
                             padding_y=6,
-                            padding_x=7,
+                            padding_x=8,
                             background=colors.background_alt,
                             highlight_method='block',
                             rounded=False,
@@ -44,7 +44,7 @@ class SimpleSlash:
                         widget.Mpris2(
                             foreground=colors.foreground_alt,
                             padding=0,
-                            max_chars=40,
+                            max_chars=35,
                             name="spotify",
                             paused_text=" Pause",
                             playing_text=" {track}",
@@ -56,7 +56,7 @@ class SimpleSlash:
                             format=' {load_percent}%',
                             foreground=colors.foreground[1:],
                             background=colors.background_alt[1:],
-                            padding=13,
+                            padding=12,
                             update_interval=5.0,
                         ),
                         widget.Memory(
@@ -64,13 +64,13 @@ class SimpleSlash:
                             measure_mem='G',
                             foreground=colors.foreground[1:],
                             background=colors.background_alt[1:],
-                            padding=13,
+                            padding=12,
                             update_interval=5.0,
                         ),
                         widget.Sep(
                             linewidth=0,
                             background=colors.background_alt,
-                            padding=13
+                            padding=12
                         ),
                         widget.Volume(
                             padding=0,
@@ -110,13 +110,13 @@ class SimpleSlash:
                         widget.Sep(
                             linewidth=0,
                             background=colors.background_alt,
-                            padding=16
+                            padding=14
                         ),
                         widget.Clock(
                             # format="%Y-%m-%d %a %I:%M %p",
                             format=" %a, %b %d   %H:%M",
-                            font='Font Awesome 5 Free Solid',
-                            padding=13,
+                            # font='Font Awesome 5 Free Solid',
+                            padding=12,
                             background=colors.background_alt,
                             foreground=colors.foreground,
                         ),
@@ -133,7 +133,7 @@ class SimpleSlash:
                         widget.Sep(
                             linewidth=0,
                             background=colors.background_alt,
-                            padding=3
+                            padding=6
                         )
                         # widget.QuickExit(),
                     ],
@@ -181,13 +181,13 @@ class SimpleSlash:
                         widget.Sep(
                             linewidth=0,
                             background=colors.black4,
-                            padding=13
+                            padding=12
                         ),
                         widget.Clock(
                             # format="%Y-%m-%d %a %I:%M %p",
                             format=" %H:%M",
-                            font='Font Awesome 5 Free Solid',
-                            padding=13,
+                            # font='Font Awesome 5 Free Solid',
+                            padding=12,
                             background=colors.black4,
                             foreground=colors.foreground,
                         ),

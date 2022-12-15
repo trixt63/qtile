@@ -44,10 +44,10 @@ keys = [
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle next layouts"),
     Key([mod, "shift"], "Tab", lazy.prev_layout(), desc="Toggle previous layouts"),
+    Key([mod, "shift"], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
     # Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     # Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
@@ -57,6 +57,7 @@ keys = [
     Key([mod, "control", "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control"], "x", lazy.spawn('i3lock -n -i /home/xuantung/Pictures/wallpapers/TheOuterWorld_MoeWanders.png'), desc="Lock screen"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Rofi
     Key([mod], "d", lazy.spawn("/home/xuantung/.config/rofi/bin/launcher_text"), desc="Spawn app launcher"),
     Key([mod], "p", lazy.spawn("/home/xuantung/.config/rofi/bin/menu_powermenu")),
@@ -64,7 +65,6 @@ keys = [
     Key(["control"], "super_r", lazy.spawn("xfce4-screenshooter -w"), desc="Screenshot a window"),
     Key(["control", "shift"], "super_r", lazy.spawn("xfce4-screenshooter -r"), desc="Screenshot part of the screen"),
     # Clipboard
-    Key([mod], "c", lazy.spawn("xfce4-popup-clipman"), desc="Clipboard pop=up"),
     Key(["mod1"], "c", lazy.spawn("xfce4-popup-clipman"), desc="Clipboard pop=up"),
     # Sound
     Key([], "XF86AudioLowerVolume", lazy.spawn(f"pactl set-sink-volume {sink_name} -10%")),
@@ -76,7 +76,7 @@ keys = [
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
     # Applications
     Key([mod, "control"], "w", lazy.spawn("firefox"), desc="Web browser"),
-    Key([mod], "f", lazy.spawn("thunar"), desc="File manager"),
-    Key([mod], "v", lazy.spawn("pavucontrol"), desc="File manager"),
-    Key([mod], "m", lazy.spawn("xfce4-taskmanager"), desc="Task manager")
+    Key([mod, "control"], "f", lazy.spawn("thunar"), desc="File manager"),
+    Key([mod, "control"], "v", lazy.spawn("pavucontrol"), desc="Volume & sound manager"),
+    Key([mod, "control"], "m", lazy.spawn("xfce4-taskmanager"), desc="Task manager")
 ]
