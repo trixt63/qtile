@@ -11,9 +11,19 @@ class SimpleSlash:
     def __init__(self, colors) -> None:
         self.colors = colors
         # widgets
-        self._group_box = widget.GroupBox(
+        self._current_layout_icon = widget.CurrentLayoutIcon(
+                                background=colors.black4,
+                                fontsize=widget_defaults.get('fontsize') - 1,
+                                padding=6
+                             )
+        # screen 1
+        screen1 = Screen(
+                top=bar.Bar(
+                    [
+                        self._current_layout_icon,
+                        widget.GroupBox(
                             padding_y=6,
-                            padding_x=8,
+                            padding_x=7,
                             background=colors.background_alt,
                             highlight_method='block',
                             rounded=False,
@@ -22,17 +32,7 @@ class SimpleSlash:
                             this_current_screen_border=colors.background_focus,
                             other_screen_border=colors.white4,
                             disable_drag=True
-                        )
-        # screen 1
-        screen1 = Screen(
-                top=bar.Bar(
-                    [
-                        widget.CurrentLayoutIcon(
-                            background=colors.black4,
-                            fontsize=widget_defaults.get('fontsize') - 1,
-                            padding=6
                         ),
-                        self._group_box,
                         lower_left_triangle(foreground=colors.background_alt),
                         widget.WindowName(
                             foreground=colors.foreground_alt,
@@ -152,7 +152,18 @@ class SimpleSlash:
                             fontsize=widget_defaults.get('fontsize') - 1,
                             padding=6
                         ),
-                        self._group_box,
+                        widget.GroupBox(
+                            padding_y=6,
+                            padding_x=7,
+                            background=colors.background_alt,
+                            highlight_method='block',
+                            rounded=False,
+                            active=colors.foreground_focus,
+                            inactive=colors.foreground_alt,
+                            this_current_screen_border=colors.background_focus,
+                            other_screen_border=colors.white4,
+                            disable_drag=True
+                        ),
                         lower_left_triangle(foreground=colors.background_alt),
                         widget.WindowName(
                             foreground=colors.white2,

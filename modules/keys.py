@@ -49,7 +49,6 @@ keys = [
     Key([mod, "shift"], "Tab", lazy.prev_layout(), desc="Toggle previous layouts"),
     Key([mod, "shift"], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
     # Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
-    # Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control", "shift"], "r", lazy.restart(), desc="Reload all the config and modules"),
@@ -76,7 +75,7 @@ keys = [
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
     # Applications
     Key([mod, "control"], "w", lazy.spawn("firefox"), desc="Web browser"),
-    Key([mod, "control"], "f", lazy.spawn("thunar"), desc="File manager"),
-    Key([mod, "control"], "v", lazy.spawn("pavucontrol"), desc="Volume & sound manager"),
-    Key([mod, "control"], "m", lazy.spawn("xfce4-taskmanager"), desc="Task manager")
+    Key([mod], "f", lazy.spawn("thunar"), desc="File manager"),
+    Key([mod], "v", lazy.spawn("pavucontrol"), desc="Volume & sound manager"),
+    Key([mod], "m", lazy.spawn("xfce4-taskmanager"), desc="Task manager")
 ]
