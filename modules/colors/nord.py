@@ -10,7 +10,6 @@ class Nord(ColorScheme):
         self.white = '#eceff4'
         self.white2 = '#e5e9f0'
         self.white3 = '#d8dee9'
-        self.white4 = '#bec5d1'
         self.red = '#bf616a'
         self.yellow = '#d08770'
         self.green = '#a3be8c'
@@ -29,19 +28,27 @@ class Nord(ColorScheme):
     def foreground(self):
         return self.white
 
-    @property
-    def foreground_alt(self):
-        """Unfocused group"""
-        return self.white3
+    # @property
+    # def background_alt(self):
+    #     return self.black4
+
+    # @property
+    # def foreground_alt(self):
+    #     return self.white
 
     @property
-    def background_alt(self):
+    def foreground_unfocus(self):
         """Unfocused group"""
-        return self.black4
+        return self.blue
+
+    @property
+    def background_unfocus(self):
+        """Unfocused group"""
+        return self.black2
 
     @property
     def background_focus(self):
-        return self.cyan2
+        return self.cyan
 
     @property
     def foreground_focus(self):

@@ -12,7 +12,7 @@ class SimpleSlash:
         self.colors = colors
         # widgets
         self._current_layout_icon = widget.CurrentLayoutIcon(
-                                background=colors.black4,
+                                background=colors.background_unfocus,
                                 fontsize=widget_defaults.get('fontsize') - 1,
                                 padding=6
                              )
@@ -24,25 +24,25 @@ class SimpleSlash:
                         widget.GroupBox(
                             padding_y=6,
                             padding_x=7,
-                            background=colors.background_alt,
+                            background=colors.background_unfocus,
                             highlight_method='block',
                             rounded=False,
                             active=colors.foreground_focus,
-                            inactive=colors.foreground_alt,
+                            inactive=colors.foreground_unfocus,
                             this_current_screen_border=colors.background_focus,
-                            other_screen_border=colors.white4,
+                            other_screen_border=colors.background_unfocus,
                             disable_drag=True
                         ),
-                        lower_left_triangle(foreground=colors.background_alt),
+                        lower_left_triangle(foreground=colors.background_unfocus),
                         widget.WindowName(
-                            foreground=colors.foreground_alt,
+                            foreground=colors.foreground_unfocus,
                             # padding=12,
                             fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=50
                         ),
 
                         widget.Mpris2(
-                            foreground=colors.foreground_alt,
+                            foreground=colors.foreground_unfocus,
                             padding=0,
                             max_chars=35,
                             name="spotify",
@@ -51,58 +51,57 @@ class SimpleSlash:
                             display_metadata=["xesam:title", "xesam:artist"],
                             objname="org.mpris.MediaPlayer2.spotify"
                         ),
-                        lower_right_triangle(foreground=colors.background_alt),
+                        lower_right_triangle(foreground=colors.background_unfocus),
                         widget.Sep(
                             linewidth=0,
-                            background=colors.background_alt,
+                            background=colors.background_unfocus,
                             padding=3
                         ),
                         widget.CPU(
                             format=' {load_percent}%',
                             foreground=colors.foreground[1:],
-                            background=colors.background_alt[1:],
+                            background=colors.background_unfocus[1:],
                             padding=0,
                             update_interval=5.0,
                         ),
                         widget.Sep(
                             linewidth=0,
-                            background=colors.background_alt,
+                            background=colors.background_unfocus,
                             padding=12
                         ),
                         widget.Memory(
                             format='{MemUsed: .2f}{mm}',
                             measure_mem='G',
                             foreground=colors.foreground[1:],
-                            background=colors.background_alt[1:],
+                            background=colors.background_unfocus[1:],
                             padding=12,
                             update_interval=5.0,
                         ),
                         widget.Sep(
                             linewidth=0,
-                            background=colors.background_alt,
+                            background=colors.background_unfocus,
                             padding=12
                         ),
                         widget.Volume(
                             padding=0,
                             theme_path='/usr/share/icons/Papirus/24x24/panel/',
-                            background=colors.background_alt[1:],
-                            foreground=colors.cyan[1:],
+                            background=colors.background_unfocus[1:],
                         ),
                         widget.Volume(
                             fmt='{}',
                             padding=0,
-                            background=colors.background_alt[1:],
+                            background=colors.background_unfocus[1:],
                             foreground=colors.foreground[1:],
                         ),
                         widget.Sep(
                             linewidth=0,
-                            background=colors.background_alt,
+                            background=colors.background_unfocus,
                             padding=24
                         ),
                         widget.BatteryIcon(
                             theme_path='/usr/share/icons/Papirus/24x24/panel/',
                             padding=0,
-                            background=colors.black4,
+                            background=colors.background_unfocus,
                             foreground=colors.foreground
                         ),
                         widget.Battery(
@@ -113,13 +112,13 @@ class SimpleSlash:
                             # discharge_char='',
                             # empty_char='',
                             # unknown_char='',
-                            background=colors.background_alt,
+                            background=colors.background_unfocus,
                             foreground=colors.foreground
                             # foreground=colors.cyan
                         ),
                         widget.Sep(
                             linewidth=0,
-                            background=colors.background_alt,
+                            background=colors.background_unfocus,
                             padding=14
                         ),
                         widget.Clock(
@@ -127,22 +126,16 @@ class SimpleSlash:
                             format=" %a, %b %d   %H:%M",
                             # font='Font Awesome 5 Free Solid',
                             padding=12,
-                            background=colors.background_alt,
+                            background=colors.background_unfocus,
                             foreground=colors.foreground,
                         ),
-                        # widget.Sep(
-                        #     linewidth=0,
-                        #     background=colors.background_alt,
-                        #     padding=9
-                        # ),
-                        # lower_right_triangle(foreground=colors.black4, background=colors.background_alt),
                         widget.Systray(
                             padding=8,
-                            background=colors.background_alt
+                            background=colors.background_unfocus
                         ),
                         widget.Sep(
                             linewidth=0,
-                            background=colors.background_alt,
+                            background=colors.background_unfocus,
                             padding=6
                         )
                         # widget.QuickExit(),
@@ -158,50 +151,50 @@ class SimpleSlash:
                 top=bar.Bar(
                     [
                         widget.CurrentLayoutIcon(
-                            background=colors.background_alt,
+                            background=colors.background_unfocus,
                             fontsize=widget_defaults.get('fontsize') - 1,
                             padding=6
                         ),
                         widget.GroupBox(
                             padding_y=6,
                             padding_x=7,
-                            background=colors.background_alt,
+                            background=colors.background_unfocus,
                             highlight_method='block',
                             rounded=False,
                             active=colors.foreground_focus,
-                            inactive=colors.foreground_alt,
+                            inactive=colors.foreground_unfocus,
                             this_current_screen_border=colors.background_focus,
-                            other_screen_border=colors.white4,
+                            other_screen_border=colors.background_unfocus,
                             disable_drag=True
                         ),
-                        lower_left_triangle(foreground=colors.background_alt),
+                        lower_left_triangle(foreground=colors.background_unfocus),
                         widget.WindowName(
-                            foreground=colors.white2,
+                            foreground=colors.foreground,
                             # padding=12,
                             fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=60
                         ),
 
                         widget.Clipboard(
-                            foreground=colors.white2,
+                            foreground=colors.foreground,
                             timeout=120
                         ),
-                        lower_right_triangle(foreground=colors.background_alt),
+                        lower_right_triangle(foreground=colors.background_unfocus),
                         widget.Volume(
                             padding=0,
                             theme_path='/usr/share/icons/Papirus/24x24/panel/',
-                            background=colors.black4[1:],
+                            background=colors.background_unfocus[1:],
                             foreground=colors.foreground[1:],
                         ),
                         widget.Volume(
                             fmt='{}',
                             padding=1,
-                            background=colors.black4[1:],
+                            background=colors.background_unfocus[1:],
                             foreground=colors.foreground[1:],
                         ),
                         widget.Sep(
                             linewidth=0,
-                            background=colors.black4,
+                            background=colors.background_unfocus,
                             padding=12
                         ),
                         widget.Clock(
@@ -209,7 +202,7 @@ class SimpleSlash:
                             format=" %H:%M",
                             # font='Font Awesome 5 Free Solid',
                             padding=12,
-                            background=colors.black4,
+                            background=colors.background_unfocus,
                             foreground=colors.foreground,
                         ),
                     ],

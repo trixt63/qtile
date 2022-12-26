@@ -32,12 +32,12 @@ class GithubLight(ColorScheme):
         return self.black
 
     @property
-    def foreground_alt(self):
+    def foreground_unfocus(self):
         """Unfocused group"""
         return self.white4
 
     @property
-    def background_alt(self):
+    def background_unfocus(self):
         """Unfocused group"""
         return self.white3
 

@@ -31,7 +31,7 @@ class SilverBlades2:
                         active=colors.foreground_focus,
                         inactive=colors.white4,
                         this_current_screen_border=colors.background_focus,
-                        this_current_screen=colors.background_alt,
+                        this_current_screen=colors.background_unfocus,
                         disable_drag=True
                     ),
                     lower_left_triangle(foreground=colors.black3),
@@ -136,7 +136,7 @@ class SilverBlades2:
                             active=colors.foreground_focus,
                             inactive=colors.white4,
                             this_current_screen_border=colors.background_focus,
-                            this_current_screen=colors.background_alt,
+                            this_current_screen=colors.background_unfocus,
                             disable_drag=True
                         ),
                         lower_left_triangle(foreground=colors.black3),

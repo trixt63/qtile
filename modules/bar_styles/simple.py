@@ -22,7 +22,7 @@ class Simple:
                           active=colors.foreground_focus,
                           inactive=colors.white4,
                           this_current_screen_border=colors.background_focus,
-                          this_current_screen=colors.background_alt
+                          this_current_screen=colors.background_unfocus
                         ),
                         widget.WindowName(
                             foreground=colors.white2,

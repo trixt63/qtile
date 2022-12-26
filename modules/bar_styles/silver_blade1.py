@@ -25,16 +25,16 @@ class SilverBlades1:
                         widget.GroupBox(
                             padding_y=6,
                             padding_x=7,
-                            background=colors.background_alt,
+                            background=colors.background_unfocus,
                             highlight_method='block',
                             rounded=False,
                             active=colors.foreground_focus,
                             inactive=colors.white4,
                             this_current_screen_border=colors.background_focus,
-                            this_current_screen=colors.background_alt,
+                            this_current_screen=colors.background_unfocus,
                             disable_drag=True
                         ),
-                        lower_left_triangle(foreground=colors.background_alt),
+                        lower_left_triangle(foreground=colors.background_unfocus),
                         widget.WindowName(
                             foreground=colors.white2,
                             # padding=12,
@@ -146,7 +146,7 @@ class SilverBlades1:
                             active=colors.foreground_focus,
                             inactive=colors.white4,
                             this_current_screen_border=colors.background_focus,
-                            this_current_screen=colors.background_alt,
+                            this_current_screen=colors.background_unfocus,
                             disable_drag=True
                         ),
                         lower_left_triangle(foreground=colors.black3),

@@ -25,7 +25,7 @@ class OneDark(ColorScheme):
         return self.white
 
     @property
-    def foreground_alt(self):
+    def foreground_unfocus(self):
         return self.white3
 
     @property

@@ -10,11 +10,28 @@ class ColorScheme(ABC):
     @property
     @abstractmethod
     def foreground(self):
+        """for other monitor"""
+        pass
+
+    # @property
+    # @abstractmethod
+    # def background_alt(self):
+    # """for other monitor"
+    #     pass
+
+    # @property
+    # @abstractmethod
+    # def foreground_alt(self):
+    #     pass
+
+    @property
+    @abstractmethod
+    def background_unfocus(self):
         pass
 
     @property
     @abstractmethod
-    def foreground_alt(self):
+    def foreground_unfocus(self):
         pass
 
     @property
