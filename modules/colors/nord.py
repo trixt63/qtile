@@ -20,6 +20,20 @@ class Nord(ColorScheme):
         self.cyan2 = '#88c0d0'
         self.blue2 = '#5e81ac'
 
+        self.colors = {
+            'background': self.black,
+            'foreground': self.white,
+            'foreground_unfocus': self.blue,
+            'background_unfocus': self.black2,
+            'foreground_focus': self.white,
+            'background_focus': self.cyan,
+            'background_focus_alt': self.blue2,
+            'background_alt': self.black4,
+            'border': self.black3,
+            'border_focus': self.yellow,
+            'urgent': self.red,
+        }
+
     @property
     def background(self):
         return self.black
@@ -65,18 +79,3 @@ class Nord(ColorScheme):
     @property
     def urgent(self):
         return self.red
-
-
-# nord_colors = {
-#     'background': '#2e3440',
-#     'foreground': '#eceff4',
-#     'foreground_unfocus': '#81a1c1',
-#     'background_unfocus':,
-#     'foreground_focus':,
-#     'background_focus':,
-#     'background_focus_alt':,
-#     'background_alt':,
-#     'border':,
-#     'border_focus':,
-#     'urget':,
-# }
