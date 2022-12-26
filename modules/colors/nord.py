@@ -28,13 +28,13 @@ class Nord(ColorScheme):
     def foreground(self):
         return self.white
 
-    # @property
-    # def background_alt(self):
-    #     return self.black4
+    @property
+    def background_alt(self):
+        return self.black4
 
-    # @property
-    # def foreground_alt(self):
-    #     return self.white
+    @property
+    def background_focus_alt(self):
+        return self.blue2
 
     @property
     def foreground_unfocus(self):
@@ -65,3 +65,18 @@ class Nord(ColorScheme):
     @property
     def urgent(self):
         return self.red
+
+
+# nord_colors = {
+#     'background': '#2e3440',
+#     'foreground': '#eceff4',
+#     'foreground_unfocus': '#81a1c1',
+#     'background_unfocus':,
+#     'foreground_focus':,
+#     'background_focus':,
+#     'background_focus_alt':,
+#     'background_alt':,
+#     'border':,
+#     'border_focus':,
+#     'urget':,
+# }

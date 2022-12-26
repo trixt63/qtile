@@ -1,7 +1,6 @@
 import os
 
 from libqtile import bar
-from modules.widgets import *
 from libqtile.config import Screen
 
 from modules.bar_styles.decorators import *
@@ -29,8 +28,12 @@ class SimpleSlash:
                             rounded=False,
                             active=colors.foreground_focus,
                             inactive=colors.foreground_unfocus,
+                            # for the focused screen
                             this_current_screen_border=colors.background_focus,
-                            other_screen_border=colors.background_unfocus,
+                            other_screen_border=colors.background_alt,
+                            # for the other screen
+                            this_screen_border=colors.background_focus_alt,
+                            other_current_screen_border=colors.background_alt,
                             disable_drag=True
                         ),
                         lower_left_triangle(foreground=colors.background_unfocus),
@@ -163,8 +166,12 @@ class SimpleSlash:
                             rounded=False,
                             active=colors.foreground_focus,
                             inactive=colors.foreground_unfocus,
+                            # for the focused screen
                             this_current_screen_border=colors.background_focus,
-                            other_screen_border=colors.background_unfocus,
+                            other_screen_border=colors.background_alt,
+                            # for the other screen
+                            this_screen_border=colors.background_focus_alt,
+                            other_current_screen_border=colors.background_alt,
                             disable_drag=True
                         ),
                         lower_left_triangle(foreground=colors.background_unfocus),
@@ -216,4 +223,3 @@ class SimpleSlash:
             screen1,
             screen2
         ]
-
