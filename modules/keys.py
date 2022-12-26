@@ -53,8 +53,8 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control", "shift"], "r", lazy.restart(), desc="Reload all the config and modules"),
     # Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod, "control", "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod, "control"], "x", lazy.spawn('i3lock -n -i /home/xuantung/Pictures/wallpapers/TheOuterWorld_MoeWanders.png'), desc="Lock screen"),
+    Key([mod, "mod1"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod, "control"], "x", lazy.spawn('i3lock -n -i /home/xuantung/Pictures/wallpapers/nord-wallpapers/nord_design.png '), desc="Lock screen"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Rofi

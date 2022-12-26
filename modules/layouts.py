@@ -5,7 +5,7 @@ from .screens import colors
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.MonadTall(margin=3,
+    layout.MonadTall(margin=4,
                      border_width=4,
                     #  border_focus='#5294e2',
                     #  border_normal='#2c5380',

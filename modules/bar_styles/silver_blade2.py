@@ -8,6 +8,7 @@ from modules.bar_styles.decorators import *
 
 
 class SilverBlades2:
+    """An array silver blades on the right corner. Top bar version"""
     def __init__(self, colors) -> None:
         self.colors = colors
         # screen 1:

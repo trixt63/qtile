@@ -52,12 +52,22 @@ class SimpleSlash:
                             objname="org.mpris.MediaPlayer2.spotify"
                         ),
                         lower_right_triangle(foreground=colors.background_alt),
+                        widget.Sep(
+                            linewidth=0,
+                            background=colors.background_alt,
+                            padding=3
+                        ),
                         widget.CPU(
                             format=' {load_percent}%',
                             foreground=colors.foreground[1:],
                             background=colors.background_alt[1:],
-                            padding=12,
+                            padding=0,
                             update_interval=5.0,
+                        ),
+                        widget.Sep(
+                            linewidth=0,
+                            background=colors.background_alt,
+                            padding=12
                         ),
                         widget.Memory(
                             format='{MemUsed: .2f}{mm}',

@@ -3,8 +3,9 @@
 #Input method
 ibus restart &
 #Wallpaper
-feh --bg-fill $HOME/Pictures/wallpapers/tory-miles-render.jpg &
-# feh --bg-fill $HOME/Pictures/wallpapers/harold-palx-v2.jpeg &
+#feh --bg-fill $HOME/Pictures/wallpapers/tory-miles-render.jpg &
+#feh --bg-fill /home/xuantung/Pictures/wallpapers/nord-wallpapers/ign_manInStreet.png &
+feh --bg-fill /home/xuantung/Pictures/wallpapers/nord-wallpapers/ign-0008.png &
 #Compositor
 picom &
 #X keyboard extension
