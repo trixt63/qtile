@@ -34,6 +34,7 @@ class Nord(ColorScheme):
             'urgent': self.red,
         }
 
+
     @property
     def background(self):
         return self.black
