@@ -30,10 +30,10 @@ class SimpleSlash:
                             inactive=colors.foreground_unfocus,
                             # for the focused screen
                             this_current_screen_border=colors.background_focus,
-                            other_screen_border=colors.background_alt,
+                            other_current_screen_border=colors.background_alt,
                             # for the other screen
                             this_screen_border=colors.background_focus_alt,
-                            other_current_screen_border=colors.background_alt,
+                            other_screen_border=colors.background_alt,
                             disable_drag=True
                         ),
                         lower_left_triangle(foreground=colors.background_unfocus),

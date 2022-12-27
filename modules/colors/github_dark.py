@@ -18,6 +18,20 @@ class GithubDark(ColorScheme):
         self.blue = '#77bdfb'
         self.purple = '#cea5fb'
 
+        self.colors = {
+            'background': self.black,
+            'foreground': self.white,
+            'foreground_unfocus': self.white3,
+            'background_unfocus': self.black2,
+            'foreground_focus': self.white,
+            'background_focus': self.blue,
+            'background_focus_alt': self.blue2,
+            'background_alt': self.black4,
+            'border': self.black3,
+            'border_focus': self.blue,
+            'urgent': self.red,
+        }
+
     @property
     def background(self):
         return self.black
