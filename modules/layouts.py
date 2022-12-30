@@ -4,7 +4,7 @@ from libqtile.config import Match
 from .screens import colors
 
 MGN = 3  # margin
-BW = 3  # border width
+BW = 4  # border width
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),

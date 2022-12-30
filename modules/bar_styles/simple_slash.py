@@ -49,7 +49,7 @@ class SimpleSlash:
                             padding=0,
                             max_chars=35,
                             name="spotify",
-                            paused_text=" Pause",
+                            paused_text=" Pause",
                             playing_text=" {track}",
                             display_metadata=["xesam:title", "xesam:artist"],
                             objname="org.mpris.MediaPlayer2.spotify"

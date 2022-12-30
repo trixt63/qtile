@@ -13,11 +13,11 @@ class Nord(ColorScheme):
         self.red = '#bf616a'
         self.yellow = '#d08770'
         self.green = '#a3be8c'
-        self.cyan = '#88c0d0'
+        self.cyan = '#8fbcbb'
         self.blue = '#81a1c1'
         self.purple = '#b48ead'
         # kinda redundance
-        self.cyan2 = '#8fbcbb'
+        self.cyan2 = '#88c0d0'
         self.blue2 = '#5e81ac'
 
         self.colors = {
@@ -30,7 +30,7 @@ class Nord(ColorScheme):
             'background_focus_alt': self.blue2,  # focused workspace on unfocused monitor
             'background_alt': self.black4,  # focused workspace of other monitor, on the focused monitor
             'border': self.black3,
-            'border_focus': self.cyan,
+            'border_focus': self.cyan2,
             'urgent': self.red,
         }
 
