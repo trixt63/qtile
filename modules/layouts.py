@@ -3,12 +3,15 @@ from libqtile.config import Match
 
 from .screens import colors
 
+MGN = 3  # margin
+BW = 3  # border width
+
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.MonadTall(margin=4,
-                     border_width=4,
-                     border_focus=colors.border_focus,
-                     border_normal=colors.border,
+    layout.MonadTall(margin=MGN,
+                     border_width=BW,
+                     border_focus=colors.get('border_focus'),
+                     border_normal=colors.get('border'),
                      single_border_width=0,
                      single_margin=0,
                      ratio=0.6),
@@ -24,17 +27,17 @@ layouts = [
                    panel_width=110,
                 #    place_right=True,
                    vspace=6,
-                   bg_color=colors.background,
-                   active_bg=colors.background_focus,
-                   urgent_bg=colors.urgent),
+                   bg_color=colors.get('background'),
+                   active_bg=colors.get('background_focus'),
+                   urgent_bg=colors.get('urgent')),
     # layout.Max(),
     layout.Columns(num_colums=1,
                    insert_position=1,
-                   border_width=4,
-                   border_focus=colors.border_focus,
-                   border_normal=colors.border,
-                   margin=[4, 2, 4, 2],
-                   margin_on_single=[4, 4, 4, 4]
+                   border_width=BW,
+                   border_focus=colors.get('border_focus'),
+                   border_normal=colors.get('border'),
+                   margin=[MGN, int(MGN/2), MGN, int(MGN/2)],
+                   margin_on_single=[MGN, MGN, MGN, MGN]
                    )
     # layout.VerticalTile(),
     # layout.Zoomy(columnwidth=100),

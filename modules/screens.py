@@ -12,8 +12,8 @@ from modules.colors.github_dark import GithubDark
 from modules.colors.nord import Nord
 
 # colors = GithubDark()
-colors = Nord()
-colors_dict = colors.colors
+colors = Nord().colors
+# colors_dict = colors.colors
 
 # screens = SilverBlades1(colors=colors).screens
-screens = SimpleSlash(colors=colors_dict).screens
+screens = SimpleSlash(colors=colors).screens

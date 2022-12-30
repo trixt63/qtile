@@ -13,7 +13,7 @@ class SimpleSlash:
         self._current_layout_icon = widget.CurrentLayoutIcon(
                                 background=colors.get('background_unfocus'),
                                 fontsize=widget_defaults.get('fontsize') - 1,
-                                padding=6
+                                padding=7
                              )
         # screen 1
         screen1 = Screen(
@@ -176,15 +176,16 @@ class SimpleSlash:
                         ),
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
                         widget.WindowName(
-                            foreground=colors.get('foreground'),
+                            foreground=colors.get('foreground_unfocus'),
                             # padding=12,
                             fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=60
                         ),
 
                         widget.Clipboard(
-                            foreground=colors.get('foreground'),
-                            timeout=120
+                            foreground=colors.get('foreground_unfocus'),
+                            max_width=30,
+                            timeout=None
                         ),
                         lower_right_triangle(foreground=colors.get('background_unfocus')),
                         widget.Volume(
@@ -220,6 +221,6 @@ class SimpleSlash:
                 ),
             )
         self.screens = [
-            screen1
-            # screen2
+            screen1,
+            screen2
         ]

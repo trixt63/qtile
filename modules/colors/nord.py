@@ -30,7 +30,7 @@ class Nord(ColorScheme):
             'background_focus_alt': self.blue2,  # focused workspace on unfocused monitor
             'background_alt': self.black4,  # focused workspace of other monitor
             'border': self.black3,
-            'border_focus': self.yellow,
+            'border_focus': self.cyan,
             'urgent': self.red,
         }
 
