@@ -1,9 +1,9 @@
-import os
-
 from libqtile import bar
 from libqtile.config import Screen
 
 from modules.bar_styles.decorators import *
+
+PAD = 10
 
 
 class SimpleSlash:
@@ -70,20 +70,20 @@ class SimpleSlash:
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
-                            padding=12
+                            padding=PAD+1
                         ),
                         widget.Memory(
                             format='{MemUsed: .2f}{mm}',
                             measure_mem='G',
                             foreground=colors.get('foreground')[1:],
                             background=colors.get('background_unfocus')[1:],
-                            padding=12,
+                            padding=PAD,
                             update_interval=5.0,
                         ),
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
-                            padding=12
+                            padding=PAD
                         ),
                         widget.Volume(
                             padding=0,
@@ -99,7 +99,7 @@ class SimpleSlash:
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
-                            padding=24
+                            padding=PAD*2
                         ),
                         widget.BatteryIcon(
                             theme_path='/usr/share/icons/Papirus/24x24/panel/',
@@ -122,13 +122,13 @@ class SimpleSlash:
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
-                            padding=14
+                            padding=PAD
                         ),
                         widget.Clock(
                             # format="%Y-%m-%d %a %I:%M %p",
                             format=" %a, %b %d   %H:%M",
                             # font='Font Awesome 5 Free Solid',
-                            padding=12,
+                            padding=PAD+6,
                             background=colors.get('background_unfocus'),
                             foreground=colors.get('foreground'),
                         ),
@@ -139,7 +139,7 @@ class SimpleSlash:
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
-                            padding=6
+                            padding=int(PAD/2)
                         )
                         # widget.QuickExit(),
                     ],
