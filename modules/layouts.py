@@ -3,12 +3,12 @@ from libqtile.config import Match
 
 from .screens import colors
 
-MGN = 3  # margin
+MG = 4  # margin
 BW = 4  # border width
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.MonadTall(margin=MGN,
+    layout.MonadTall(margin=MG,
                      border_width=BW,
                      border_focus=colors.get('border_focus'),
                      border_normal=colors.get('border'),
@@ -36,8 +36,8 @@ layouts = [
                    border_width=BW,
                    border_focus=colors.get('border_focus'),
                    border_normal=colors.get('border'),
-                   margin=[MGN, int(MGN/2), MGN, int(MGN/2)],
-                   margin_on_single=[MGN, MGN, MGN, MGN]
+                   margin=[MG, int(MG/2), MG, int(MG/2)],
+                   margin_on_single=[MG, MG, MG, MG]
                    )
     # layout.VerticalTile(),
     # layout.Zoomy(columnwidth=100),

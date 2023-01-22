@@ -4,10 +4,11 @@ from libqtile.config import Screen
 from modules.bar_styles.decorators import *
 
 PAD = 10
+OPAQUE = '00'
 icons_path = '/usr/share/icons/Papirus/24x24/panel/'
 
 
-class SimpleSlash:
+class SimpleSlashTranslucent:
     def __init__(self, colors) -> None:
         self.colors = colors
         # widgets
@@ -39,23 +40,30 @@ class SimpleSlash:
                         ),
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
                         widget.WindowName(
-                            foreground=colors.get('foreground_unfocus'),
-                            # padding=12,
+                            foreground=colors.get('foreground'),
                             fontsize=widget_defaults.get('fontsize') - 1,
-                            max_chars=50
+                            max_chars=45
                         ),
-
                         widget.Mpris2(
-                            foreground=colors.get('foreground_unfocus'),
+                            foreground=colors.get('foreground'),
                             padding=0,
-                            max_chars=35,
+                            scroll_chars=15,
                             name="spotify",
                             paused_text=" Pause",
                             playing_text=" {track}",
                             display_metadata=["xesam:title", "xesam:artist"],
                             objname="org.mpris.MediaPlayer2.spotify"
                         ),
-                        lower_right_triangle(foreground=colors.get('background_unfocus')),
+                        widget.Spacer(
+                            background=colors.get('background') + OPAQUE,
+                        ),
+                        widget.Systray(
+                            padding=5,
+                            background=colors.get('background') + OPAQUE,
+                            foreground=colors.get('background') + OPAQUE
+                        ),
+                        lower_right_triangle(foreground=colors.get('background_unfocus'),
+                                             background=colors.get('background') + OPAQUE),
                         widget.CPU(
                             format=' {load_percent}%',
                             foreground=colors.get('foreground')[1:],
@@ -128,19 +136,9 @@ class SimpleSlash:
                             background=colors.get('background_unfocus'),
                             foreground=colors.get('foreground'),
                         ),
-                        widget.Systray(
-                            padding=8,
-                            background=colors.get('background_unfocus')
-                        ),
-                        widget.Sep(
-                            linewidth=0,
-                            background=colors.get('background_unfocus'),
-                            padding=int(PAD/2)
-                        )
-                        # widget.QuickExit(),
                     ],
                     21,
-                    background=colors.get('background'),
+                    background=colors.get('background') + OPAQUE,
                     # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
                     # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
                 ),
@@ -172,15 +170,27 @@ class SimpleSlash:
                         ),
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
                         widget.WindowName(
-                            foreground=colors.get('foreground_unfocus'),
+                            foreground=colors.get('foreground'),
                             # padding=12,
                             fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=60
                         ),
-
+                        widget.Mpris2(
+                            foreground=colors.get('foreground'),
+                            padding=0,
+                            scroll_chars=15,
+                            name="spotify",
+                            paused_text=" Pause",
+                            playing_text=" {track}",
+                            display_metadata=["xesam:title", "xesam:artist"],
+                            objname="org.mpris.MediaPlayer2.spotify"
+                        ),
+                        widget.Spacer(
+                            background=colors.get('background') + OPAQUE,
+                        ),
                         widget.Clipboard(
-                            foreground=colors.get('foreground_unfocus'),
-                            max_width=30,
+                            foreground=colors.get('foreground'),
+                            max_width=60,
                             timeout=None
                         ),
                         lower_right_triangle(foreground=colors.get('background_unfocus')),
@@ -211,7 +221,7 @@ class SimpleSlash:
                         ),
                     ],
                     21,
-                    background=colors.get('background'),
+                    background=colors.get('background') + OPAQUE,
                     # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
                     # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
                 ),
