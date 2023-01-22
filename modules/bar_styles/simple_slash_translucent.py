@@ -47,7 +47,10 @@ class SimpleSlashTranslucent:
                         widget.Mpris2(
                             foreground=colors.get('foreground'),
                             padding=0,
-                            scroll_chars=15,
+                            fontsize=widget_defaults.get('fontsize') - 1,
+                            scroll=True,
+                            scroll_clear=True,
+                            width=185,
                             name="spotify",
                             paused_text=" Pause",
                             playing_text=" {track}",
@@ -58,7 +61,7 @@ class SimpleSlashTranslucent:
                             background=colors.get('background') + OPAQUE,
                         ),
                         widget.Systray(
-                            padding=5,
+                            padding=4,
                             background=colors.get('background') + OPAQUE,
                             foreground=colors.get('background') + OPAQUE
                         ),
@@ -171,14 +174,16 @@ class SimpleSlashTranslucent:
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
                         widget.WindowName(
                             foreground=colors.get('foreground'),
-                            # padding=12,
                             fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=60
                         ),
                         widget.Mpris2(
                             foreground=colors.get('foreground'),
                             padding=0,
-                            scroll_chars=15,
+                            fontsize=widget_defaults.get('fontsize') - 1,
+                            scroll=True,
+                            scroll_clear=True,
+                            width=185,
                             name="spotify",
                             paused_text=" Pause",
                             playing_text=" {track}",
@@ -190,7 +195,7 @@ class SimpleSlashTranslucent:
                         ),
                         widget.Clipboard(
                             foreground=colors.get('foreground'),
-                            max_width=60,
+                            max_width=45,
                             timeout=None
                         ),
                         lower_right_triangle(foreground=colors.get('background_unfocus')),
@@ -212,7 +217,6 @@ class SimpleSlashTranslucent:
                             padding=12
                         ),
                         widget.Clock(
-                            # format="%Y-%m-%d %a %I:%M %p",
                             format=" %H:%M",
                             # font='Font Awesome 5 Free Solid',
                             padding=12,

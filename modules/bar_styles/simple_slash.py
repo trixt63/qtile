@@ -48,6 +48,10 @@ class SimpleSlash:
                         widget.Mpris2(
                             foreground=colors.get('foreground_unfocus'),
                             padding=0,
+                            fontsize=widget_defaults.get('fontsize') - 1,
+                            # scroll=True,
+                            # scroll_clear=True,
+                            # width=175,
                             max_chars=35,
                             name="spotify",
                             paused_text=" Pause",
@@ -177,7 +181,21 @@ class SimpleSlash:
                             fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=60
                         ),
-
+                        widget.Mpris2(
+                            foreground=colors.get('foreground_unfocus'),
+                            padding=0,
+                            scroll=True,
+                            scroll_clear=True,
+                            width=185,
+                            name="spotify",
+                            paused_text=" Pause",
+                            playing_text=" {track}",
+                            display_metadata=["xesam:title", "xesam:artist"],
+                            objname="org.mpris.MediaPlayer2.spotify"
+                        ),
+                        widget.Spacer(
+                            background=colors.get('background'),
+                        ),
                         widget.Clipboard(
                             foreground=colors.get('foreground_unfocus'),
                             max_width=30,
