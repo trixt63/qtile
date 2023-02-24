@@ -1,3 +1,5 @@
+from math import ceil
+
 from libqtile import layout
 from libqtile.config import Match
 
@@ -13,7 +15,7 @@ layouts = [
                      border_focus=colors.get('border_focus'),
                      border_normal=colors.get('border'),
                      single_border_width=0,
-                     single_margin=MG,
+                     single_margin=0,
                      ratio=0.6),
     # Try more layouts by unleashing below layouts.
     # layout.Slice(),
@@ -36,7 +38,7 @@ layouts = [
                    border_width=BW,
                    border_focus=colors.get('border_focus'),
                    border_normal=colors.get('border'),
-                   margin=[MG, int(MG/2), MG, int(MG/2)],
+                   margin=[MG, ceil(MG/2), MG, ceil(MG/2)],
                    margin_on_single=[MG, MG, MG, MG]
                    )
     # layout.VerticalTile(),

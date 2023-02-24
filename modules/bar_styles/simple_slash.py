@@ -6,7 +6,7 @@ from modules.bar_styles.decorators import *
 PAD = 10
 OPAQUE = 'ff'
 UPDATE_INTERVAL = 5.0
-BARSIZE = 24
+BARSIZE = 23
 icons_path = '/usr/share/icons/Papirus/24x24/panel/'
 
 
@@ -59,13 +59,13 @@ class SimpleSlash:
                             objname="org.mpris.MediaPlayer2.spotify"
                         ),
                         lower_right_triangle(foreground=colors.get('background_unfocus')),
-                        widget.ThermalSensor(
-                            format=' {temp:.0f}{unit}',
-                            foreground=colors.get('foreground')[1:],
-                            background=colors.get('background_unfocus')[1:],
-                            update_interval=UPDATE_INTERVAL,
-                            padding=PAD
-                        ),
+                        # widget.ThermalSensor(
+                        #     format=' {temp:.0f}{unit}',
+                        #     foreground=colors.get('foreground')[1:],
+                        #     background=colors.get('background_unfocus')[1:],
+                        #     update_interval=UPDATE_INTERVAL,
+                        #     padding=PAD
+                        # ),
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
