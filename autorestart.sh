@@ -3,9 +3,8 @@
 #Input method
 ibus restart &
 #Wallpaper
-# feh --bg-fill /home/xuantung/Pictures/wallpapers/nord-wallpapers/ign_unsplash18.png &
-feh --bg-fill /home/xuantung/Pictures/wallpapers/nord-wallpapers/nord_lake.png
 # feh --bg-fill /home/xuantung/Pictures/wallpapers/nord-wallpapers/debian-galaxy.png
+feh --bg-fill /home/xuantung/Pictures/wallpapers/nord-wallpapers/ign_sunGarden.png
 #Compositor
 picom &
 #X keyboard extension
@@ -17,4 +16,4 @@ imwheel &
 #Polybar
 #sh "$HOME/.config/polybar/launch.sh"
 #Monitor
-bash $HOME/.config/qtile/monitor.sh
+$HOME/.config/qtile/monitor_2.sh

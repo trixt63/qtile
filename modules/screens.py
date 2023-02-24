@@ -17,4 +17,4 @@ colors = Nord().colors
 # colors_dict = colors.colors
 
 # screens = SilverBlades1(colors=colors).screens
-screens = SimpleSlashTranslucent(colors=colors).screens
+screens = SimpleSlash(colors=colors).screens

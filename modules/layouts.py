@@ -3,7 +3,7 @@ from libqtile.config import Match
 
 from .screens import colors
 
-MG = 4  # margin
+MG = 3  # margin
 BW = 4  # border width
 
 layouts = [
@@ -13,7 +13,7 @@ layouts = [
                      border_focus=colors.get('border_focus'),
                      border_normal=colors.get('border'),
                      single_border_width=0,
-                     single_margin=0,
+                     single_margin=MG,
                      ratio=0.6),
     # Try more layouts by unleashing below layouts.
     # layout.Slice(),

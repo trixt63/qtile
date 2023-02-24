@@ -14,9 +14,9 @@ blueman-applet &
 xfce4-clipman &
 #Redshift for eyestrain
 redshift-gtk &
-#Mail client
-thunderbird &
 #Discord
 flatpak run com.discordapp.Discord &
+#Mail client
+flatpak run org.mozilla.Thunderbird &
 #Dictionary
 goldendict

@@ -22,7 +22,7 @@ groups = [
         Match(wm_class=["Microsoft Teams - Preview"]),
         Match(wm_class=["discord"])]),
     Group("8", matches=[Match(wm_class=["spotify"])]),
-    Group("9"),
+    Group("9", matches=[Match(wm_class=["Steam"])]),
 ]
 
 for i in groups:

@@ -4,6 +4,9 @@ from libqtile.config import Screen
 from modules.bar_styles.decorators import *
 
 PAD = 10
+OPAQUE = 'ff'
+UPDATE_INTERVAL = 5.0
+BARSIZE = 24
 icons_path = '/usr/share/icons/Papirus/24x24/panel/'
 
 
@@ -40,32 +43,40 @@ class SimpleSlash:
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
                         widget.WindowName(
                             foreground=colors.get('foreground_unfocus'),
-                            # padding=12,
                             fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=50
                         ),
-
                         widget.Mpris2(
                             foreground=colors.get('foreground_unfocus'),
                             padding=0,
                             fontsize=widget_defaults.get('fontsize') - 1,
-                            # scroll=True,
-                            # scroll_clear=True,
-                            # width=175,
                             max_chars=35,
                             name="spotify",
+                            playing_text=' {track}',
                             paused_text=" Pause",
-                            playing_text=" {track}",
+                            # format="{xesam:title} - {xesam:artist}",
                             display_metadata=["xesam:title", "xesam:artist"],
                             objname="org.mpris.MediaPlayer2.spotify"
                         ),
                         lower_right_triangle(foreground=colors.get('background_unfocus')),
+                        widget.ThermalSensor(
+                            format=' {temp:.0f}{unit}',
+                            foreground=colors.get('foreground')[1:],
+                            background=colors.get('background_unfocus')[1:],
+                            update_interval=UPDATE_INTERVAL,
+                            padding=PAD
+                        ),
+                        widget.Sep(
+                            linewidth=0,
+                            background=colors.get('background_unfocus'),
+                            padding=PAD+1
+                        ),
                         widget.CPU(
                             format=' {load_percent}%',
                             foreground=colors.get('foreground')[1:],
                             background=colors.get('background_unfocus')[1:],
                             padding=0,
-                            update_interval=5.0,
+                            update_interval=UPDATE_INTERVAL,
                         ),
                         widget.Sep(
                             linewidth=0,
@@ -78,7 +89,7 @@ class SimpleSlash:
                             foreground=colors.get('foreground')[1:],
                             background=colors.get('background_unfocus')[1:],
                             padding=PAD,
-                            update_interval=5.0,
+                            update_interval=UPDATE_INTERVAL,
                         ),
                         widget.Sep(
                             linewidth=0,
@@ -108,16 +119,15 @@ class SimpleSlash:
                             foreground=colors.get('foreground')
                         ),
                         widget.Battery(
-                            # format='{char} {percent:2.0%}',
                             format='{percent:2.0%}',
                             padding=0,
+                            # format='{char} {percent:2.0%}',
                             # charge_char='',
                             # discharge_char='',
                             # empty_char='',
                             # unknown_char='',
                             background=colors.get('background_unfocus'),
                             foreground=colors.get('foreground')
-                            # foreground=colors.cyan
                         ),
                         widget.Sep(
                             linewidth=0,
@@ -125,7 +135,6 @@ class SimpleSlash:
                             padding=PAD
                         ),
                         widget.Clock(
-                            # format="%Y-%m-%d %a %I:%M %p",
                             format=" %a, %b %d   %H:%M",
                             # font='Font Awesome 5 Free Solid',
                             padding=PAD,
@@ -133,8 +142,8 @@ class SimpleSlash:
                             foreground=colors.get('foreground'),
                         ),
                         widget.Systray(
-                            padding=8,
-                            background=colors.get('background_unfocus')
+                            padding=6,
+                            background=colors.get('background_unfocus'),
                         ),
                         widget.Sep(
                             linewidth=0,
@@ -143,8 +152,8 @@ class SimpleSlash:
                         )
                         # widget.QuickExit(),
                     ],
-                    21,
-                    background=colors.get('background'),
+                    BARSIZE,
+                    background=colors.get('background') + OPAQUE,
                     # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
                     # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
                 ),
@@ -188,8 +197,8 @@ class SimpleSlash:
                             scroll_clear=True,
                             width=185,
                             name="spotify",
-                            paused_text=" Pause",
                             playing_text=" {track}",
+                            paused_text=" Pause",
                             display_metadata=["xesam:title", "xesam:artist"],
                             objname="org.mpris.MediaPlayer2.spotify"
                         ),
@@ -220,7 +229,6 @@ class SimpleSlash:
                             padding=12
                         ),
                         widget.Clock(
-                            # format="%Y-%m-%d %a %I:%M %p",
                             format=" %H:%M",
                             # font='Font Awesome 5 Free Solid',
                             padding=12,
@@ -228,10 +236,8 @@ class SimpleSlash:
                             foreground=colors.get('foreground'),
                         ),
                     ],
-                    21,
+                    BARSIZE,
                     background=colors.get('background'),
-                    # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-                    # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
                 ),
             )
         self.screens = [

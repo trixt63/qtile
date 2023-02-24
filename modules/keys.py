@@ -54,7 +54,7 @@ keys = [
     Key([mod, "control", "shift"], "r", lazy.restart(), desc="Reload all the config and modules"),
     # Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "mod1"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod, "control"], "x", lazy.spawn('i3lock -n -i /home/xuantung/Pictures/wallpapers/nord-wallpapers/nord_design.png '), desc="Lock screen"),
+    Key([mod, "control"], "x", lazy.spawn("$HOME/.local/bin/betterlockscreen -l"), desc="Lock screen"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Rofi
@@ -76,6 +76,6 @@ keys = [
     # Applications
     Key([mod, "control"], "w", lazy.spawn("firefox"), desc="Web browser"),
     Key([mod], "f", lazy.spawn("thunar"), desc="File manager"),
-    Key([mod], "v", lazy.spawn("pavucontrol"), desc="Volume & sound manager"),
-    Key([mod], "m", lazy.spawn("xfce4-taskmanager"), desc="Task manager")
+    Key([mod, "control"], "v", lazy.spawn("pavucontrol"), desc="Volume & sound manager"),
+    Key([mod, "control"], "m", lazy.spawn("xfce4-taskmanager"), desc="Task manager")
 ]
