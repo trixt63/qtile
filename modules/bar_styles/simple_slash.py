@@ -149,7 +149,7 @@ class SimpleSlash:
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
-                            padding=int(PAD/2)
+                            padding=int(PAD/3)
                         )
                         # widget.QuickExit(),
                     ],
