@@ -135,7 +135,8 @@ class SimpleSlash:
                             padding=PAD
                         ),
                         widget.Clock(
-                            format=" %a, %b %d   %H:%M",
+                            # format=" %a, %b %d   %H:%M",
+                            format=" %b %d   %H:%M",
                             # font='Font Awesome 5 Free Solid',
                             padding=PAD,
                             background=colors.get('background_unfocus'),
@@ -188,7 +189,7 @@ class SimpleSlash:
                             foreground=colors.get('foreground_unfocus'),
                             # padding=12,
                             fontsize=widget_defaults.get('fontsize') - 1,
-                            max_chars=60
+                            max_chars=50
                         ),
                         widget.Mpris2(
                             foreground=colors.get('foreground_unfocus'),
