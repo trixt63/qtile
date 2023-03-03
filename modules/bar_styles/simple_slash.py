@@ -19,6 +19,7 @@ class SimpleSlash:
                                 fontsize=widget_defaults.get('fontsize') - 1,
                                 padding=7
                              )
+        self.highlight_method = 'line'
         # screen 1
         screen1 = Screen(
                 top=bar.Bar(
@@ -28,8 +29,7 @@ class SimpleSlash:
                             padding_y=6,
                             padding_x=7,
                             background=colors.get('background_unfocus'),
-                            # highlight_method='block',
-                            highlight_method='line',
+                            highlight_method=self.highlight_method,
                             rounded=False,
                             active=colors.get('foreground_focus'),
                             inactive=colors.get('foreground_unfocus'),
@@ -175,16 +175,17 @@ class SimpleSlash:
                             padding_y=6,
                             padding_x=7,
                             background=colors.get('background_unfocus'),
-                            highlight_method='block',
+                            highlight_method=self.highlight_method,
                             rounded=False,
                             active=colors.get('foreground_focus'),
                             inactive=colors.get('foreground_unfocus'),
                             # for the focused screen
                             this_current_screen_border=colors.get('background_focus'),
-                            other_screen_border=colors.get('background_alt'),
+                            other_current_screen_border=colors.get('background_alt'),
+                            highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
                             # for the other screen
                             this_screen_border=colors.get('background_focus_alt'),
-                            other_current_screen_border=colors.get('background_alt'),
+                            other_screen_border=colors.get('background_alt'),
                             disable_drag=True
                         ),
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
@@ -256,6 +257,6 @@ def _get_highlight_color(colors):
     in case the color scheme does not have 'background_focus_2'
     """
     colors_list = [colors.get('background_focus_2'),
-                   colors.get('background_alt'),
-                   colors.get('background_unfocus')]
+                   colors.get('background_unfocus'),
+                   colors.get('background_alt')]
     return next(color for color in colors_list if color is not None)
