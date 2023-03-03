@@ -28,15 +28,15 @@ class SimpleSlash:
                             padding_y=6,
                             padding_x=7,
                             background=colors.get('background_unfocus'),
-                            highlight_method='line',
                             # highlight_method='block',
+                            highlight_method='line',
                             rounded=False,
                             active=colors.get('foreground_focus'),
                             inactive=colors.get('foreground_unfocus'),
-                            # Use these if use block:
                             # for the focused screen
                             this_current_screen_border=colors.get('background_focus'),
                             other_current_screen_border=colors.get('background_alt'),
+                            highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
                             # for the other screen
                             this_screen_border=colors.get('background_focus_alt'),
                             other_screen_border=colors.get('background_alt'),
@@ -248,3 +248,14 @@ class SimpleSlash:
             screen1,
             screen2
         ]
+
+
+def _get_highlight_color(colors):
+    """Get the highlight_color (the background color) 
+    for the GroupBox when highlight_method='line',
+    in case the color scheme does not have 'background_focus_2'
+    """
+    colors_list = [colors.get('background_focus_2'),
+                   colors.get('background_alt'),
+                   colors.get('background_unfocus')]
+    return next(color for color in colors_list if color is not None)
