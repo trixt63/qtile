@@ -1,71 +1,99 @@
 from .color_scheme import ColorScheme
 
 
-class SpaceGray(ColorScheme):
+class SpaceGray():
     def __init__(self):
-        self.black = '#000000'
-        self.black2 = '#20242d'
-        self.black3='#4a4b4f'
-        self.white = '#ffffff'
-        self.white2 = '#b3b8c3'
-        self.red = '#b04b57'
-        self.yellow = '#e5c179'
+        self.white0 = '#ffffff'
+        self.black0 = '#000000'
+
+        self.black = '#1c1f26'
+        self.black2 = '#232830'
+        # self.black3 = '#333d46'
+        self.black3 = '#343d46'
+        self.black4 = '#4f5b66'
+        self.black5 = '#65737e'
+        self.white = '#eff1f5'
+        self.white2 = '#dfe1e8'
+        self.white3 = '#c0c5ce'
+        self.white4 = '#a7adba'
+
+        self.red = '#bf616a'
+        self.yellow = '#ebcb8b'
+        self.cyan = '#96b5b4'
+        self.yellow2 = '#fecc66'
+
         self.green = '#87b379'
-        self.cyan = '#85a7a5'
         self.blue = '#7d8fa4'
+        self.cyan2 = '#85A7A5'
         self.purple = '#a47996'
 
-    @property
-    def background(self):
-        return self.black2
 
-    @property
-    def foreground(self):
-        return self.white
+        self.colors = {
+                'background': self.black,
+                'foreground': self.white,
+                'foreground_unfocus': self.white4,
+                'background_unfocus': self.black2,
+                'foreground_focus': self.white,
+                'background_focus': self.yellow,
+                'background_focus_alt': self.black5,  # focused workspace on unfocused monitor
+                'background_alt': self.black3,  # focused workspace of the other monitor
+                'border': self.black,
+                'border_focus': self.yellow,
+                'urgent': self.red,
+            }
 
-    @property
-    def foreground_unfocus(self):
-        return self.white
-
-    @property
-    def background_focus(self):
-        return self.white
-
-    @property
-    def foreground_focus(self):
-        return self.black
-
-    @property
-    def border(self):
-        return self.black2
-
-    @property
-    def border_focus(self):
-        return self.yellow
-
-    @property
-    def urgent(self):
-        return self.red
-
-    @property
-    def layout(self):
-        return self.white2
-
-    @property
-    def volume(self):
-        return self.purple
-
-    @property
-    def backlight(self):
-        return self.blue
-
-    @property
-    def battery(self):
-        return self.cyan
-
-    @property
-    def datetime(self):
-        return self.green
-
-    def systray(self):
-        return self.black2
+    #
+    # @property
+    # def background(self):
+    #     return self.black2
+    #
+    # @property
+    # def foreground(self):
+    #     return self.white
+    #
+    # @property
+    # def foreground_unfocus(self):
+    #     return self.white
+    #
+    # @property
+    # def background_focus(self):
+    #     return self.white
+    #
+    # @property
+    # def foreground_focus(self):
+    #     return self.black
+    #
+    # @property
+    # def border(self):
+    #     return self.black2
+    #
+    # @property
+    # def border_focus(self):
+    #     return self.yellow
+    #
+    # @property
+    # def urgent(self):
+    #     return self.red
+    #
+    # @property
+    # def layout(self):
+    #     return self.white2
+    #
+    # @property
+    # def volume(self):
+    #     return self.purple
+    #
+    # @property
+    # def backlight(self):
+    #     return self.blue
+    #
+    # @property
+    # def battery(self):
+    #     return self.cyan
+    #
+    # @property
+    # def datetime(self):
+    #     return self.green
+    #
+    # def systray(self):
+    #     return self.black2

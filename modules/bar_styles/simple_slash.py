@@ -28,10 +28,12 @@ class SimpleSlash:
                             padding_y=6,
                             padding_x=7,
                             background=colors.get('background_unfocus'),
-                            highlight_method='block',
+                            highlight_method='line',
+                            # highlight_method='block',
                             rounded=False,
                             active=colors.get('foreground_focus'),
                             inactive=colors.get('foreground_unfocus'),
+                            # Use these if use block:
                             # for the focused screen
                             this_current_screen_border=colors.get('background_focus'),
                             other_current_screen_border=colors.get('background_alt'),

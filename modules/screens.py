@@ -11,10 +11,12 @@ from modules.bar_styles.simple_slash import SimpleSlash
 from modules.bar_styles.simple_slash_translucent import SimpleSlashTranslucent
 from modules.colors.github_dark import GithubDark
 from modules.colors.nord import Nord
+from modules.colors.space_gray import SpaceGray
 
 # colors = GithubDark()
-colors = Nord().colors
+# colors = Nord().colors
 # colors_dict = colors.colors
+colors = SpaceGray().colors
 
 # screens = SilverBlades1(colors=colors).screens
 screens = SimpleSlash(colors=colors).screens
