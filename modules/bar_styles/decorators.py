@@ -3,11 +3,11 @@ from modules.widgets import *
 
 def lower_right_triangle(background=None,
                          foreground='#ffffff',
-                         fontsize=59):
+                         fontsize=60):
     return widget.TextBox(
         text='\u25E2',
         fontsize=fontsize,
-        padding=-3,
+        padding=-1,
         background=background,
         foreground=foreground
     )
@@ -15,7 +15,7 @@ def lower_right_triangle(background=None,
 
 def lower_left_triangle(background=None,
                         foreground='#ffffff',
-                        fontsize=42):
+                        fontsize=60):
     return widget.TextBox(
         text='\u25E3',
         fontsize=fontsize,

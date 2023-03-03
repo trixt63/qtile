@@ -72,7 +72,7 @@ class SimpleSlash:
                             padding=PAD+1
                         ),
                         widget.CPU(
-                            format=' {load_percent}%',
+                            format=' {load_percent}%',
                             foreground=colors.get('foreground')[1:],
                             background=colors.get('background_unfocus')[1:],
                             padding=0,
@@ -84,7 +84,7 @@ class SimpleSlash:
                             padding=PAD+1
                         ),
                         widget.Memory(
-                            format='{MemUsed: .2f}{mm}',
+                            format=' {MemUsed:.2f}{mm}',
                             measure_mem='G',
                             foreground=colors.get('foreground')[1:],
                             background=colors.get('background_unfocus')[1:],
@@ -94,11 +94,12 @@ class SimpleSlash:
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
-                            padding=PAD
+                            padding=PAD-2
                         ),
                         widget.Volume(
-                            padding=0,
-                            theme_path=icons_path,
+                            padding=2,
+                            # theme_path=icons_path,
+                            emoji=True,
                             background=colors.get('background_unfocus')[1:],
                         ),
                         widget.Volume(
@@ -107,28 +108,28 @@ class SimpleSlash:
                             background=colors.get('background_unfocus')[1:],
                             foreground=colors.get('foreground')[1:],
                         ),
-                        widget.Sep(
-                            linewidth=0,
-                            background=colors.get('background_unfocus'),
-                            padding=(PAD-1)*2
-                        ),
-                        widget.BatteryIcon(
-                            theme_path=icons_path,
-                            padding=0,
-                            background=colors.get('background_unfocus'),
-                            foreground=colors.get('foreground')
-                        ),
-                        widget.Battery(
-                            format='{percent:2.0%}',
-                            padding=0,
-                            # format='{char} {percent:2.0%}',
-                            # charge_char='',
-                            # discharge_char='',
-                            # empty_char='',
-                            # unknown_char='',
-                            background=colors.get('background_unfocus'),
-                            foreground=colors.get('foreground')
-                        ),
+                        # widget.Sep(
+                        #     linewidth=0,
+                        #     background=colors.get('background_unfocus'),
+                        #     padding=(PAD-1)*2
+                        # ),
+                        # widget.BatteryIcon(
+                        #     theme_path=icons_path,
+                        #     padding=0,
+                        #     background=colors.get('background_unfocus'),
+                        #     foreground=colors.get('foreground')
+                        # ),
+                        # widget.Battery(
+                        #     format='{percent:2.0%}',
+                        #     padding=0,
+                        #     # format='{char} {percent:2.0%}',
+                        #     # charge_char='',
+                        #     # discharge_char='',
+                        #     # empty_char='',
+                        #     # unknown_char='',
+                        #     background=colors.get('background_unfocus'),
+                        #     foreground=colors.get('foreground')
+                        # ),
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
