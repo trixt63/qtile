@@ -17,4 +17,4 @@ from modules.colors.space_gray import SpaceGray
 colors = SpaceGray().colors
 
 # screens = SilverBlades1(colors=colors).screens
-screens = SimpleSlash(colors=colors).screens
+screens = SimpleSlashTranslucent(colors=colors).screens

@@ -20,6 +20,7 @@ class SimpleSlash:
                                 padding=7
                              )
         self.highlight_method = 'line'
+
         # screen 1
         screen1 = Screen(
                 top=bar.Bar(
@@ -46,7 +47,7 @@ class SimpleSlash:
                         widget.WindowName(
                             foreground=colors.get('foreground_unfocus'),
                             fontsize=widget_defaults.get('fontsize') - 1,
-                            max_chars=50
+                            max_chars=45
                         ),
                         widget.Mpris2(
                             foreground=colors.get('foreground_unfocus'),
@@ -218,8 +219,9 @@ class SimpleSlash:
                         ),
                         lower_right_triangle(foreground=colors.get('background_unfocus')),
                         widget.Volume(
-                            padding=0,
-                            theme_path=icons_path,
+                            padding=1,
+                            # theme_path=icons_path,
+                            emoji=True,
                             background=colors.get('background_unfocus')[1:],
                             foreground=colors.get('foreground')[1:],
                         ),
@@ -237,7 +239,7 @@ class SimpleSlash:
                         widget.Clock(
                             format=" %H:%M",
                             # font='Font Awesome 5 Free Solid',
-                            padding=12,
+                            padding=PAD,
                             background=colors.get('background_unfocus'),
                             foreground=colors.get('foreground'),
                         ),

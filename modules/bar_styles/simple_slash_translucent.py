@@ -17,6 +17,8 @@ class SimpleSlashTranslucent:
                                 fontsize=widget_defaults.get('fontsize') - 1,
                                 padding=7
                              )
+        self.highlight_method = 'line'
+
         # screen 1
         screen1 = Screen(
                 top=bar.Bar(
@@ -26,13 +28,14 @@ class SimpleSlashTranslucent:
                             padding_y=6,
                             padding_x=7,
                             background=colors.get('background_unfocus'),
-                            highlight_method='block',
+                            highlight_method=self.highlight_method,
                             rounded=False,
                             active=colors.get('foreground_focus'),
                             inactive=colors.get('foreground_unfocus'),
                             # for the focused screen
                             this_current_screen_border=colors.get('background_focus'),
                             other_current_screen_border=colors.get('background_alt'),
+                            highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
                             # for the other screen
                             this_screen_border=colors.get('background_focus_alt'),
                             other_screen_border=colors.get('background_alt'),
@@ -53,7 +56,7 @@ class SimpleSlashTranslucent:
                             width=185,
                             name="spotify",
                             paused_text=" Pause",
-                            playing_text=" {track}",
+                            playing_text=" {track}",
                             display_metadata=["xesam:title", "xesam:artist"],
                             objname="org.mpris.MediaPlayer2.spotify"
                         ),
@@ -93,13 +96,14 @@ class SimpleSlashTranslucent:
                             padding=PAD
                         ),
                         widget.Volume(
-                            padding=0,
-                            theme_path=icons_path,
+                            padding=1,
+                            # theme_path=icons_path,
+                            emoji=True,
                             background=colors.get('background_unfocus')[1:],
                         ),
                         widget.Volume(
                             fmt='{}',
-                            padding=0,
+                            padding=1,
                             background=colors.get('background_unfocus')[1:],
                             foreground=colors.get('foreground')[1:],
                         ),
@@ -132,8 +136,7 @@ class SimpleSlashTranslucent:
                             padding=PAD
                         ),
                         widget.Clock(
-                            # format="%Y-%m-%d %a %I:%M %p",
-                            format=" %a, %b %d   %H:%M",
+                            format=" %b %d   %H:%M",
                             # font='Font Awesome 5 Free Solid',
                             padding=PAD,
                             background=colors.get('background_unfocus'),
@@ -159,16 +162,17 @@ class SimpleSlashTranslucent:
                             padding_y=6,
                             padding_x=7,
                             background=colors.get('background_unfocus'),
-                            highlight_method='block',
+                            highlight_method=self.highlight_method,
                             rounded=False,
                             active=colors.get('foreground_focus'),
                             inactive=colors.get('foreground_unfocus'),
                             # for the focused screen
                             this_current_screen_border=colors.get('background_focus'),
-                            other_screen_border=colors.get('background_alt'),
+                            other_current_screen_border=colors.get('background_alt'),
+                            highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
                             # for the other screen
                             this_screen_border=colors.get('background_focus_alt'),
-                            other_current_screen_border=colors.get('background_alt'),
+                            other_screen_border=colors.get('background_alt'),
                             disable_drag=True
                         ),
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
@@ -186,7 +190,7 @@ class SimpleSlashTranslucent:
                             width=185,
                             name="spotify",
                             paused_text=" Pause",
-                            playing_text=" {track}",
+                            playing_text=" {track}",
                             display_metadata=["xesam:title", "xesam:artist"],
                             objname="org.mpris.MediaPlayer2.spotify"
                         ),
@@ -200,8 +204,9 @@ class SimpleSlashTranslucent:
                         ),
                         lower_right_triangle(foreground=colors.get('background_unfocus')),
                         widget.Volume(
-                            padding=0,
-                            theme_path=icons_path,
+                            padding=1,
+                            # theme_path=icons_path,
+                            emoji=True,
                             background=colors.get('background_unfocus')[1:],
                             foreground=colors.get('foreground')[1:],
                         ),
@@ -234,3 +239,14 @@ class SimpleSlashTranslucent:
             screen1,
             screen2
         ]
+
+
+def _get_highlight_color(colors):
+    """Get the highlight_color (the background color) 
+    for the GroupBox when highlight_method='line',
+    in case the color scheme does not have 'background_focus_2'
+    """
+    colors_list = [colors.get('background_focus_2'),
+                   colors.get('background_unfocus'),
+                   colors.get('background_alt')]
+    return next(color for color in colors_list if color is not None)
