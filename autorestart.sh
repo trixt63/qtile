@@ -3,7 +3,8 @@
 #Input method
 ibus restart &
 #Wallpaper
-feh --bg-fill /home/xuantung/Pictures/wallpapers/nord-wallpapers/ign-0009.png
+# feh --bg-fill /home/xuantung/Pictures/wallpapers/nord-wallpapers/ign-0009.png
+feh --bg-fill /home/xuantung/Pictures/wallpapers/moon.png
 # feh --bg-tile /home/xuantung/Pictures/wallpapers/wallpapers/Monochrome/mono-x.png
 #Compositor
 picom &

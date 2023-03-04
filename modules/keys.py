@@ -54,14 +54,14 @@ keys = [
     Key([mod, "control", "shift"], "r", lazy.restart(), desc="Reload all the config and modules"),
     # Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "mod1"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod, "control"], "x", lazy.spawn("$HOME/.local/bin/betterlockscreen -l"), desc="Lock screen"),
+    Key([mod, "control"], "x", lazy.spawn("$HOME/.local/bin/betterlockscreen -l --off 120"), desc="Lock screen"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Rofi
     Key([mod], "d", lazy.spawn("/home/xuantung/.config/rofi/bin/launcher_text"), desc="Spawn app launcher"),
     Key([mod], "p", lazy.spawn("/home/xuantung/.config/rofi/bin/menu_powermenu")),
     # Screenshot
-    Key(["control", "mod5"], "super_r", lazy.spawn("xfce4-screenshooter -w"), desc="Screenshot a window"),
+    Key(["control", "mod3"], "super_r", lazy.spawn("xfce4-screenshooter -w"), desc="Screenshot a window"),
     Key(["control", "shift"], "super_r", lazy.spawn("xfce4-screenshooter -r"), desc="Screenshot part of the screen"),
     # Clipboard
     Key(["mod1"], "c", lazy.spawn("xfce4-popup-clipman"), desc="Clipboard pop=up"),

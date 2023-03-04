@@ -54,7 +54,7 @@ class SimpleSlash:
                             fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=35,
                             name="spotify",
-                            playing_text=' {track}',
+                            playing_text=' {track}',
                             paused_text=" Pause",
                             # format="{xesam:title} - {xesam:artist}",
                             display_metadata=["xesam:title", "xesam:artist"],
@@ -74,7 +74,7 @@ class SimpleSlash:
                             padding=PAD+1
                         ),
                         widget.CPU(
-                            format=' {load_percent}%',
+                            format=' {load_percent}%',
                             foreground=colors.get('foreground')[1:],
                             background=colors.get('background_unfocus')[1:],
                             padding=0,
@@ -106,7 +106,7 @@ class SimpleSlash:
                         ),
                         widget.Volume(
                             fmt='{}',
-                            padding=0,
+                            padding=2,
                             background=colors.get('background_unfocus')[1:],
                             foreground=colors.get('foreground')[1:],
                         ),
@@ -197,12 +197,13 @@ class SimpleSlash:
                         ),
                         widget.Mpris2(
                             foreground=colors.get('foreground_unfocus'),
+                            fontsize=widget_defaults.get('fontsize') - 1,
                             padding=0,
                             scroll=True,
                             scroll_clear=True,
                             width=185,
                             name="spotify",
-                            playing_text=" {track}",
+                            playing_text=" {track}",
                             paused_text=" Pause",
                             display_metadata=["xesam:title", "xesam:artist"],
                             objname="org.mpris.MediaPlayer2.spotify"

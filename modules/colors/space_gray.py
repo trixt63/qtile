@@ -29,20 +29,20 @@ class SpaceGray():
 
 
         self.colors = {
-                'background': self.black,
+                'background': self.black2,
                 'foreground': self.white,
 
                 'foreground_unfocus': self.white4,
-                'background_unfocus': self.black2,
+                'background_unfocus': self.black3,
 
                 'foreground_focus': self.white0,
-                'background_focus': self.yellow,
-                'background_focus_2': self.black3,  # incase using highlight_method = line
+                'background_focus': self.yellow2,
+                'background_focus_2': self.black4,  # incase using highlight_method = line
 
                 'background_focus_alt': self.blue,  # focused workspace on unfocused monitor
-                'background_alt': self.black4,  # focused workspace of the other monitor
+                'background_alt': self.black5,  # focused workspace of the other monitor
 
-                'border': self.black,
+                'border': self.black2,
                 'border_focus': self.yellow,
 
                 'urgent': self.red,
