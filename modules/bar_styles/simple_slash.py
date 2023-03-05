@@ -161,7 +161,12 @@ class SimpleSlash:
                             background=colors.get('background_unfocus'),
                             foreground=colors.get('foreground'),
                             padding=int(PAD/3)
-                        )
+                        ),
+                        widget.Sep(
+                            linewidth=0,
+                            background=colors.get('background_unfocus'),
+                            padding=int(PAD/3)
+                        ),
                         # widget.QuickExit(),
                     ],
                     BARSIZE,
@@ -249,6 +254,18 @@ class SimpleSlash:
                             padding=PAD,
                             background=colors.get('background_unfocus'),
                             foreground=colors.get('foreground'),
+                        ),
+                        widget.LaunchBar(
+                            progs=[('Power', "/home/xuantung/.config/rofi/bin/menu_powermenu", "Power menu")],
+                            default_icon='/usr/share/icons/Papirus/22x22/panel/system-devices-panel.svg',
+                            background=colors.get('background_unfocus'),
+                            foreground=colors.get('foreground'),
+                            padding=int(PAD/3)
+                        ),
+                        widget.Sep(
+                            linewidth=0,
+                            background=colors.get('background_unfocus'),
+                            padding=int(PAD/3)
                         ),
                     ],
                     BARSIZE,

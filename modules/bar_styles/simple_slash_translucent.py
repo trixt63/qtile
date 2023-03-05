@@ -148,7 +148,12 @@ class SimpleSlashTranslucent:
                             background=colors.get('background_unfocus'),
                             foreground=colors.get('foreground'),
                             padding=int(PAD/3)
-                        )
+                        ),
+                        widget.Sep(
+                            linewidth=0,
+                            background=colors.get('background_unfocus'),
+                            padding=int(PAD/3)
+                        ),
                     ],
                     BARSIZE,
                     background=colors.get('background') + OPAQUE,
