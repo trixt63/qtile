@@ -43,20 +43,20 @@ class SimpleSlashTranslucent:
                         ),
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
                         widget.WindowName(
-                            foreground=colors.get('foreground'),
+                            foreground=colors.get('foreground_unfocus'),
                             fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=45
                         ),
                         widget.Mpris2(
-                            foreground=colors.get('foreground'),
+                            foreground=colors.get('foreground_unfocus'),
                             padding=0,
                             fontsize=widget_defaults.get('fontsize') - 1,
                             scroll=True,
                             scroll_clear=True,
                             width=185,
                             name="spotify",
-                            paused_text=" Pause",
                             playing_text=" {track}",
+                            paused_text=" Pause",
                             display_metadata=["xesam:title", "xesam:artist"],
                             objname="org.mpris.MediaPlayer2.spotify"
                         ),
@@ -189,8 +189,8 @@ class SimpleSlashTranslucent:
                             scroll_clear=True,
                             width=185,
                             name="spotify",
-                            paused_text=" Pause",
                             playing_text=" {track}",
+                            paused_text=" Pause",
                             display_metadata=["xesam:title", "xesam:artist"],
                             objname="org.mpris.MediaPlayer2.spotify"
                         ),

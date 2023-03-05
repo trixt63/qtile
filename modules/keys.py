@@ -60,6 +60,7 @@ keys = [
     # Rofi
     Key([mod], "d", lazy.spawn("/home/xuantung/.config/rofi/bin/launcher_text"), desc="Spawn app launcher"),
     Key([mod], "p", lazy.spawn("/home/xuantung/.config/rofi/bin/menu_powermenu")),
+    # Key([mod, "shift"], "p", lazy.spawn("/home/xuantung/.config/rofi/bin/powermenu")),
     # Screenshot
     Key(["control", "mod3"], "super_r", lazy.spawn("xfce4-screenshooter -w"), desc="Screenshot a window"),
     Key(["control", "shift"], "super_r", lazy.spawn("xfce4-screenshooter -r"), desc="Screenshot part of the screen"),
