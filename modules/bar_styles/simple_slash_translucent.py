@@ -6,6 +6,7 @@ from modules.bar_styles.decorators import *
 PAD = 10
 OPAQUE = '00'
 icons_path = '/usr/share/icons/Papirus/24x24/panel/'
+BARSIZE = 24
 
 
 class SimpleSlashTranslucent:
@@ -137,13 +138,19 @@ class SimpleSlashTranslucent:
                         ),
                         widget.Clock(
                             format=" %b %d   %H:%M",
-                            # font='Font Awesome 5 Free Solid',
                             padding=PAD,
                             background=colors.get('background_unfocus'),
                             foreground=colors.get('foreground'),
                         ),
+                        widget.LaunchBar(
+                            progs=[('Power', "/home/xuantung/.config/rofi/bin/menu_powermenu", "Power menu")],
+                            default_icon='/usr/share/icons/Papirus/22x22/panel/system-devices-panel.svg',
+                            background=colors.get('background_unfocus'),
+                            foreground=colors.get('foreground'),
+                            padding=int(PAD/3)
+                        )
                     ],
-                    21,
+                    BARSIZE,
                     background=colors.get('background') + OPAQUE,
                     # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
                     # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
@@ -250,3 +257,4 @@ def _get_highlight_color(colors):
                    colors.get('background_unfocus'),
                    colors.get('background_alt')]
     return next(color for color in colors_list if color is not None)
+

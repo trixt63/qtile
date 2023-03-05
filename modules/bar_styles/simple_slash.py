@@ -28,7 +28,7 @@ class SimpleSlash:
                         self._current_layout_icon,
                         widget.GroupBox(
                             padding_y=6,
-                            padding_x=7,
+                            padding_x=6,
                             background=colors.get('background_unfocus'),
                             highlight_method=self.highlight_method,
                             rounded=False,
@@ -153,6 +153,13 @@ class SimpleSlash:
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
+                            padding=int(PAD/3)
+                        ),
+                        widget.LaunchBar(
+                            progs=[('Power', "/home/xuantung/.config/rofi/bin/menu_powermenu", "Power menu")],
+                            default_icon='/usr/share/icons/Papirus/22x22/panel/system-devices-panel.svg',
+                            background=colors.get('background_unfocus'),
+                            foreground=colors.get('foreground'),
                             padding=int(PAD/3)
                         )
                         # widget.QuickExit(),
