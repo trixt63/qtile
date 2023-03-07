@@ -29,14 +29,6 @@ class SimpleSlashTranslucent:
         }
 
         # Widgets
-        # launch_bar = widget.LaunchBar(
-        #                 progs=[(' \u23fb ', "/home/xuantung/.config/rofi/bin/menu_powermenu", "Power menu")],
-        #                 default_icon=icons_path + 'system-devices-panel.svg',
-        #                 # text_only=True,
-        #                 background=colors.get('urgent'),
-        #                 # foreground=colors.get('urgent'),
-        #              ),
-
         separator = widget.Sep(
                         linewidth=0,
                         background=colors.get('background_unfocus'),
@@ -44,7 +36,7 @@ class SimpleSlashTranslucent:
                         padding=PAD*2
                     )
 
-        volume_widget = (
+        widget_volume = (
                     widget.Volume(
                         # theme_path=icons_path,
                         emoji=True,
@@ -58,7 +50,7 @@ class SimpleSlashTranslucent:
                     )
         )
 
-        battery_widget = (
+        widget_battery = (
             widget.BatteryIcon(
                 theme_path=icons_path,
                 **widget_defaults
@@ -147,13 +139,13 @@ class SimpleSlashTranslucent:
                             **widget_defaults
                         ),
                         separator,
-                        *volume_widget,
+                        *widget_volume,
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
                             padding=(PAD-2)*2 - 3
                         ),
-                        *battery_widget,
+                        *widget_battery,
                         separator,
                         widget.Clock(
                             format=" %b %d   %H:%M",
@@ -164,7 +156,6 @@ class SimpleSlashTranslucent:
                             background=colors.get('background_unfocus'),
                             padding=PAD+2
                         ),
-                        # *launch_bar,
                         widget.LaunchBar(**launchbar_config)
                     ],
                     BARSIZE,
@@ -217,7 +208,7 @@ class SimpleSlashTranslucent:
                             timeout=None
                         ),
                         lower_right_triangle(foreground=colors.get('background_unfocus')),
-                        *volume_widget,
+                        *widget_volume,
                         separator,
                         widget.Clock(
                             format=" %H:%M",
