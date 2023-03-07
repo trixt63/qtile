@@ -46,6 +46,12 @@ class SpaceGray():
                 'border_focus': self.yellow,
 
                 'urgent': self.red,
+
+                'red' :'#bf616a',
+                'yellow': '#ebcb8b',
+                'cyan': '#96b5b4',
+                'blue': '#7d8fa4',
+                'green': self.green
             }
 
     #

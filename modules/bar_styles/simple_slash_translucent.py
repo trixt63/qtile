@@ -3,7 +3,7 @@ from libqtile.config import Screen
 
 from modules.bar_styles.decorators import *
 
-PAD = 10
+PAD = 9
 OPAQUE = '00'
 icons_path = '/usr/share/icons/Papirus/24x24/panel/'
 BARSIZE = 24
@@ -12,26 +12,93 @@ BARSIZE = 24
 class SimpleSlashTranslucent:
     def __init__(self, colors) -> None:
         self.colors = colors
-        # widgets
-        self._current_layout_icon = widget.CurrentLayoutIcon(
-                                background=colors.get('background_unfocus'),
-                                fontsize=widget_defaults.get('fontsize') - 1,
-                                padding=7
-                             )
         self.highlight_method = 'line'
-        launch_bar = widget.LaunchBar(
-                            progs=[('Power', "/home/xuantung/.config/rofi/bin/menu_powermenu", "Power menu")],
-                            default_icon='/usr/share/icons/Papirus/22x22/panel/system-devices-panel.svg',
-                            background=colors.get('urgent'),
-                            foreground=colors.get('foreground'),
-                            padding=int(PAD/3)
-                     ),
+
+        # Widgets config
+        widget_defaults.update({
+            'background': colors.get('background_unfocus'),
+            'foreground': colors.get('foreground')
+        })
+
+        launchbar_config = {
+            'progs': [(' \u23fb ', "/home/xuantung/.config/rofi/bin/menu_powermenu", "Power menu")],
+            'default_icon': icons_path + 'system-devices-panel.svg',
+            # text_only=True,
+            'background': colors.get('background_focus_alt'),
+            'padding': 3,
+        }
+
+        # Widgets
+        # launch_bar = widget.LaunchBar(
+        #                 progs=[(' \u23fb ', "/home/xuantung/.config/rofi/bin/menu_powermenu", "Power menu")],
+        #                 default_icon=icons_path + 'system-devices-panel.svg',
+        #                 # text_only=True,
+        #                 background=colors.get('urgent'),
+        #                 # foreground=colors.get('urgent'),
+        #              ),
+
+        separator = widget.Sep(
+                        linewidth=0,
+                        background=colors.get('background_unfocus'),
+                        size_percent=60,
+                        padding=PAD*2
+                    )
+
+        volume_widget = (
+                    widget.Volume(
+                        # theme_path=icons_path,
+                        emoji=True,
+                        **widget_defaults
+                    ),
+                    widget.Volume(
+                        fmt='{}',
+                        background=colors.get('background_unfocus'),
+                        foreground=colors.get('foreground'),
+                        padding=3
+                    )
+        )
+
+        battery_widget = (
+            widget.BatteryIcon(
+                theme_path=icons_path,
+                **widget_defaults
+            ),
+            widget.Battery(
+                # format='{char} {percent:2.0%}',
+                format='{percent:2.0%}',
+                # charge_char='',
+                # discharge_char='',
+                # empty_char='',
+                # unknown_char='',
+                **widget_defaults
+            )
+        )
+
+        mpris2 = widget.Mpris2(
+                    foreground=colors.get('foreground_unfocus'),
+                    background=colors.get('background_unfocus') + OPAQUE,
+                    padding=0,
+                    fontsize=widget_defaults.get('fontsize') - 1,
+                    scroll=True,
+                    scroll_clear=True,
+                    width=185,
+                    name="spotify",
+                    playing_text=" {track}",
+                    paused_text=" Pause",
+                    display_metadata=["xesam:title", "xesam:artist"],
+                    objname="org.mpris.MediaPlayer2.spotify"
+                ),
+
 
         # screen 1
         screen1 = Screen(
                 top=bar.Bar(
                     [
-                        self._current_layout_icon,
+                        widget.CurrentLayoutIcon(
+                                        background=colors.get('background_unfocus'),
+                                        fontsize=widget_defaults.get('fontsize') - 1,
+                                        padding=7
+                                ),
                         widget.GroupBox(
                             padding_y=6,
                             padding_x=7,
@@ -52,22 +119,11 @@ class SimpleSlashTranslucent:
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
                         widget.WindowName(
                             foreground=colors.get('foreground_unfocus'),
+                            background=colors.get('background') + '00',
                             fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=45
                         ),
-                        widget.Mpris2(
-                            foreground=colors.get('foreground_unfocus'),
-                            padding=0,
-                            fontsize=widget_defaults.get('fontsize') - 1,
-                            scroll=True,
-                            scroll_clear=True,
-                            width=185,
-                            name="spotify",
-                            playing_text=" {track}",
-                            paused_text=" Pause",
-                            display_metadata=["xesam:title", "xesam:artist"],
-                            objname="org.mpris.MediaPlayer2.spotify"
-                        ),
+                        *mpris2,
                         widget.Spacer(
                             background=colors.get('background') + OPAQUE,
                         ),
@@ -80,83 +136,36 @@ class SimpleSlashTranslucent:
                                              background=colors.get('background') + OPAQUE),
                         widget.CPU(
                             format=' {load_percent}%',
-                            foreground=colors.get('foreground')[1:],
-                            background=colors.get('background_unfocus')[1:],
-                            padding=0,
                             update_interval=5.0,
+                            **widget_defaults
                         ),
-                        widget.Sep(
-                            linewidth=0,
-                            background=colors.get('background_unfocus'),
-                            padding=PAD+1
-                        ),
+                        separator,
                         widget.Memory(
                             format='{MemUsed: .2f}{mm}',
                             measure_mem='G',
-                            foreground=colors.get('foreground')[1:],
-                            background=colors.get('background_unfocus')[1:],
-                            padding=PAD,
                             update_interval=5.0,
+                            **widget_defaults
                         ),
+                        separator,
+                        *volume_widget,
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
-                            padding=PAD
+                            padding=(PAD-2)*2 - 3
                         ),
-                        widget.Volume(
-                            padding=1,
-                            # theme_path=icons_path,
-                            emoji=True,
-                            background=colors.get('background_unfocus')[1:],
-                        ),
-                        widget.Volume(
-                            fmt='{}',
-                            padding=1,
-                            background=colors.get('background_unfocus')[1:],
-                            foreground=colors.get('foreground')[1:],
-                        ),
-                        widget.Sep(
-                            linewidth=0,
-                            background=colors.get('background_unfocus'),
-                            padding=(PAD-1)*2
-                        ),
-                        widget.BatteryIcon(
-                            theme_path=icons_path,
-                            padding=0,
-                            background=colors.get('background_unfocus'),
-                            foreground=colors.get('foreground')
-                        ),
-                        widget.Battery(
-                            # format='{char} {percent:2.0%}',
-                            format='{percent:2.0%}',
-                            padding=0,
-                            # charge_char='',
-                            # discharge_char='',
-                            # empty_char='',
-                            # unknown_char='',
-                            background=colors.get('background_unfocus'),
-                            foreground=colors.get('foreground')
-                            # foreground=colors.cyan
-                        ),
-                        widget.Sep(
-                            linewidth=0,
-                            background=colors.get('background_unfocus'),
-                            padding=PAD
-                        ),
+                        *battery_widget,
+                        separator,
                         widget.Clock(
                             format=" %b %d   %H:%M",
-                            padding=PAD,
-                            background=colors.get('background_unfocus'),
-                            foreground=colors.get('foreground'),
+                            **widget_defaults
                         ),
-                        # widget.LaunchBar(
-                        #     progs=[('Power', "/home/xuantung/.config/rofi/bin/menu_powermenu", "Power menu")],
-                        #     default_icon='/usr/share/icons/Papirus/22x22/panel/system-devices-panel-alert.svg',
-                        #     background=colors.get('background_unfocus'),
-                        #     foreground=colors.get('foreground'),
-                        #     padding=int(PAD/3)
-                        # ),
-                        *launch_bar
+                        widget.Sep(
+                            linewidth=0,
+                            background=colors.get('background_unfocus'),
+                            padding=PAD+2
+                        ),
+                        # *launch_bar,
+                        widget.LaunchBar(**launchbar_config)
                     ],
                     BARSIZE,
                     background=colors.get('background') + OPAQUE,
@@ -192,72 +201,42 @@ class SimpleSlashTranslucent:
                         ),
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
                         widget.WindowName(
-                            foreground=colors.get('foreground'),
+                            foreground=colors.get('foreground_unfocus'),
+                            background=colors.get('background') + OPAQUE,
                             fontsize=widget_defaults.get('fontsize') - 1,
-                            max_chars=60
+                            max_chars=45
                         ),
-                        widget.Mpris2(
-                            foreground=colors.get('foreground'),
-                            padding=0,
-                            fontsize=widget_defaults.get('fontsize') - 1,
-                            scroll=True,
-                            scroll_clear=True,
-                            width=185,
-                            name="spotify",
-                            playing_text=" {track}",
-                            paused_text=" Pause",
-                            display_metadata=["xesam:title", "xesam:artist"],
-                            objname="org.mpris.MediaPlayer2.spotify"
-                        ),
+                        *mpris2,
                         widget.Spacer(
                             background=colors.get('background') + OPAQUE,
                         ),
                         widget.Clipboard(
-                            foreground=colors.get('foreground'),
+                            foreground=colors.get('foreground_unfocus'),
+                            fontsize=widget_defaults.get('fontsize') - 1,
                             max_width=45,
                             timeout=None
                         ),
                         lower_right_triangle(foreground=colors.get('background_unfocus')),
-                        widget.Volume(
-                            padding=1,
-                            # theme_path=icons_path,
-                            emoji=True,
-                            background=colors.get('background_unfocus')[1:],
-                            foreground=colors.get('foreground')[1:],
-                        ),
-                        widget.Volume(
-                            fmt='{}',
-                            padding=1,
-                            background=colors.get('background_unfocus')[1:],
-                            foreground=colors.get('foreground')[1:],
+                        *volume_widget,
+                        separator,
+                        widget.Clock(
+                            format=" %H:%M",
+                            **widget_defaults,
                         ),
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
-                            padding=12
+                            padding=PAD+2
                         ),
-                        widget.Clock(
-                            format=" %H:%M",
-                            # font='Font Awesome 5 Free Solid',
-                            padding=12,
-                            background=colors.get('background_unfocus'),
-                            foreground=colors.get('foreground'),
-                        ),
-                        # widget.LaunchBar(
-                        #     progs=[('Power', "/home/xuantung/.config/rofi/bin/menu_powermenu", "Power menu")],
-                        #     default_icon='/usr/share/icons/Papirus/22x22/panel/system-devices-panel-alert.svg',
-                        #     background=colors.get('background_unfocus'),
-                        #     foreground=colors.get('foreground'),
-                        #     padding=int(PAD/3)
-                        # ),
-                        *launch_bar
+                        widget.LaunchBar(**launchbar_config)
                     ],
-                    21,
+                    BARSIZE,
                     background=colors.get('background') + OPAQUE,
                     # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
                     # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
                 ),
             )
+
         self.screens = [
             screen1,
             screen2

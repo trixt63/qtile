@@ -3,9 +3,8 @@
 #Input method
 ibus restart &
 #Wallpaper
-# feh --bg-fill /home/xuantung/Pictures/wallpapers/nord-wallpapers/ign-0009.png
 feh --bg-fill /home/xuantung/Pictures/wallpapers/moon.png
-# feh --bg-tile /home/xuantung/Pictures/wallpapers/wallpapers/Nord/pattern1-nord.png
+# feh --bg-tile /home/xuantung/Pictures/wallpapers/wallpapers/Nord/pattern1-nord-2.png
 #Compositor
 picom &
 #X keyboard extension
