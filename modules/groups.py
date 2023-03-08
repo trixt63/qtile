@@ -9,18 +9,23 @@ groups = [
     Group("2", matches=[
         Match(wm_class=["vscodium"]),
         Match(wm_class=["jetbrains-pycharm-ce"]),
-        Match(wm_class=["jetbrains-pycharm"])]),
+        Match(wm_class=["jetbrains-pycharm"]),
+        Match(wm_class=["jetbrains-webstorm"])
+    ]),
     Group("3"),
     Group("4", matches=[Match(wm_class=["Thunar"])]),
     Group("5", matches=[
         Match(wm_class=["MongoDB Compass"]),
-        Match(wm_class=["Postman"])]),
+        Match(wm_class=["Postman"])
+    ]),
     Group("6", matches=[Match(wm_class=["libreoffice"]),
-                        Match(wm_class=["calibre"])]),
+                        Match(wm_class=["calibre"])
+    ]),
     Group("7", matches=[
         Match(wm_class=["thunderbird-default"]),
         Match(wm_class=["Microsoft Teams - Preview"]),
-        Match(wm_class=["discord"])]),
+        Match(wm_class=["discord"])
+    ]),
     Group("8", matches=[Match(wm_class=["spotify"])]),
     Group("9", matches=[Match(wm_class=["Steam"])]),
 ]

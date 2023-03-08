@@ -25,7 +25,7 @@ class SimpleSlashTranslucent:
             'default_icon': icons_path + 'system-devices-panel.svg',
             # text_only=True,
             'background': colors.get('background_focus_alt'),
-            'padding': 3,
+            'padding': 2,
         }
 
         # Widgets
