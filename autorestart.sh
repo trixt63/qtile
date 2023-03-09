@@ -16,4 +16,5 @@ imwheel &
 #Polybar
 #sh "$HOME/.config/polybar/launch.sh"
 #Monitor
-$HOME/.config/qtile/monitor.sh
+# $HOME/.config/qtile/monitor_2.sh
+# autorandr --change

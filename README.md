@@ -7,6 +7,7 @@
 - **brightnessctl**: to mofify backlight brightness
 - **pavu**: to modify sound profile
 - **xfce4-goodies**: for notifications, power manager, task manager and screenshots
+- **[autorandr](https://github.com/phillipberndt/autorandr)**: Auto config monitors for X11
 
 2. Recommended packages:
 - **nm-applet**: to monitor network
