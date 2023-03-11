@@ -7,6 +7,7 @@ PAD = 9
 OPAQUE = '00'
 icons_path = '/usr/share/icons/Papirus/24x24/panel/'
 BARSIZE = 24
+UPDATE_INTERVAL = 5.0
 
 
 class SimpleSlashTranslucent:
@@ -126,16 +127,22 @@ class SimpleSlashTranslucent:
                         ),
                         lower_right_triangle(foreground=colors.get('background_unfocus'),
                                              background=colors.get('background') + OPAQUE),
+                        widget.ThermalSensor(
+                            format=' {temp:.0f}{unit}',
+                            foreground=colors.get('foreground')[1:],
+                            background=colors.get('background_unfocus')[1:],
+                            update_interval=UPDATE_INTERVAL),
+                        separator,
                         widget.CPU(
                             format=' {load_percent}%',
-                            update_interval=5.0,
+                            update_interval=UPDATE_INTERVAL,
                             **widget_defaults
                         ),
                         separator,
                         widget.Memory(
                             format='{MemUsed: .2f}{mm}',
                             measure_mem='G',
-                            update_interval=5.0,
+                            update_interval=UPDATE_INTERVAL,
                             **widget_defaults
                         ),
                         separator,
