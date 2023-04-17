@@ -16,7 +16,8 @@ groups = [
     Group("4", matches=[Match(wm_class=["Thunar"])]),
     Group("5", matches=[
         Match(wm_class=["MongoDB Compass"]),
-        Match(wm_class=["Postman"])
+        Match(wm_class=["Postman"]),
+        Match(wm_class=["pgadmin4"])
     ]),
     Group("6", matches=[Match(wm_class=["libreoffice"]),
                         Match(wm_class=["calibre"])
@@ -27,7 +28,9 @@ groups = [
         Match(wm_class=["discord"])
     ]),
     Group("8", matches=[Match(wm_class=["spotify"])]),
-    Group("9", matches=[Match(wm_class=["Steam"])]),
+    Group("9", matches=[
+        Match(wm_class=["Steam"]),
+        Match(wm_class=["Lutris"])]),
 ]
 
 for i in groups:

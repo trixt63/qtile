@@ -2,6 +2,8 @@ from libqtile import bar
 from libqtile.config import Screen
 
 from modules.bar_styles.decorators import *
+from modules.widgets import widget_defaults
+
 
 PAD = 9
 OPAQUE = '00'
@@ -107,7 +109,8 @@ class SimpleSlashTranslucent:
                             # for the other screen
                             this_screen_border=colors.get('background_focus_alt'),
                             other_screen_border=colors.get('background_alt'),
-                            disable_drag=True
+                            disable_drag=True,
+                            use_mouse_wheel=False,
                         ),
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
                         widget.WindowName(
@@ -195,7 +198,8 @@ class SimpleSlashTranslucent:
                             # for the other screen
                             this_screen_border=colors.get('background_focus_alt'),
                             other_screen_border=colors.get('background_alt'),
-                            disable_drag=True
+                            disable_drag=True,
+                            use_mouse_wheel=False,
                         ),
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
                         widget.WindowName(
@@ -210,8 +214,9 @@ class SimpleSlashTranslucent:
                         ),
                         widget.Clipboard(
                             foreground=colors.get('foreground_unfocus'),
+                            background=colors.get('background_unfocus') + '00',
                             fontsize=widget_defaults.get('fontsize') - 1,
-                            max_width=45,
+                            max_width=40,
                             timeout=None
                         ),
                         lower_right_triangle(foreground=colors.get('background_unfocus')),

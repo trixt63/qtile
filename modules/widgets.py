@@ -11,4 +11,5 @@ widget_defaults = dict(
     fontsize=13,
     padding=0,
 )
+
 extension_defaults = widget_defaults.copy()
