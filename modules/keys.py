@@ -58,9 +58,10 @@ keys = [
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Rofi
-    Key([mod], "d", lazy.spawn("/home/xuantung/.config/rofi/bin/launcher_text"), desc="Spawn app launcher"),
-    Key([mod], "p", lazy.spawn("/home/xuantung/.config/rofi/bin/menu_powermenu")),
-    # Key([mod, "shift"], "p", lazy.spawn("/home/xuantung/.config/rofi/bin/powermenu")),
+    # Key([mod], "d", lazy.spawn("/home/xuantung/.config/rofi/bin/launcher_text"), desc="Spawn app launcher"),
+    Key([mod], "d", lazy.spawn("/home/xuantung/.config/rofi/scripts/launcher_t2"), desc="Spawn app launcher"),
+    # Key([mod], "p", lazy.spawn("/home/xuantung/.config/rofi/bin/menu_powermenu")),
+    Key([mod], "p", lazy.spawn("/home/xuantung/.config/rofi/scripts/powermenu_t2")),
     # Screenshot
     Key(["control", "mod3"], "super_r", lazy.spawn("xfce4-screenshooter -w"), desc="Screenshot a window"),
     Key(["control", "shift"], "super_r", lazy.spawn("xfce4-screenshooter -r"), desc="Screenshot part of the screen"),
@@ -76,7 +77,6 @@ keys = [
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
     # Applications
     Key([mod, "control"], "w", lazy.spawn("firefox"), desc="Web browser"),
-    Key([mod], "f", lazy.spawn("thunar"), desc="File manager"),
-    Key([mod, "control"], "v", lazy.spawn("pavucontrol"), desc="Volume & sound manager"),
+    Key([mod], "f", lazy.spawn("thunar"), desc="File manager"), Key([mod, "control"], "v", lazy.spawn("pavucontrol"), desc="Volume & sound manager"),
     Key([mod, "control"], "m", lazy.spawn("xfce4-taskmanager"), desc="Task manager")
 ]

@@ -17,6 +17,6 @@ redshift-gtk &
 #Discord
 flatpak run com.discordapp.Discord &
 #Mail client
-flatpak run org.mozilla.Thunderbird &
+thunderbird &
 #Dictionary
-goldendict
+goldendict &
