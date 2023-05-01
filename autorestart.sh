@@ -9,7 +9,6 @@ feh --bg-fill $HOME/Pictures/wallpapers/moon.png &
 #Compositor
 
 picom &
-#bash $HOME/.config/xkb/xcape.sh &
 
 #Mouse scrolling speed
 #killall imwheel &
@@ -20,7 +19,9 @@ picom &
 
 #Monitor
 # $HOME/.config/qtile/monitor_2.sh
-#autorandr --change
+autorandr --change
 
 #X keyboard extension
-sleep 1 && xkbcomp /home/xuantung/.config/xkb/Xkeymap $DISPLAY
+sleep 1 && xkbcomp /home/xuantung/.config/xkb/Xkeymap $DISPLAY &
+killall xcape &
+xcape -e 'Control_L=Escape;'
