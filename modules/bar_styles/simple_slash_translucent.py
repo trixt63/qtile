@@ -41,15 +41,15 @@ class SimpleSlashTranslucent:
 
         widget_volume = (
                     widget.Volume(
-                        # theme_path=icons_path,
-                        emoji=True,
+                        theme_path=icons_path,
+                        # emoji=True,
                         **widget_defaults
                     ),
                     widget.Volume(
                         fmt='{}',
                         background=colors.get('background_unfocus'),
                         foreground=colors.get('foreground'),
-                        padding=3
+                        padding=1
                     )
         )
 
@@ -60,11 +60,11 @@ class SimpleSlashTranslucent:
             ),
             widget.Battery(
                 # format='{char} {percent:2.0%}',
-                format='{percent:2.0%}',
                 # charge_char='',
                 # discharge_char='',
                 # empty_char='',
                 # unknown_char='',
+                format='{percent:2.0%}',
                 **widget_defaults
             )
         )
@@ -137,7 +137,7 @@ class SimpleSlashTranslucent:
                             update_interval=UPDATE_INTERVAL),
                         separator,
                         widget.CPU(
-                            format=' {load_percent}%',
+                            format='󰻠 {load_percent}%',
                             update_interval=UPDATE_INTERVAL,
                             **widget_defaults
                         ),
