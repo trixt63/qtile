@@ -23,7 +23,7 @@ groups = [
                         Match(wm_class=["calibre"])
     ]),
     Group("7", matches=[
-        Match(wm_class=["thunderbird-default"]),
+        Match(wm_class=["thunderbird"]),
         Match(wm_class=["Microsoft Teams - Preview"]),
         Match(wm_class=["discord"])
     ]),
