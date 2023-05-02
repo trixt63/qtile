@@ -96,7 +96,7 @@ class SimpleSlashTranslucent:
                                         padding=7
                                 ),
                         widget.GroupBox(
-                            padding_y=6,
+                            # padding_y=6,
                             padding_x=7,
                             background=colors.get('background_unfocus'),
                             highlight_method=self.highlight_method,
@@ -185,7 +185,7 @@ class SimpleSlashTranslucent:
                             padding=6
                         ),
                         widget.GroupBox(
-                            padding_y=6,
+                            # padding_y=6,
                             padding_x=7,
                             background=colors.get('background_unfocus'),
                             highlight_method=self.highlight_method,
