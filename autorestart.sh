@@ -18,7 +18,7 @@ picom &
 
 #Monitor
 # $HOME/.config/qtile/monitor_2.sh
-autorandr --change
+autorandr --change &
 
 #X keyboard extension
 sleep 1 && xkbcomp /home/xuantung/.config/xkb/Xkeymap $DISPLAY &
