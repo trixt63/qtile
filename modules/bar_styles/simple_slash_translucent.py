@@ -24,7 +24,7 @@ class SimpleSlashTranslucent:
         })
 
         launchbar_config = {
-            'progs': [(' \u23fb ', "/home/xuantung/.config/rofi/bin/menu_powermenu", "Power menu")],
+            'progs': [(' \u23fb ', "/home/xuantung/.config/rofi/scripts/powermenu_t2", "Power menu")],
             'default_icon': icons_path + 'system-devices-panel.svg',
             # 'text_only': True,
             'background': colors.get('background_focus_alt'),

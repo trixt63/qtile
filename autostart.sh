@@ -21,4 +21,4 @@ flatpak run com.discordapp.Discord &
 #Mail client
 thunderbird &
 #Dictionary
-goldendict &
+goldendict
