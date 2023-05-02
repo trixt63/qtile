@@ -8,7 +8,7 @@ from modules.widgets import widget_defaults
 PAD = 9
 OPAQUE = '00'
 icons_path = '/usr/share/icons/Papirus/24x24/panel/'
-BARSIZE = 24
+BARSIZE = 25
 UPDATE_INTERVAL = 5.0
 
 
@@ -77,7 +77,7 @@ class SimpleSlashTranslucent:
                     scroll=True,
                     scroll_clear=True,
                     scroll_delay=1,
-                    width=155,
+                    width=165,
                     name="spotify",
                     playing_text=" {track}",
                     paused_text=" Pause",
@@ -131,12 +131,12 @@ class SimpleSlashTranslucent:
                         ),
                         lower_right_triangle(foreground=colors.get('background_unfocus'),
                                              background=colors.get('background') + OPAQUE),
-                        widget.ThermalSensor(
-                            format=' {temp:.0f}{unit}',
-                            foreground=colors.get('foreground')[1:],
-                            background=colors.get('background_unfocus')[1:],
-                            update_interval=UPDATE_INTERVAL),
-                        separator,
+                        # widget.ThermalSensor(
+                        #     format=' {temp:.0f}{unit}',
+                        #     foreground=colors.get('foreground')[1:],
+                        #     background=colors.get('background_unfocus')[1:],
+                        #     update_interval=UPDATE_INTERVAL),
+                        # separator,
                         widget.CPU(
                             format='󰻠 {load_percent}%',
                             update_interval=UPDATE_INTERVAL,
