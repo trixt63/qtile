@@ -1,7 +1,8 @@
 #!/bin/sh
 
 #Policy-kit
-/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+/usr/libexec/polkit-gnome-authentication-agent-1 &
+
 #Notification
 /usr/libexec/xfce4/notifyd/xfce4-notifyd & 
 #input method

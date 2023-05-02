@@ -5,9 +5,8 @@ ibus restart &
 
 #Wallpaper
 feh --bg-fill $HOME/Pictures/wallpapers/moon.png &
-# feh --bg-tile /home/xuantung/Pictures/wallpapers/wallpapers/Nord/pattern1-nord-2.png
-#Compositor
 
+#Compositor
 picom &
 
 #Mouse scrolling speed
@@ -23,5 +22,5 @@ autorandr --change
 
 #X keyboard extension
 sleep 1 && xkbcomp /home/xuantung/.config/xkb/Xkeymap $DISPLAY &
-killall xcape &
+killall xcape && sleep 1 &
 xcape -e 'Control_L=Escape;'

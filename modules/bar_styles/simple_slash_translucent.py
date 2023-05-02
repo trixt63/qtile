@@ -76,11 +76,11 @@ class SimpleSlashTranslucent:
                     fontsize=widget_defaults.get('fontsize') - 1,
                     scroll=True,
                     scroll_clear=True,
-                    width=185,
+                    width=165,
                     name="spotify",
                     playing_text=" {track}",
                     paused_text=" Pause",
-                    display_metadata=["xesam:title", "xesam:artist"],
+                    display_metadata=['xesam:title', 'xesam:artist'], # format='{xesam:title}',
                     objname="org.mpris.MediaPlayer2.spotify"
                 ),
 
