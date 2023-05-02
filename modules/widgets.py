@@ -3,7 +3,7 @@ from libqtile import qtile
 
 widget_defaults = dict(
     font="FiraCode Nerd Font",
-    fontsize=14,
+    fontsize=13,
     padding=0,
 )
 
