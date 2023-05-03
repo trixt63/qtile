@@ -58,7 +58,7 @@ keys = [
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Rofi
-    Key([mod], "d", lazy.spawn("/home/xuantung/.config/rofi/scripts/launcher_t2"), desc="Spawn app launcher"),
+    Key([mod], "d", lazy.spawn("/home/xuantung/.config/rofi/scripts/launcher_t1"), desc="Spawn app launcher"),
     Key([mod], "p", lazy.spawn("/home/xuantung/.config/rofi/scripts/powermenu_t2")),
     # Screenshot
     Key(["control", "mod3"], "super_r", lazy.spawn("xfce4-screenshooter -w"), desc="Screenshot a window"),
