@@ -5,8 +5,11 @@
 
 #Notification
 /usr/libexec/xfce4/notifyd/xfce4-notifyd & 
+
 #input method
-ibus-daemon &
+# ibus-daemon &
+fcitx5 &
+
 # network manager
 nm-applet &
 #Power management
