@@ -150,7 +150,18 @@ class SimpleSlashTranslucent:
                             **widget_defaults
                         ),
                         separator,
-                        *widget_volume,
+                        # *widget_volume,
+                        widget.Volume(
+                            theme_path=icons_path,
+                            # emoji=True,
+                            **widget_defaults
+                        ),
+                        widget.Volume(
+                            fmt='{}',
+                            background=colors.get('background_unfocus'),
+                            foreground=colors.get('foreground'),
+                            padding=1
+                        ),
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
@@ -221,7 +232,18 @@ class SimpleSlashTranslucent:
                             timeout=None
                         ),
                         lower_right_triangle(foreground=colors.get('background_unfocus')),
-                        *widget_volume,
+                        # *widget_volume,
+                        widget.Volume(
+                            theme_path=icons_path,
+                            # emoji=True,
+                            **widget_defaults
+                        ),
+                        widget.Volume(
+                            fmt='{}',
+                            background=colors.get('background_unfocus'),
+                            foreground=colors.get('foreground'),
+                            padding=1
+                        ),
                         separator,
                         widget.Clock(
                             format=" %H:%M",
