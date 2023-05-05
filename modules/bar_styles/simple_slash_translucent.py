@@ -63,7 +63,7 @@ class SimpleSlashTranslucent:
                 # charge_char='',
                 # discharge_char='',
                 # empty_char='',
-                # unknown_char='',
+                # unknown_chFalsear='',
                 format='{percent:2.0%}',
                 **widget_defaults
             )

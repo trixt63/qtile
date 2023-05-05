@@ -18,5 +18,5 @@ autorandr --change &
 
 #X keyboard extension
 sleep 1 && xkbcomp /home/xuantung/.config/xkb/Xkeymap $DISPLAY &
-killall xcape && sleep 1 &
+killall xcape && sleep 3 &
 xcape -e 'Control_L=Escape;'
