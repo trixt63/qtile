@@ -37,10 +37,10 @@ class SpaceGray():
 
                 'foreground_focus': self.white0,
                 'background_focus': self.yellow2,
-                'background_focus_2': self.black4,  # incase using highlight_method = line
+                'background_focus_highlight': self.black4,  # incase using highlight_method = line
 
-                'background_focus_alt': self.cyan,  # focused workspace on unfocused monitor
-                'background_alt': self.black4,  # focused workspace of the other monitor
+                'background_focus_alt': self.yellow,  # focused workspace on unfocused monitor
+                'background_alt': self.blue,  # focused workspace of the other monitor (regardless it's the focused or focused one)
 
                 'border': self.black2,
                 'border_focus': self.yellow,

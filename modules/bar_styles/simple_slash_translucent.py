@@ -27,7 +27,7 @@ class SimpleSlashTranslucent:
             'progs': [(' \u23fb ', "/home/xuantung/.config/rofi/scripts/powermenu_t2", "Power menu")],
             'default_icon': icons_path + 'system-devices-panel.svg',
             # 'text_only': True,
-            'background': colors.get('background_focus_alt'),
+            'background': colors.get('cyan'),
             'padding': 2,
         }
 
@@ -41,8 +41,8 @@ class SimpleSlashTranslucent:
 
         widget_volume = (
                     widget.Volume(
-                        theme_path=icons_path,
-                        # emoji=True,
+                        # theme_path=icons_path,
+                        emoji=True,
                         **widget_defaults
                     ),
                     widget.Volume(
@@ -252,7 +252,7 @@ def _get_highlight_color(colors):
     for the GroupBox when highlight_method='line',
     in case the color scheme does not have 'background_focus_2'
     """
-    colors_list = [colors.get('background_focus_2'),
+    colors_list = [colors.get('background_focus_highlight'),
                    colors.get('background_unfocus'),
                    colors.get('background_alt')]
     return next(color for color in colors_list if color is not None)
