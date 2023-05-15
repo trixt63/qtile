@@ -131,12 +131,13 @@ class SimpleSlashTranslucent:
                         ),
                         lower_right_triangle(foreground=colors.get('background_unfocus'),
                                              background=colors.get('background') + OPAQUE),
-                        # widget.ThermalSensor(
-                        #     format=' {temp:.0f}{unit}',
-                        #     foreground=colors.get('foreground')[1:],
-                        #     background=colors.get('background_unfocus')[1:],
-                        #     update_interval=UPDATE_INTERVAL),
-                        # separator,
+                        widget.ThermalSensor(
+                            format=' {temp:.0f}{unit}',
+                            tag_sensor="CPU",
+                            foreground=colors.get('foreground')[1:],
+                            background=colors.get('background_unfocus')[1:],
+                            update_interval=UPDATE_INTERVAL),
+                        separator,
                         widget.CPU(
                             format='󰻠 {load_percent}%',
                             update_interval=UPDATE_INTERVAL,
