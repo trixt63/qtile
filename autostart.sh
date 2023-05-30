@@ -25,4 +25,6 @@ flatpak run com.discordapp.Discord &
 #Mail client
 thunderbird &
 #Dictionary
-goldendict
+goldendict &
+#Rclone
+rclone mount --daemon "Google Drive:" /home/xuantung/Google_Drive/xuantung.trinh.63/

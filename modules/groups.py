@@ -16,7 +16,8 @@ groups = [
     Group("4", matches=[
         Match(wm_class=["MongoDB Compass"]),
         Match(wm_class=["Postman"]),
-        Match(wm_class=["pgadmin4"])
+        Match(wm_class=["pgadmin4"]),
+        Match(wm_class=["google-chrome"])
     ]),
     Group("5", matches=[Match(wm_class=["libreoffice"]),
                         Match(wm_class=["calibre"])
