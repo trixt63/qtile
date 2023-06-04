@@ -2,6 +2,7 @@
 
 #Wallpaper
 feh --bg-fill $HOME/Pictures/wallpapers/moon.png &
+# feh --bg-fill /home/xuantung/Pictures/wallpapers/walls/forest-hills.jpg &
 
 #Compositor
 picom &

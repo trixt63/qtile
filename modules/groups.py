@@ -19,17 +19,16 @@ groups = [
         Match(wm_class=["pgadmin4"]),
         Match(wm_class=["google-chrome"])
     ]),
-    Group("5"),
-    Group("6", matches=[Match(wm_class=["libreoffice"]),
+    Group("5", matches=[Match(wm_class=["libreoffice"]),
                         Match(wm_class=["calibre"])
     ]),
-    Group("7", matches=[
+    Group("6", matches=[
         Match(wm_class=["thunderbird"]),
         Match(wm_class=["Microsoft Teams - Preview"]),
         Match(wm_class=["discord"])
     ]),
+    Group("7", matches=[Match(wm_class=["spotify"])]),
     Group("8", matches=[
-        Match(wm_class=["spotify"]),
         Match(wm_class=["Steam"]),
         Match(wm_class=["Lutris"])]),
     Group("9")

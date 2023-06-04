@@ -5,7 +5,7 @@ from modules.widgets import *
 so I'm stuck with standard unicode characters for the following 2"""
 def lower_right_triangle(background=None,
                          foreground='#ffffff',
-                         fontsize=60):
+                         fontsize=65):
     return widget.TextBox(
         text='\u25E2',
         fontsize=fontsize,
@@ -17,7 +17,7 @@ def lower_right_triangle(background=None,
 
 def lower_left_triangle(background=None,
                         foreground='#ffffff',
-                        fontsize=60):
+                        fontsize=65):
     return widget.TextBox(
         text='\u25E3',
         fontsize=fontsize,

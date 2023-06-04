@@ -8,7 +8,7 @@ from modules.widgets import widget_defaults
 PAD = 9
 OPAQUE = '00'
 icons_path = '/usr/share/icons/Papirus/24x24/panel/'
-BARSIZE = 25
+BARSIZE = 27
 UPDATE_INTERVAL = 5.0
 
 
@@ -38,6 +38,32 @@ class SimpleSlashTranslucent:
                         size_percent=60,
                         padding=PAD*2
                     )
+
+        groupbox_configs = dict(
+            # padding_y=6,
+            padding_x=8,
+            background=colors.get('background_unfocus'),
+            highlight_method=self.highlight_method,
+            rounded=False,
+            active=colors.get('foreground_focus'),
+            inactive=colors.get('foreground_unfocus'),
+            # for the focused screen
+            this_current_screen_border=colors.get('background_focus'),
+            other_current_screen_border=colors.get('background_alt'),
+            highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
+            # for the other screen
+            this_screen_border=colors.get('background_focus_alt'),
+            other_screen_border=colors.get('background_alt'),
+            disable_drag=True,
+            use_mouse_wheel=False,
+        )
+
+        windowname_config = dict(
+            foreground=colors.get('foreground_unfocus'),
+            background=colors.get('background') + '00',
+            fontsize=widget_defaults.get('fontsize') - 1,
+            max_chars=40
+        )
 
         widget_volume = (
                     widget.Volume(
@@ -69,6 +95,19 @@ class SimpleSlashTranslucent:
             )
         )
 
+        cpu_percentage = widget.CPU(
+            format='󰻠 {load_percent}%',
+            update_interval=UPDATE_INTERVAL,
+            **widget_defaults
+        )
+
+        memory_usage = widget.Memory(
+            format='{MemUsed: .2f}{mm}',
+            measure_mem='G',
+            update_interval=UPDATE_INTERVAL,
+            **widget_defaults
+        )
+
         mpris2 = widget.Mpris2(
                     foreground=colors.get('foreground_unfocus'),
                     background=colors.get('background_unfocus') + OPAQUE,
@@ -77,7 +116,7 @@ class SimpleSlashTranslucent:
                     scroll=True,
                     scroll_clear=True,
                     scroll_delay=1,
-                    width=165,
+                    width=170,
                     name="spotify",
                     playing_text=" {track}",
                     paused_text=" Pause",
@@ -93,32 +132,34 @@ class SimpleSlashTranslucent:
                         widget.CurrentLayoutIcon(
                                         background=colors.get('background_unfocus'),
                                         fontsize=widget_defaults.get('fontsize') - 1,
-                                        padding=7
+                                        padding=5
                                 ),
                         widget.GroupBox(
-                            # padding_y=6,
-                            padding_x=7,
-                            background=colors.get('background_unfocus'),
-                            highlight_method=self.highlight_method,
-                            rounded=False,
-                            active=colors.get('foreground_focus'),
-                            inactive=colors.get('foreground_unfocus'),
-                            # for the focused screen
-                            this_current_screen_border=colors.get('background_focus'),
-                            other_current_screen_border=colors.get('background_alt'),
-                            highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
-                            # for the other screen
-                            this_screen_border=colors.get('background_focus_alt'),
-                            other_screen_border=colors.get('background_alt'),
-                            disable_drag=True,
-                            use_mouse_wheel=False,
+                            # # padding_y=6,
+                            # padding_x=8,
+                            # background=colors.get('background_unfocus'),
+                            # highlight_method=self.highlight_method,
+                            # rounded=False,
+                            # active=colors.get('foreground_focus'),
+                            # inactive=colors.get('foreground_unfocus'),
+                            # # for the focused screen
+                            # this_current_screen_border=colors.get('background_focus'),
+                            # other_current_screen_border=colors.get('background_alt'),
+                            # highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
+                            # # for the other screen
+                            # this_screen_border=colors.get('background_focus_alt'),
+                            # other_screen_border=colors.get('background_alt'),
+                            # disable_drag=True,
+                            # use_mouse_wheel=False,
+                            **groupbox_configs
                         ),
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
                         widget.WindowName(
-                            foreground=colors.get('foreground_unfocus'),
-                            background=colors.get('background') + '00',
-                            fontsize=widget_defaults.get('fontsize') - 1,
-                            max_chars=45
+                            # foreground=colors.get('foreground_unfocus'),
+                            # background=colors.get('background') + '00',
+                            # fontsize=widget_defaults.get('fontsize') - 1,
+                            # max_chars=WINDOW_NAME_MAXCHARS
+                            **windowname_config
                         ),
                         *mpris2,
                         widget.Spacer(
@@ -138,18 +179,20 @@ class SimpleSlashTranslucent:
                             background=colors.get('background_unfocus')[1:],
                             update_interval=UPDATE_INTERVAL),
                         separator,
-                        widget.CPU(
-                            format='󰻠 {load_percent}%',
-                            update_interval=UPDATE_INTERVAL,
-                            **widget_defaults
-                        ),
+                        # widget.CPU(
+                        #     format='󰻠 {load_percent}%',
+                        #     update_interval=UPDATE_INTERVAL,
+                        #     **widget_defaults
+                        # ),
+                        cpu_percentage,
                         separator,
-                        widget.Memory(
-                            format='{MemUsed: .2f}{mm}',
-                            measure_mem='G',
-                            update_interval=UPDATE_INTERVAL,
-                            **widget_defaults
-                        ),
+                        # widget.Memory(
+                        #     format='{MemUsed: .2f}{mm}',
+                        #     measure_mem='G',
+                        #     update_interval=UPDATE_INTERVAL,
+                        #     **widget_defaults
+                        # ),
+                        memory_usage,
                         separator,
                         *widget_volume,
                         widget.Sep(
@@ -159,8 +202,22 @@ class SimpleSlashTranslucent:
                         ),
                         *widget_battery,
                         separator,
+                        # widget.Clock(
+                        #     format=" %b %d   %H:%M",
+                        #     **widget_defaults
+                        # ),
                         widget.Clock(
-                            format=" %b %d   %H:%M",
+                            format=" %b %d",
+                            **widget_defaults
+                        ),
+                        widget.Sep(
+                            linewidth=0,
+                            background=colors.get('background_unfocus'),
+                            padding=PAD+2
+                        ),
+
+                        widget.Clock(
+                            format=" %H:%M",
                             **widget_defaults
                         ),
                         widget.Sep(
@@ -186,29 +243,31 @@ class SimpleSlashTranslucent:
                             padding=6
                         ),
                         widget.GroupBox(
-                            padding_y=6,
-                            padding_x=7,
-                            background=colors.get('background_unfocus'),
-                            highlight_method=self.highlight_method,
-                            rounded=False,
-                            active=colors.get('foreground_focus'),
-                            inactive=colors.get('foreground_unfocus'),
-                            # for the focused screen
-                            this_current_screen_border=colors.get('background_focus'),
-                            other_current_screen_border=colors.get('background_alt'),
-                            highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
-                            # for the other screen
-                            this_screen_border=colors.get('background_focus_alt'),
-                            other_screen_border=colors.get('background_alt'),
-                            disable_drag=True,
-                            use_mouse_wheel=False,
+                            # # padding_y=6,
+                            # padding_x=8,
+                            # background=colors.get('background_unfocus'),
+                            # highlight_method=self.highlight_method,
+                            # rounded=False,
+                            # active=colors.get('foreground_focus'),
+                            # inactive=colors.get('foreground_unfocus'),
+                            # # for the focused screen
+                            # this_current_screen_border=colors.get('background_focus'),
+                            # other_current_screen_border=colors.get('background_alt'),
+                            # highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
+                            # # for the other screen
+                            # this_screen_border=colors.get('background_focus_alt'),
+                            # other_screen_border=colors.get('background_alt'),
+                            # disable_drag=True,
+                            # use_mouse_wheel=False,
+                            **groupbox_configs
                         ),
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
                         widget.WindowName(
-                            foreground=colors.get('foreground_unfocus'),
-                            background=colors.get('background') + OPAQUE,
-                            fontsize=widget_defaults.get('fontsize') - 1,
-                            max_chars=45
+                            # foreground=colors.get('foreground_unfocus'),
+                            # background=colors.get('background') + OPAQUE,
+                            # fontsize=widget_defaults.get('fontsize') - 1,
+                            # max_chars=WINDOW_NAME_MAXCHARS
+                            **windowname_config
                         ),
                         *mpris2,
                         widget.Spacer(
@@ -218,11 +277,13 @@ class SimpleSlashTranslucent:
                             foreground=colors.get('foreground_unfocus'),
                             background=colors.get('background_unfocus') + '00',
                             fontsize=widget_defaults.get('fontsize') - 1,
-                            max_width=40,
+                            max_width=35,
                             timeout=None
                         ),
                         lower_right_triangle(foreground=colors.get('background_unfocus')),
                         *widget_volume,
+                        separator,
+                        *widget_battery,
                         separator,
                         widget.Clock(
                             format=" %H:%M",
