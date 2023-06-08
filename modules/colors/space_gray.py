@@ -3,16 +3,16 @@ from .color_scheme import ColorScheme
 
 class SpaceGray():
     def __init__(self):
-        self.white0 = '#ffffff'
-        self.black0 = '#000000'
+        self.white = '#ffffff'
+        self.black = '#000000'
 
-        self.black = '#1c1f26'
+        self.black0 = '#1c1f26'
         self.black2 = '#232830'
         # self.black3 = '#333d46'
         self.black3 = '#343d46'
         self.black4 = '#4f5b66'
         self.black5 = '#65737e'
-        self.white = '#eff1f5'
+        self.white0 = '#eff1f5'
         self.white2 = '#dfe1e8'
         self.white3 = '#c0c5ce'
         self.white4 = '#a7adba'
@@ -30,17 +30,17 @@ class SpaceGray():
 
         self.colors = {
                 'background': self.black2,
-                'foreground': self.white,
+                'foreground': self.white0,
 
                 'foreground_unfocus': self.white4,
                 'background_unfocus': self.black3,
 
-                'foreground_focus': self.white0,
+                'foreground_focus': self.white,
                 'background_focus': self.yellow2,
                 'background_focus_highlight': self.black4,  # incase using highlight_method = line
 
                 'background_focus_alt': self.cyan,  # focused workspace on unfocused monitor
-                'background_alt': self.black5,  # focused workspace of the other monitor (regardless it's the focused or focused one)
+                'background_alt': self.black5,  # focused workspace of the other monitor (regardless if it's the focused or focused one)
 
                 'border': self.black2,
                 'border_focus': self.yellow,

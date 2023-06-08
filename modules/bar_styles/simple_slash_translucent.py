@@ -110,7 +110,7 @@ class SimpleSlashTranslucent:
 
         mpris2 = widget.Mpris2(
                     foreground=colors.get('foreground_unfocus'),
-                    background=colors.get('background_unfocus') + OPAQUE,
+                    background=colors.get('background') + OPAQUE,
                     padding=0,
                     fontsize=widget_defaults.get('fontsize') - 1,
                     scroll=True,
@@ -166,7 +166,7 @@ class SimpleSlashTranslucent:
                             background=colors.get('background') + OPAQUE,
                         ),
                         widget.Systray(
-                            padding=4,
+                            padding=5,
                             background=colors.get('background') + OPAQUE,
                             foreground=colors.get('background') + OPAQUE
                         ),
@@ -243,30 +243,10 @@ class SimpleSlashTranslucent:
                             padding=6
                         ),
                         widget.GroupBox(
-                            # # padding_y=6,
-                            # padding_x=8,
-                            # background=colors.get('background_unfocus'),
-                            # highlight_method=self.highlight_method,
-                            # rounded=False,
-                            # active=colors.get('foreground_focus'),
-                            # inactive=colors.get('foreground_unfocus'),
-                            # # for the focused screen
-                            # this_current_screen_border=colors.get('background_focus'),
-                            # other_current_screen_border=colors.get('background_alt'),
-                            # highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
-                            # # for the other screen
-                            # this_screen_border=colors.get('background_focus_alt'),
-                            # other_screen_border=colors.get('background_alt'),
-                            # disable_drag=True,
-                            # use_mouse_wheel=False,
                             **groupbox_configs
                         ),
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
                         widget.WindowName(
-                            # foreground=colors.get('foreground_unfocus'),
-                            # background=colors.get('background') + OPAQUE,
-                            # fontsize=widget_defaults.get('fontsize') - 1,
-                            # max_chars=WINDOW_NAME_MAXCHARS
                             **windowname_config
                         ),
                         *mpris2,
@@ -281,9 +261,11 @@ class SimpleSlashTranslucent:
                             timeout=None
                         ),
                         lower_right_triangle(foreground=colors.get('background_unfocus')),
-                        *widget_volume,
+                        cpu_percentage,
                         separator,
-                        *widget_battery,
+                        memory_usage,
+                        separator,
+                        *widget_volume,
                         separator,
                         widget.Clock(
                             format=" %H:%M",
