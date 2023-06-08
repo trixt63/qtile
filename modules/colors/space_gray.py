@@ -8,7 +8,7 @@ class SpaceGray():
 
         self.black0 = '#1c1f26'
         self.black2 = '#232830'
-        # self.black3 = '#333d46'
+        self.black3a = '#333d46'
         self.black3 = '#343d46'
         self.black4 = '#4f5b66'
         self.black5 = '#65737e'
@@ -33,7 +33,7 @@ class SpaceGray():
                 'foreground': self.white0,
 
                 'foreground_unfocus': self.white4,
-                'background_unfocus': self.black3,
+                'background_unfocus': self.black3a,
 
                 'foreground_focus': self.white,
                 'background_focus': self.yellow2,
