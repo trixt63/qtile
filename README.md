@@ -27,4 +27,4 @@ There are a few constants that I'm too lazy to refactor, so you will have to cha
 
 ## 4. Example
 - A screenshot with *simple_slash_translucent* bar style, with a minimal wallpaper:
-    ![simple_slash_translucent](./assets/simple_slash_translucent.png)
+    ![simple_slash_translucent](./assets/examples/simple_slash_translucent.png)
