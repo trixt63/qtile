@@ -12,7 +12,7 @@ BARSIZE = 27
 UPDATE_INTERVAL = 5.0
 
 
-class SimpleSlashTranslucent:
+class SimpleSlashTop:
     def __init__(self, colors) -> None:
         self.colors = colors
         self.highlight_method = 'line'
