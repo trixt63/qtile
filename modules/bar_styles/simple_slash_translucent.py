@@ -60,7 +60,7 @@ class SimpleSlashTranslucent:
 
         windowname_config = dict(
             foreground=colors.get('foreground_unfocus'),
-            background=colors.get('background') + '00',
+            background=colors.get('background') + OPAQUE,
             fontsize=widget_defaults.get('fontsize') - 1,
             max_chars=40
         )
