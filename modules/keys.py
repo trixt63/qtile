@@ -66,8 +66,8 @@ keys = [
     # Clipboard
     Key(["mod1"], "c", lazy.spawn("xfce4-popup-clipman"), desc="Clipboard pop=up"),
     # Sound
-    Key([], "XF86AudioLowerVolume", lazy.spawn(f"pactl set-sink-volume {sink_name} -10%")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn(f"pactl set-sink-volume {sink_name} +10%")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn(f"pactl set-sink-volume {sink_name} -5%")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn(f"pactl set-sink-volume {sink_name} +5%")),
     Key([], "XF86AudioMute", lazy.spawn(f"pactl set-sink-mute {sink_name} toggle")),
     Key([], "XF86AudioMicMute", lazy.spawn(f"pactl set-source-mute {sink_name} toggle")),
     # Brightness

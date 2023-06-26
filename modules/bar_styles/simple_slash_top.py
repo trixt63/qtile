@@ -215,7 +215,6 @@ class SimpleSlashTop:
                             background=colors.get('background_unfocus'),
                             padding=PAD+2
                         ),
-
                         widget.Clock(
                             format=" %H:%M",
                             **widget_defaults
@@ -224,8 +223,8 @@ class SimpleSlashTop:
                             linewidth=0,
                             background=colors.get('background_unfocus'),
                             padding=PAD+2
-                        ),
-                        widget.LaunchBar(**launchbar_config)
+                        )
+                        # widget.LaunchBar(**launchbar_config)
                     ],
                     BARSIZE,
                     background=colors.get('background') + OPAQUE,
@@ -274,9 +273,9 @@ class SimpleSlashTop:
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
-                            padding=PAD+2
-                        ),
-                        widget.LaunchBar(**launchbar_config)
+                            padding=PAD
+                        )
+                        # widget.LaunchBar(**launchbar_config)
                     ],
                     BARSIZE,
                     background=colors.get('background') + OPAQUE,

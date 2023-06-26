@@ -19,13 +19,13 @@ class SpaceGray():
 
         self.red = '#bf616a'
         self.yellow = '#ebcb8b'
-        self.cyan = '#96b5b4'
-        self.yellow2 = '#fecc66'
-
         self.green = '#87b379'
         self.blue = '#7d8fa4'
-        self.cyan2 = '#85A7A5'
+        self.cyan = '#96b5b4'
         self.purple = '#a47996'
+
+        self.yellow2 = '#fecc66'
+        self.cyan2 = '#85A7A5'
 
 
         self.colors = {
@@ -40,7 +40,8 @@ class SpaceGray():
                 'background_focus_highlight': self.black4,  # incase using highlight_method = line
 
                 'background_focus_alt': self.cyan,  # focused workspace on unfocused monitor
-                'background_alt': self.black5,  # focused workspace of the other monitor (regardless if it's the focused or focused one)
+                'background_alt': self.blue,  # focused workspace of the other monitor (regardless if it's the focused or focused one)
+                # 'background_alt': self.black5,  # focused workspace of the other monitor (regardless if it's the focused or focused one)
 
                 'border': self.black2,
                 'border_focus': self.yellow,
