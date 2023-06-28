@@ -1,22 +1,13 @@
 #!/bin/sh
-
 #Wallpaper
-feh --bg-fill $HOME/Pictures/wallpapers/moon.png &
-# feh --bg-fill /home/xuantung/Pictures/wallpapers/walls/forest-hills.jpg &
-
+feh --bg-fill /home/xuantung/Pictures/wallpapers/moon.png &
 #Compositor
 picom &
-
 #Mouse scrolling speed
 #killall imwheel &
 #imwheel &
-
-#Polybar
-#sh "$HOME/.config/polybar/launch.sh"
-
 #Monitor
 autorandr --change &
-
 #X keyboard extension
 killall xcape & 
 sleep 1 &

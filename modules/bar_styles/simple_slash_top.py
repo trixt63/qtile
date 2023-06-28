@@ -47,6 +47,7 @@ class SimpleSlashTop:
             rounded=False,
             active=colors.get('foreground_focus'),
             inactive=colors.get('foreground_unfocus'),
+            urgent_border=colors.get('urgent'),
             # for the focused screen
             this_current_screen_border=colors.get('background_focus'),
             other_current_screen_border=colors.get('background_alt'),
