@@ -9,7 +9,6 @@ picom &
 #Monitor
 autorandr --change &
 #X keyboard extension
-killall xcape & 
-sleep 1 &
-xcape -e 'Control_L=Escape;' &
-sleep 1 && xkbcomp /home/xuantung/.config/xkb/Xkeymap $DISPLAY
+sleep 1 && xkbcomp /home/xuantung/.config/xkb/Xkeymap $DISPLAY &
+killall xcape &
+sleep 1 && xcape -e 'Control_L=Escape;'
