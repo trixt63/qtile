@@ -25,6 +25,9 @@ There are a few constants that I'm too lazy to refactor, so you will have to cha
 
     to find your audio sink's name, then assign it to the ```sink_name``` variable in **```modules/keys```**. Or else, you won't be able to change your volume with keyboards if when connect your laptop with an HDMI cable.
 
-## 4. Example
+## 4. Notes
+- Quit command (to put into rofi): `qtile cmd-obj -o cmd -f shutdown`
+
+## 5. Example
 - A screenshot with *simple_slash_translucent* bar style, with a minimal wallpaper:
     ![simple_slash_translucent](./assets/examples/simple_slash_translucent.png)

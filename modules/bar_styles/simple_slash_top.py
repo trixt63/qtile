@@ -136,30 +136,10 @@ class SimpleSlashTop:
                                         padding=5
                                 ),
                         widget.GroupBox(
-                            # # padding_y=6,
-                            # padding_x=8,
-                            # background=colors.get('background_unfocus'),
-                            # highlight_method=self.highlight_method,
-                            # rounded=False,
-                            # active=colors.get('foreground_focus'),
-                            # inactive=colors.get('foreground_unfocus'),
-                            # # for the focused screen
-                            # this_current_screen_border=colors.get('background_focus'),
-                            # other_current_screen_border=colors.get('background_alt'),
-                            # highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
-                            # # for the other screen
-                            # this_screen_border=colors.get('background_focus_alt'),
-                            # other_screen_border=colors.get('background_alt'),
-                            # disable_drag=True,
-                            # use_mouse_wheel=False,
                             **groupbox_configs
                         ),
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
                         widget.WindowName(
-                            # foreground=colors.get('foreground_unfocus'),
-                            # background=colors.get('background') + '00',
-                            # fontsize=widget_defaults.get('fontsize') - 1,
-                            # max_chars=WINDOW_NAME_MAXCHARS
                             **windowname_config
                         ),
                         *mpris2,
@@ -180,19 +160,8 @@ class SimpleSlashTop:
                             background=colors.get('background_unfocus')[1:],
                             update_interval=UPDATE_INTERVAL),
                         separator,
-                        # widget.CPU(
-                        #     format='󰻠 {load_percent}%',
-                        #     update_interval=UPDATE_INTERVAL,
-                        #     **widget_defaults
-                        # ),
                         cpu_percentage,
                         separator,
-                        # widget.Memory(
-                        #     format='{MemUsed: .2f}{mm}',
-                        #     measure_mem='G',
-                        #     update_interval=UPDATE_INTERVAL,
-                        #     **widget_defaults
-                        # ),
                         memory_usage,
                         separator,
                         *widget_volume,
@@ -203,10 +172,6 @@ class SimpleSlashTop:
                         ),
                         *widget_battery,
                         separator,
-                        # widget.Clock(
-                        #     format=" %b %d   %H:%M",
-                        #     **widget_defaults
-                        # ),
                         widget.Clock(
                             format=" %b %d",
                             **widget_defaults
