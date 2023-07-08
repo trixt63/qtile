@@ -121,7 +121,7 @@ class SimpleSlashTop:
                     name="spotify",
                     playing_text=" {track}",
                     paused_text=" Pause",
-                    display_metadata=['xesam:title', 'xesam:artist'], # format='{xesam:title}',
+                    display_metadata=['xesam:title', 'xesam:artist'], # fMrmat='{xesam:title}',
                     objname="org.mpris.MediaPlayer2.spotify"
                 ),
 

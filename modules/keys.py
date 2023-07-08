@@ -52,11 +52,13 @@ keys = [
     Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control", "shift"], "r", lazy.restart(), desc="Reload all the config and modules"),
-    # Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod, "mod1"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod, "mod1", "shift"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control"], "x", lazy.spawn("$HOME/.local/bin/betterlockscreen -l --off 120"), desc="Lock screen"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    # Change screen
+    Key([mod], 'period', lazy.prev_screen(), desc='Previous monitor'),
+    Key([mod], 'slash', lazy.next_screen(), desc='Next monitor'),
     # Rofi
     Key([mod], "d", lazy.spawn("/home/xuantung/.config/rofi/scripts/launcher_t1"), desc="Spawn app launcher"),
     Key([mod], "p", lazy.spawn("/home/xuantung/.config/rofi/scripts/powermenu_t2")),
