@@ -218,13 +218,13 @@ class SimpleSlashTop:
                         widget.Spacer(
                             background=colors.get('background') + OPAQUE,
                         ),
-                        widget.Clipboard(
-                            foreground=colors.get('foreground_unfocus'),
-                            background=colors.get('background_unfocus') + '00',
-                            fontsize=widget_defaults.get('fontsize') - 1,
-                            max_width=35,
-                            timeout=None
-                        ),
+                        # widget.Clipboard(
+                        #     foreground=colors.get('foreground_unfocus'),
+                        #     background=colors.get('background_unfocus') + '00',
+                        #     fontsize=widget_defaults.get('fontsize') - 1,
+                        #     max_width=35,
+                        #     timeout=None
+                        # ),
                         lower_right_triangle(foreground=colors.get('background_unfocus')),
                         cpu_percentage,
                         separator,

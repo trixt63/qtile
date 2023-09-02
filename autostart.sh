@@ -3,8 +3,11 @@
 #Policy-kit
 /usr/libexec/polkit-gnome-authentication-agent-1 &
 
-#Notification
+#Notification (only needed on Tumbleweed so far)
 /usr/libexec/xfce4/notifyd/xfce4-notifyd & 
+
+#Settings (only needed on Tumbleweed so far)
+xfsettingsd &
 
 #input method
 # ibus-daemon &
