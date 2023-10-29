@@ -131,8 +131,7 @@ class SimpleSlashTop:
                     paused_text=" Pause",
                     display_metadata=['xesam:title', 'xesam:artist'], # fMrmat='{xesam:title}',
                     objname="org.mpris.MediaPlayer2.spotify"
-                ),
-
+                )
 
         # screen 1
         screen1 = Screen(
@@ -153,7 +152,7 @@ class SimpleSlashTop:
                         # widget.TaskList(
                         #     **tasklist_config
                         # ),
-                        *mpris2,
+                        mpris2,
                         widget.Spacer(
                             background=colors.get('background') + OPAQUE,
                         ),
@@ -225,7 +224,7 @@ class SimpleSlashTop:
                         widget.WindowName(
                             **windowname_config
                         ),
-                        *mpris2,
+                        mpris2,
                         widget.Spacer(
                             background=colors.get('background') + OPAQUE,
                         ),

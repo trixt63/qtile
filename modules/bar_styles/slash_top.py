@@ -73,6 +73,24 @@ class SlashTop:
             max_title_witdh=12
         )
 
+        MIDDLE_WIDGETS = [
+            upper_right_triangle(foreground=colors.get('background_unfocus')),
+            widget.Clock(
+                format=" %b %d",
+                **widget_defaults
+            ),
+            widget.Sep(
+                linewidth=0,
+                background=colors.get('background_unfocus'),
+                padding=PAD + 4
+            ),
+            widget.Clock(
+                format=" %H:%M",
+                **widget_defaults
+            ),
+            upper_left_triangle(foreground=colors.get('background_unfocus')),
+        ]
+
         widget_volume = (
                     widget.Volume(
                         # theme_path=icons_path,
@@ -170,21 +188,7 @@ class SlashTop:
                             background=colors.get('background') + OPAQUE,
                         ),
 
-                        upper_right_triangle(foreground=colors.get('background_unfocus')),
-                        widget.Clock(
-                            format=" %b %d",
-                            **widget_defaults
-                        ),
-                        widget.Sep(
-                            linewidth=0,
-                            background=colors.get('background_unfocus'),
-                            padding=PAD + 2
-                        ),
-                        widget.Clock(
-                            format=" %H:%M",
-                            **widget_defaults
-                        ),
-                        upper_left_triangle(foreground=colors.get('background_unfocus')),
+                        *MIDDLE_WIDGETS,
 
                         widget.Spacer(
                             background=colors.get('background') + OPAQUE,
@@ -192,8 +196,8 @@ class SlashTop:
 
                         mpris2,
                         upper_right_triangle(foreground=colors.get('background_unfocus')),
-                        # thermal_sensor,
-                        # separator,
+                        thermal_sensor,
+                        separator,
                         cpu_percentage,
                         separator,
                         memory_usage,
@@ -242,21 +246,7 @@ class SlashTop:
                             **windowname_config
                         ),
 
-                        upper_right_triangle(foreground=colors.get('background_unfocus')),
-                        widget.Clock(
-                            format=" %b %d",
-                            **widget_defaults
-                        ),
-                        widget.Sep(
-                            linewidth=0,
-                            background=colors.get('background_unfocus'),
-                            padding=PAD + 2
-                        ),
-                        widget.Clock(
-                            format=" %H:%M",
-                            **widget_defaults
-                        ),
-                        upper_left_triangle(foreground=colors.get('background_unfocus')),
+                        *MIDDLE_WIDGETS,
 
                         widget.Spacer(
                             background=colors.get('background') + OPAQUE,
