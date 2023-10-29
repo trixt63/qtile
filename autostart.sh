@@ -24,7 +24,7 @@ xfce4-clipman &
 #Redshift for eyestrain
 redshift-gtk &
 #Discord
-flatpak run com.discordapp.Discord &
+discord &
 #Mail client
 thunderbird &
 #Dictionary

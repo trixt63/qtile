@@ -6,13 +6,13 @@ from modules.widgets import widget_defaults
 
 
 PAD = 9
-OPAQUE = '00'
+OPAQUE = ''
 icons_path = '/usr/share/icons/Papirus/24x24/panel/'
 BARSIZE = 27
 UPDATE_INTERVAL = 5.0
 
 
-class SimpleSlashTop:
+class RoundTop:
     def __init__(self, colors) -> None:
         self.colors = colors
         self.highlight_method = 'line'
@@ -72,7 +72,6 @@ class SimpleSlashTop:
             fontsize=widget_defaults.get('fontsize') - 1,
             max_title_witdh=12
         )
-
 
         widget_volume = (
                     widget.Volume(
@@ -146,7 +145,9 @@ class SimpleSlashTop:
                         widget.GroupBox(
                             **groupbox_configs
                         ),
-                        lower_left_triangle(foreground=colors.get('background_unfocus')),
+                        left_half_circle(foreground=colors.get('background_unfocus'),
+                                         fontsize=40,
+                                         padding=0),
                         widget.WindowName(
                             **windowname_config
                         ),
@@ -162,7 +163,7 @@ class SimpleSlashTop:
                             background=colors.get('background') + OPAQUE,
                             foreground=colors.get('background') + OPAQUE
                         ),
-                        lower_right_triangle(foreground=colors.get('background_unfocus'),
+                        right_half_circle(foreground=colors.get('background_unfocus'),
                                              background=colors.get('background') + OPAQUE),
                         widget.ThermalSensor(
                             format=' {temp:.0f}{unit}',
@@ -221,7 +222,7 @@ class SimpleSlashTop:
                         widget.GroupBox(
                             **groupbox_configs
                         ),
-                        lower_left_triangle(foreground=colors.get('background_unfocus')),
+                        left_half_circle(foreground=colors.get('background_unfocus')),
                         widget.WindowName(
                             **windowname_config
                         ),
@@ -236,7 +237,7 @@ class SimpleSlashTop:
                         #     max_width=35,
                         #     timeout=None
                         # ),
-                        lower_right_triangle(foreground=colors.get('background_unfocus')),
+                        right_half_circle(foreground=colors.get('background_unfocus')),
                         cpu_percentage,
                         separator,
                         memory_usage,

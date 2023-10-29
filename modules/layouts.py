@@ -31,8 +31,13 @@ layouts = [
                    vspace=6,
                    bg_color=colors.get('background'),
                    active_bg=colors.get('background_focus'),
-                   urgent_bg=colors.get('urgent')),
-    # layout.Max(),
+                   urgent_bg=colors.get('urgent')
+                   ),
+    # layout.Max(margin=MG,
+    #            # border_width=BW,
+    #            border_focus=colors.get('border_focus'),
+    #            border_normal=colors.get('border')
+    #            ),
     layout.Columns(num_colums=1,
                    insert_position=1,
                    border_width=BW,
@@ -40,7 +45,7 @@ layouts = [
                    border_normal=colors.get('border'),
                    margin=[MG, ceil(MG/2), MG, ceil(MG/2)],
                    margin_on_single=[MG, MG, MG, MG]
-                   )
+                   ),
     # layout.VerticalTile(),
     # layout.Zoomy(columnwidth=100),
 ]

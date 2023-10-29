@@ -1,4 +1,5 @@
 from modules.widgets import *
+# from libqtile import drawer
 
 
 """Some how, lower triangles can't use Nerd font character, 
@@ -53,3 +54,26 @@ def right_triangle(background=None,
         foreground=foreground
     )
 
+def left_half_circle(background=None,
+                     foreground='#ffffff',
+                     fontsize=43,
+                     padding=-5):
+    return widget.TextBox(
+        text='\u25D7',
+        fontsize=fontsize,
+        padding=padding,
+        background=background,
+        foreground=foreground
+    )
+
+def right_half_circle(background=None,
+                      foreground='#ffffff',
+                      fontsize=43,
+                      padding=-5):
+    return widget.TextBox(
+        text='\u25D6',
+        fontsize=fontsize,
+        padding=padding,
+        background=background,
+        foreground=foreground
+    )
