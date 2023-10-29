@@ -6,13 +6,13 @@ from modules.widgets import widget_defaults
 
 
 PAD = 9
-OPAQUE = ''
+OPAQUE = '00'
 icons_path = '/usr/share/icons/Papirus/24x24/panel/'
 BARSIZE = 27
 UPDATE_INTERVAL = 5.0
 
 
-class RoundTop:
+class SlashTop:
     def __init__(self, colors) -> None:
         self.colors = colors
         self.highlight_method = 'line'
@@ -36,7 +36,7 @@ class RoundTop:
                         linewidth=0,
                         background=colors.get('background_unfocus'),
                         size_percent=60,
-                        padding=PAD*2
+                        padding=PAD*2 - 1
                     )
 
         groupbox_configs = dict(
@@ -60,7 +60,7 @@ class RoundTop:
         )
 
         windowname_config = dict(
-            foreground=colors.get('foreground_unfocus'),
+            foreground=colors.get('background'),
             background=colors.get('background') + OPAQUE,
             fontsize=widget_defaults.get('fontsize') - 1,
             max_chars=40
@@ -83,7 +83,7 @@ class RoundTop:
                         fmt='{}',
                         background=colors.get('background_unfocus'),
                         foreground=colors.get('foreground'),
-                        padding=1
+                        padding=0
                     )
         )
 
@@ -116,22 +116,35 @@ class RoundTop:
             **widget_defaults
         )
 
+        thermal_sensor = widget.ThermalSensor(
+                            format=' {temp:.0f}{unit}',
+                            tag_sensor="CPU",
+                            foreground=colors.get('foreground')[1:],
+                            background=colors.get('background_unfocus')[1:],
+                            update_interval=UPDATE_INTERVAL)
+
+        net = widget.Net(
+            foreground = colors.get('foreground')[1:],
+            background = colors.get('background_unfocus')[1:],
+            format='󰓅 {down:.0f}{down_suffix} ↓↑ {up:.0f}{up_suffix}',
+            update_interval=UPDATE_INTERVAL
+        )
+
         mpris2 = widget.Mpris2(
-                    foreground=colors.get('foreground_unfocus'),
+                    foreground=colors.get('background'),
                     background=colors.get('background') + OPAQUE,
                     padding=0,
                     fontsize=widget_defaults.get('fontsize') - 1,
                     scroll=True,
                     scroll_clear=True,
                     scroll_delay=1,
-                    width=170,
+                    width=180,
                     name="spotify",
                     playing_text=" {track}",
                     paused_text=" Pause",
                     display_metadata=['xesam:title', 'xesam:artist'], # fMrmat='{xesam:title}',
                     objname="org.mpris.MediaPlayer2.spotify"
-                ),
-
+                )
 
         # screen 1
         screen1 = Screen(
@@ -145,33 +158,42 @@ class RoundTop:
                         widget.GroupBox(
                             **groupbox_configs
                         ),
-                        left_half_circle(foreground=colors.get('background_unfocus'),
-                                         fontsize=40,
-                                         padding=0),
+                        upper_left_triangle(foreground=colors.get('background_unfocus')),
                         widget.WindowName(
                             **windowname_config
                         ),
                         # widget.TaskList(
                         #     **tasklist_config
                         # ),
-                        *mpris2,
+
                         widget.Spacer(
                             background=colors.get('background') + OPAQUE,
                         ),
-                        widget.Systray(
-                            padding=5,
-                            background=colors.get('background') + OPAQUE,
-                            foreground=colors.get('background') + OPAQUE
+
+                        upper_right_triangle(foreground=colors.get('background_unfocus')),
+                        widget.Clock(
+                            format=" %b %d",
+                            **widget_defaults
                         ),
-                        right_half_circle(foreground=colors.get('background_unfocus'),
-                                             background=colors.get('background') + OPAQUE),
-                        widget.ThermalSensor(
-                            format=' {temp:.0f}{unit}',
-                            tag_sensor="CPU",
-                            foreground=colors.get('foreground')[1:],
-                            background=colors.get('background_unfocus')[1:],
-                            update_interval=UPDATE_INTERVAL),
-                        separator,
+                        widget.Sep(
+                            linewidth=0,
+                            background=colors.get('background_unfocus'),
+                            padding=PAD + 2
+                        ),
+                        widget.Clock(
+                            format=" %H:%M",
+                            **widget_defaults
+                        ),
+                        upper_left_triangle(foreground=colors.get('background_unfocus')),
+
+                        widget.Spacer(
+                            background=colors.get('background') + OPAQUE,
+                        ),
+
+                        mpris2,
+                        upper_right_triangle(foreground=colors.get('background_unfocus')),
+                        # thermal_sensor,
+                        # separator,
                         cpu_percentage,
                         separator,
                         memory_usage,
@@ -182,24 +204,17 @@ class RoundTop:
                             background=colors.get('background_unfocus'),
                             padding=(PAD-2)*2 - 3
                         ),
-                        *widget_battery,
-                        separator,
-                        widget.Clock(
-                            format=" %b %d",
-                            **widget_defaults
+                        # *widget_battery,
+                        # separator,
+                        lower_left_triangle(foreground=colors.get('background_unfocus')),
+                        widget.Systray(
+                            padding=5,
+                            background=colors.get('background') + OPAQUE,
+                            # foreground=colors.get('background')
                         ),
                         widget.Sep(
                             linewidth=0,
-                            background=colors.get('background_unfocus'),
-                            padding=PAD+2
-                        ),
-                        widget.Clock(
-                            format=" %H:%M",
-                            **widget_defaults
-                        ),
-                        widget.Sep(
-                            linewidth=0,
-                            background=colors.get('background_unfocus'),
+                            background=colors.get('background_unfocus') + OPAQUE,
                             padding=PAD+2
                         )
                         # widget.LaunchBar(**launchbar_config)
@@ -222,14 +237,32 @@ class RoundTop:
                         widget.GroupBox(
                             **groupbox_configs
                         ),
-                        left_half_circle(foreground=colors.get('background_unfocus')),
+                        upper_left_triangle(foreground=colors.get('background_unfocus')),
                         widget.WindowName(
                             **windowname_config
                         ),
-                        *mpris2,
+
+                        upper_right_triangle(foreground=colors.get('background_unfocus')),
+                        widget.Clock(
+                            format=" %b %d",
+                            **widget_defaults
+                        ),
+                        widget.Sep(
+                            linewidth=0,
+                            background=colors.get('background_unfocus'),
+                            padding=PAD + 2
+                        ),
+                        widget.Clock(
+                            format=" %H:%M",
+                            **widget_defaults
+                        ),
+                        upper_left_triangle(foreground=colors.get('background_unfocus')),
+
                         widget.Spacer(
                             background=colors.get('background') + OPAQUE,
                         ),
+
+                        mpris2,
                         # widget.Clipboard(
                         #     foreground=colors.get('foreground_unfocus'),
                         #     background=colors.get('background_unfocus') + '00',
@@ -237,22 +270,23 @@ class RoundTop:
                         #     max_width=35,
                         #     timeout=None
                         # ),
-                        right_half_circle(foreground=colors.get('background_unfocus')),
+                        upper_right_triangle(foreground=colors.get('background_unfocus')),
+                        thermal_sensor,
+                        separator,
                         cpu_percentage,
                         separator,
                         memory_usage,
                         separator,
                         *widget_volume,
                         separator,
-                        widget.Clock(
-                            format=" %H:%M",
-                            **widget_defaults,
-                        ),
+                        *widget_battery,
+                        separator,
+                        net,
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
                             padding=PAD
-                        )
+                        ),
                         # widget.LaunchBar(**launchbar_config)
                     ],
                     BARSIZE,

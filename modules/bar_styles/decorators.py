@@ -1,5 +1,4 @@
 from modules.widgets import *
-# from libqtile import drawer
 
 
 """Some how, lower triangles can't use Nerd font character, 
@@ -18,11 +17,38 @@ def lower_right_triangle(background=None,
 
 def lower_left_triangle(background=None,
                         foreground='#ffffff',
-                        fontsize=65):
+                        fontsize=65,
+                        padding=-3):
     return widget.TextBox(
         text='\u25E3',
         fontsize=fontsize,
-        padding=-3,
+        padding=padding,
+        background=background,
+        foreground=foreground
+    )
+
+
+def upper_right_triangle(background=None,
+                         foreground='#ffffff',
+                         fontsize=60,
+                         padding=-2):
+    return widget.TextBox(
+        text='\u25E5',
+        fontsize=fontsize,
+        padding=padding,
+        background=background,
+        foreground=foreground
+    )
+
+
+def upper_left_triangle(background=None,
+                        foreground='#ffffff',
+                        fontsize=60,
+                        padding=-2):
+    return widget.TextBox(
+        text='\u25E4',
+        fontsize=fontsize,
+        padding=padding,
         background=background,
         foreground=foreground
     )
@@ -50,30 +76,6 @@ def right_triangle(background=None,
         # text='\u25B6',  # unicode chracter
         fontsize=fontsize,
         padding=-5,
-        background=background,
-        foreground=foreground
-    )
-
-def left_half_circle(background=None,
-                     foreground='#ffffff',
-                     fontsize=43,
-                     padding=-5):
-    return widget.TextBox(
-        text='\u25D7',
-        fontsize=fontsize,
-        padding=padding,
-        background=background,
-        foreground=foreground
-    )
-
-def right_half_circle(background=None,
-                      foreground='#ffffff',
-                      fontsize=43,
-                      padding=-5):
-    return widget.TextBox(
-        text='\u25D6',
-        fontsize=fontsize,
-        padding=padding,
         background=background,
         foreground=foreground
     )

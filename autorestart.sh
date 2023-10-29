@@ -1,6 +1,8 @@
 #!/bin/sh
 #Wallpaper
-feh --bg-fill /home/xuantung/Pictures/wallpapers/moon.png &
+#feh --bg-fill /home/xuantung/Pictures/wallpapers/moon.png &
+feh --bg-fill /home/xuantung/Pictures/wallpapers/walls/saudi-mountains.jpg
+
 
 #Compositor
 picom &
