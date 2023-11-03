@@ -76,16 +76,16 @@ class SlashTop:
         MIDDLE_WIDGETS = [
             upper_right_triangle(foreground=colors.get('background_unfocus')),
             widget.Clock(
-                format=" %b %d",
+                format=" %H:%M",
                 **widget_defaults
             ),
             widget.Sep(
                 linewidth=0,
                 background=colors.get('background_unfocus'),
-                padding=PAD + 4
+                padding=PAD*2
             ),
             widget.Clock(
-                format=" %H:%M",
+                format=" %b %d",
                 **widget_defaults
             ),
             upper_left_triangle(foreground=colors.get('background_unfocus')),
@@ -180,13 +180,10 @@ class SlashTop:
                         widget.WindowName(
                             **windowname_config
                         ),
-                        # widget.TaskList(
-                        #     **tasklist_config
-                        # ),
 
-                        widget.Spacer(
-                            background=colors.get('background') + OPAQUE,
-                        ),
+                        # widget.Spacer(
+                        #     background=colors.get('background') + OPAQUE,
+                        # ),
 
                         *MIDDLE_WIDGETS,
 
@@ -196,8 +193,8 @@ class SlashTop:
 
                         mpris2,
                         upper_right_triangle(foreground=colors.get('background_unfocus')),
-                        thermal_sensor,
-                        separator,
+                        # thermal_sensor,
+                        # separator,
                         cpu_percentage,
                         separator,
                         memory_usage,
@@ -206,10 +203,14 @@ class SlashTop:
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
+                            padding=(PAD - 2) * 2 - 3
+                        ),
+                        *widget_battery,
+                        widget.Sep(
+                            linewidth=0,
+                            background=colors.get('background_unfocus'),
                             padding=(PAD-2)*2 - 3
                         ),
-                        # *widget_battery,
-                        # separator,
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
                         widget.Systray(
                             padding=5,
@@ -268,7 +269,11 @@ class SlashTop:
                         memory_usage,
                         separator,
                         *widget_volume,
-                        separator,
+                        widget.Sep(
+                            linewidth=0,
+                            background=colors.get('background_unfocus'),
+                            padding=(PAD - 2) * 2 - 3
+                        ),
                         *widget_battery,
                         separator,
                         net,

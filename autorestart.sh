@@ -11,7 +11,7 @@ picom &
 #killall imwheel &
 
 #Monitor
-autorandr --change &
+# autorandr --change &
 
 #X keyboard extension
 sleep 1 && xkbcomp /home/xuantung/.config/xkb/Xkeymap $DISPLAY &

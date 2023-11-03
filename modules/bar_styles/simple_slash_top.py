@@ -73,7 +73,6 @@ class SimpleSlashTop:
             max_title_witdh=12
         )
 
-
         widget_volume = (
                     widget.Volume(
                         # theme_path=icons_path,
