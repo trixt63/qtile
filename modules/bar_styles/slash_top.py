@@ -63,7 +63,7 @@ class SlashTop:
             foreground=colors.get('background'),
             background=colors.get('background') + OPAQUE,
             fontsize=widget_defaults.get('fontsize') - 1,
-            max_chars=40
+            max_chars=36
         )
 
         tasklist_config = dict(
