@@ -28,4 +28,5 @@ goldendict &
 #Rclone
 rclone mount --daemon "Google Drive:" /home/xuantung/Google_Drive/xuantung.trinh.63/ &
 sleep 1 && xkbcomp /home/xuantung/.config/xkb/Xkeymap $DISPLAY &
+killall xcape &
 xcape -e 'Control_L=Escape;'

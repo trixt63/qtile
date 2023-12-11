@@ -17,21 +17,14 @@ class SlashTop:
         self.colors = colors
         self.highlight_method = 'line'
 
-        # Widgets config
         widget_defaults.update({
             'background': colors.get('background_unfocus'),
             'foreground': colors.get('foreground')
         })
 
-        launchbar_config = {
-            'progs': [(' \u23fb ', "/home/xuantung/.config/rofi/scripts/powermenu_t2", "Power menu")],
-            'default_icon': icons_path + 'system-devices-panel.svg',
-            # 'text_only': True,
-            'background': colors.get('cyan'),
-            'padding': 2,
-        }
-
-        # Widgets
+        ######################
+        #  Widgets & Params  #
+        ######################
         separator = widget.Sep(
                         linewidth=0,
                         background=colors.get('background_unfocus'),
@@ -67,10 +60,16 @@ class SlashTop:
         )
 
         tasklist_config = dict(
-            foreground=colors.get('foreground_unfocus'),
+            foreground=colors.get('background'),
             background=colors.get('background') + OPAQUE,
             fontsize=widget_defaults.get('fontsize') - 1,
-            max_title_witdh=12
+            # max_title_width=10,
+            border=colors.get('background_focus'), 
+            # unfocused_border=colors.get('foreground_unfocus'),
+            highlight_method='block', 
+            icon_size=widget_defaults.get('fontsize') - 1,
+            margin=3,
+            padding=2,
         )
 
         MIDDLE_WIDGETS = [
@@ -164,7 +163,19 @@ class SlashTop:
                     objname="org.mpris.MediaPlayer2.spotify"
                 )
 
-        # screen 1
+        launchbar_config = {
+            'progs': [(' \u23fb ', "/home/xuantung/.config/rofi/scripts/powermenu_t2", "Power menu")],
+            'default_icon': icons_path + 'system-devices-panel.svg',
+            # 'text_only': True,
+            'background': colors.get('cyan'),
+            'padding': 2,
+        }
+
+        #####################
+        #      Screens      #
+        #####################
+
+        # Screen 1
         screen1 = Screen(
                 top=bar.Bar(
                     [
@@ -177,10 +188,10 @@ class SlashTop:
                             **groupbox_configs
                         ),
                         upper_left_triangle(foreground=colors.get('background_unfocus')),
-                        widget.WindowName(
-                            **windowname_config
-                        ),
-
+                        # widget.WindowName(
+                        #     **windowname_config
+                        # ),
+                        widget.TaskList(**tasklist_config),
                         # widget.Spacer(
                         #     background=colors.get('background') + OPAQUE,
                         # ),
@@ -231,6 +242,7 @@ class SlashTop:
                 ),
             )
         
+        # Screen 2
         screen2 = Screen(
                 top=bar.Bar(
                     [
@@ -243,9 +255,10 @@ class SlashTop:
                             **groupbox_configs
                         ),
                         upper_left_triangle(foreground=colors.get('background_unfocus')),
-                        widget.WindowName(
-                            **windowname_config
-                        ),
+                        # widget.WindowName(
+                        #     **windowname_config
+                        # ),
+                        widget.TaskList(**tasklist_config),
 
                         *MIDDLE_WIDGETS,
 
