@@ -30,8 +30,8 @@ def lower_left_triangle(background=None,
 
 def upper_right_triangle(background=None,
                          foreground='#ffffff',
-                         fontsize=60,
-                         padding=-2):
+                         fontsize=62,
+                         padding=-3):
     return widget.TextBox(
         text='\u25E5',
         fontsize=fontsize,
@@ -43,8 +43,8 @@ def upper_right_triangle(background=None,
 
 def upper_left_triangle(background=None,
                         foreground='#ffffff',
-                        fontsize=60,
-                        padding=-2):
+                        fontsize=62,
+                        padding=-3):
     return widget.TextBox(
         text='\u25E4',
         fontsize=fontsize,

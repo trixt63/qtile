@@ -1,3 +1,4 @@
+from math import ceil, floor
 from libqtile import bar
 from libqtile.config import Screen
 
@@ -5,12 +6,13 @@ from modules.bar_styles.decorators import *
 from modules.widgets import widget_defaults
 
 
-PAD = 9
 OPAQUE = '00'
 icons_path = '/usr/share/icons/Papirus/22x22/panel/'
-# icons_path = '/usr/share/icons/Papirus/'
 apps_icons_path = '/usr/share/icons/Papirus/'
-BARSIZE = 27
+BARSIZE = 29
+PAD = 9
+_DECORATOR_PADDING = ceil(BARSIZE/10)
+_DECORATOR_SIZE = ceil(BARSIZE*1.1 + 1) * 2
 UPDATE_INTERVAL = 5.0
 
 
@@ -21,7 +23,8 @@ class SlashTop:
 
         widget_defaults.update({
             'background': colors.get('background_unfocus'),
-            'foreground': colors.get('foreground')
+            'foreground': colors.get('foreground'), 
+            'fontsize': floor(BARSIZE/2)
         })
 
         ######################
@@ -30,13 +33,24 @@ class SlashTop:
         separator = widget.Sep(
                         linewidth=0,
                         background=colors.get('background_unfocus'),
-                        size_percent=60,
-                        padding=PAD*2 - 1
+                        size_percent=70,
+                        padding=PAD*2 - 2
                     )
+
+        _decorator_configs = dict(
+                foreground=colors.get('background_unfocus'), 
+                # fontsize=_DECORATOR_SIZE, 
+                # padding=-_DECORATOR_PADDING
+                fontsize=66, 
+                padding=-3
+                )
+        _upper_left_triangle = upper_left_triangle(**_decorator_configs)
+        _upper_right_triangle = upper_right_triangle(**_decorator_configs)
+        _lower_left_triangle = lower_left_triangle(**_decorator_configs)
 
         groupbox_configs = dict(
             # padding_y=6,
-            padding_x=8,
+            padding_x=PAD-1,
             background=colors.get('background_unfocus'),
             highlight_method=self.highlight_method,
             rounded=False,
@@ -62,6 +76,7 @@ class SlashTop:
         )
 
         tasklist_config = dict(
+            font=widget_defaults.get('font'),
             foreground=colors.get('background'),
             background=colors.get('background') + OPAQUE,
             fontsize=widget_defaults.get('fontsize') - 1,
@@ -75,11 +90,11 @@ class SlashTop:
             margin=3,
             padding=3,
             markup_minimized='<span font_style="italic">_{}</span>',
-            markup_maximized='<span font-weight="bold">{}</span>'
+            markup_maximized='<span font-="low">{}</span>'
         )
 
         MIDDLE_WIDGETS = [
-            upper_right_triangle(foreground=colors.get('background_unfocus')),
+            _upper_right_triangle,
             widget.Clock(
                 format=" %H:%M",
                 **widget_defaults
@@ -93,7 +108,7 @@ class SlashTop:
                 format=" %b %d",
                 **widget_defaults
             ),
-            upper_left_triangle(foreground=colors.get('background_unfocus')),
+            _upper_left_triangle,
         ]
 
         widget_volume = (
@@ -176,7 +191,6 @@ class SlashTop:
             'background': colors.get('cyan'),
             'padding': 2,
         }
-
         #####################
         #      Screens      #
         #####################
@@ -187,20 +201,18 @@ class SlashTop:
                     [
                         widget.CurrentLayoutIcon(
                                         background=colors.get('background_unfocus'),
-                                        fontsize=widget_defaults.get('fontsize') - 1,
-                                        padding=5
+                                        fontsize=widget_defaults.get('fontsize') - 2,
+                                        padding=2
                                 ),
                         widget.GroupBox(
                             **groupbox_configs
                         ),
-                        upper_left_triangle(foreground=colors.get('background_unfocus')),
+                        _upper_left_triangle,
+
                         # widget.WindowName(
                         #     **windowname_config
                         # ),
                         widget.TaskList(**tasklist_config),
-                        # widget.Spacer(
-                        #     background=colors.get('background') + OPAQUE,
-                        # ),
 
                         *MIDDLE_WIDGETS,
 
@@ -209,7 +221,8 @@ class SlashTop:
                         ),
 
                         mpris2,
-                        upper_right_triangle(foreground=colors.get('background_unfocus')),
+
+                        _upper_right_triangle,
                         # thermal_sensor,
                         # separator,
                         cpu_percentage,
@@ -228,7 +241,8 @@ class SlashTop:
                             background=colors.get('background_unfocus'),
                             padding=(PAD-2)*2 - 3
                         ),
-                        lower_left_triangle(foreground=colors.get('background_unfocus')),
+                        # lower_left_triangle(foreground=colors.get('background_unfocus')),
+                        _lower_left_triangle,
                         widget.Systray(
                             padding=5,
                             background=colors.get('background') + OPAQUE,
@@ -260,7 +274,8 @@ class SlashTop:
                         widget.GroupBox(
                             **groupbox_configs
                         ),
-                        upper_left_triangle(foreground=colors.get('background_unfocus')),
+                        _upper_left_triangle,
+
                         # widget.WindowName(
                         #     **windowname_config
                         # ),
@@ -280,7 +295,8 @@ class SlashTop:
                         #     max_width=35,
                         #     timeout=None
                         # ),
-                        upper_right_triangle(foreground=colors.get('background_unfocus')),
+
+                        _upper_right_triangle,
                         thermal_sensor,
                         separator,
                         cpu_percentage,
