@@ -7,7 +7,9 @@ from modules.widgets import widget_defaults
 
 PAD = 9
 OPAQUE = '00'
-icons_path = '/usr/share/icons/Papirus/24x24/panel/'
+icons_path = '/usr/share/icons/Papirus/22x22/panel/'
+# icons_path = '/usr/share/icons/Papirus/'
+apps_icons_path = '/usr/share/icons/Papirus/'
 BARSIZE = 27
 UPDATE_INTERVAL = 5.0
 
@@ -63,13 +65,17 @@ class SlashTop:
             foreground=colors.get('background'),
             background=colors.get('background') + OPAQUE,
             fontsize=widget_defaults.get('fontsize') - 1,
-            # max_title_width=10,
+            max_title_width=210,
             border=colors.get('background_focus'), 
             # unfocused_border=colors.get('foreground_unfocus'),
             highlight_method='block', 
             icon_size=widget_defaults.get('fontsize') - 1,
+            theme_mode='preferred',
+            theme_path=apps_icons_path,
             margin=3,
-            padding=2,
+            padding=3,
+            markup_minimized='<span font_style="italic">_{}</span>',
+            markup_maximized='<span font-weight="bold">{}</span>'
         )
 
         MIDDLE_WIDGETS = [

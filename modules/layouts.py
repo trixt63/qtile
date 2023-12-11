@@ -25,20 +25,23 @@ layouts = [
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
+
     layout.TreeTab(font="Lato",
                    fontsize=15,
-                   panel_width=110,
+                   panel_width=100,
                 #    place_right=True,
                    vspace=6,
                    bg_color=colors.get('background'),
                    active_bg=colors.get('background_focus'),
                    urgent_bg=colors.get('urgent')
                    ),
+
     # layout.Max(margin=MG,
-    #            # border_width=BW,
+    #            border_width=BW,
     #            border_focus=colors.get('border_focus'),
     #            border_normal=colors.get('border')
     #            ),
+
     layout.Columns(num_colums=1,
                    insert_position=1,
                    border_width=BW,
