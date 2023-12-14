@@ -45,6 +45,7 @@ layouts = [
     layout.Columns(num_colums=1,
                    insert_position=1,
                    border_width=BW,
+                   # border_on_single=True,
                    border_focus=colors.get('border_focus'),
                    border_normal=colors.get('border'),
                    margin=[MG, ceil(MG/2), MG, ceil(MG/2)],

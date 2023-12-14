@@ -42,7 +42,7 @@ class SpaceGray():
                 'background_focus_alt': self.cyan,  # focused workspace on unfocused monitor
                 'background_alt': self.white5,  # focused workspace of the other monitor (regardless if it's the focused or focused one)
 
-                'border': self.black1,
+                'border': self.black3,
                 'border_focus': self.yellow2,
 
                 'urgent': self.red,

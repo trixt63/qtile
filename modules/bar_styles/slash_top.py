@@ -9,6 +9,8 @@ from modules.widgets import widget_defaults
 OPAQUE = '00'
 icons_path = '/usr/share/icons/Papirus/22x22/panel/'
 apps_icons_path = '/usr/share/icons/Papirus/'
+# icons_path = '/usr/share/icons/Zafiro-Icons-Dark/panel/22/'
+# apps_icons_path = '/usr/share/icons/Zafiro-Icons-Light/'
 BARSIZE = 29
 PAD = 9
 _DECORATOR_PADDING = ceil(BARSIZE/10)
@@ -76,21 +78,25 @@ class SlashTop:
         )
 
         tasklist_config = dict(
+            # font='Lato',
             font=widget_defaults.get('font'),
             foreground=colors.get('background'),
             background=colors.get('background') + OPAQUE,
-            fontsize=widget_defaults.get('fontsize') - 1,
+            fontsize=widget_defaults.get('fontsize') - 2,
             max_title_width=210,
-            border=colors.get('background_focus'), 
-            # unfocused_border=colors.get('foreground_unfocus'),
-            highlight_method='block', 
+            border=colors.get('background_focus'),
+            # highlight_method='block',
+            # border=colors.get('foreground'),
+            highlight_method='border',
+            borderwidth=1.5,
             icon_size=widget_defaults.get('fontsize') - 1,
             theme_mode='preferred',
             theme_path=apps_icons_path,
             margin=3,
             padding=3,
+            markup_focused='<span font_weight="600">{}</span>',
             markup_minimized='<span font_style="italic">_{}</span>',
-            markup_maximized='<span font-="low">{}</span>'
+            markup_maximized='<span>[] {}</span>'
         )
 
         MIDDLE_WIDGETS = [
@@ -102,7 +108,7 @@ class SlashTop:
             widget.Sep(
                 linewidth=0,
                 background=colors.get('background_unfocus'),
-                padding=PAD*2
+                padding=PAD*2 - 3
             ),
             widget.Clock(
                 format=" %b %d",
@@ -202,7 +208,7 @@ class SlashTop:
                         widget.CurrentLayoutIcon(
                                         background=colors.get('background_unfocus'),
                                         fontsize=widget_defaults.get('fontsize') - 2,
-                                        padding=2
+                                        padding=4
                                 ),
                         widget.GroupBox(
                             **groupbox_configs
@@ -269,7 +275,7 @@ class SlashTop:
                         widget.CurrentLayoutIcon(
                             background=colors.get('background_unfocus'),
                             fontsize=widget_defaults.get('fontsize') - 1,
-                            padding=6
+                            padding=4
                         ),
                         widget.GroupBox(
                             **groupbox_configs
