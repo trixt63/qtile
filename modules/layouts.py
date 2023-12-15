@@ -49,7 +49,7 @@ layouts = [
                    border_focus=colors.get('border_focus'),
                    border_normal=colors.get('border'),
                    margin=[MG, ceil(MG/2), MG, ceil(MG/2)],
-                   margin_on_single=[MG, MG, MG, MG]
+                   margin_on_single=[MG]*4
                    ),
     # layout.VerticalTile(),
     # layout.Zoomy(columnwidth=100),

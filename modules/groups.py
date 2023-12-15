@@ -19,9 +19,10 @@ groups = [
         Match(wm_class=["pgadmin4"]),
         # Match(wm_class=["google-chrome"])
     ]),
-    Group("5", matches=[Match(wm_class=["libreoffice"]),
-                        Match(wm_class=["calibre"])
-    ]),
+    # Group("5", matches=[Match(wm_class=["libreoffice"]),
+    #                     Match(wm_class=["calibre"])
+    # ]),
+    Group("5"),
     Group("6", matches=[
         Match(wm_class=["thunderbird"]),
         Match(wm_class=["Microsoft Teams - Preview"]),

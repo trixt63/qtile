@@ -18,6 +18,14 @@ _DECORATOR_SIZE = ceil(BARSIZE*1.1 + 1) * 2
 UPDATE_INTERVAL = 5.0
 
 
+def _parse_text(text):
+    for string in ["MongoDB Compass - "]:
+        if text.startswith(string):
+            text = text.replace(string, "")
+            text = text + string[-3:] + string[:-3]
+        return text
+
+
 class SlashTop:
     def __init__(self, colors) -> None:
         self.colors = colors
@@ -61,7 +69,7 @@ class SlashTop:
             urgent_border=colors.get('urgent'),
             # for the focused screen
             this_current_screen_border=colors.get('background_focus'),
-            other_current_screen_border=colors.get('background_alt'),
+            other_curre_nt_screen_border=colors.get('background_alt'),
             highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
             # for the other screen
             this_screen_border=colors.get('background_focus_alt'),
@@ -94,6 +102,7 @@ class SlashTop:
             theme_path=apps_icons_path,
             margin=3,
             padding=3,
+            parse_text=_parse_text,
             markup_focused='<span font_weight="600">{}</span>',
             markup_minimized='<span font_style="italic">_{}</span>',
             markup_maximized='<span>[] {}</span>'
