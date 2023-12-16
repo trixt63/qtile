@@ -69,7 +69,7 @@ class SlashTop:
             urgent_border=colors.get('urgent'),
             # for the focused screen
             this_current_screen_border=colors.get('background_focus'),
-            other_curre_nt_screen_border=colors.get('background_alt'),
+            other_current_screen_border=colors.get('background_alt'),
             highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
             # for the other screen
             this_screen_border=colors.get('background_focus_alt'),
