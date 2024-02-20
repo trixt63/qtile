@@ -4,6 +4,7 @@ from libqtile.config import Screen
 
 from modules.bar_styles.decorators import *
 from modules.widgets import widget_defaults
+from modules.utils import get_firefox_instance
 
 
 OPAQUE = '00'
@@ -183,15 +184,34 @@ class SlashTop:
             update_interval=UPDATE_INTERVAL
         )
 
+        mpris2_firefox = widget.Mpris2(
+                    foreground=colors.get('background'),
+                    background=colors.get('background') + OPAQUE,
+                    padding=PAD/2,
+                    fontsize=widget_defaults.get('fontsize') - 1,
+                    scroll=False,
+                    max_chars=20,
+                    # scroll_clear=True,
+                    # scroll_delay=1,
+                    # width=160,
+                    name="firefox",
+                    playing_text=" {track}",
+                    paused_text=" Paused",
+                    # display_metadata=['xesam:title', 'xesam:artist'], # fMrmat='{xesam:title}',
+                    display_metadata=['xesam:title'], # fMrmat='{xesam:title}',
+                    poll_interval=1,
+                    objname=f"org.mpris.MediaPlayer2.{get_firefox_instance()}"
+                )
         mpris2_spotify = widget.Mpris2(
                     foreground=colors.get('background'),
                     background=colors.get('background') + OPAQUE,
-                    padding=0,
+                    padding=PAD/2,
                     fontsize=widget_defaults.get('fontsize') - 1,
                     scroll=True,
                     scroll_clear=True,
                     scroll_delay=1,
-                    width=180,
+                    width=160,
+                    # width=150,
                     name="spotify",
                     # playing_text=" {track}",
                     # paused_text=" Paused",
@@ -200,26 +220,19 @@ class SlashTop:
                     display_metadata=['xesam:title', 'xesam:artist'], # fMrmat='{xesam:title}',
                     objname="org.mpris.MediaPlayer2.spotify"
                 )
-
-        # mpris2_player = widget.Mpris2(
-        #             foreground=colors.get('background'),
-        #             background=colors.get('background') + OPAQUE,
-        #             padding=0,
-        #             fontsize=widget_defaults.get('fontsize') - 1,
-        #             scroll=True,
-        #             scroll_clear=True,
-        #             scroll_delay=1,
-        #             width=180,
-        #             name="firefox",
-        #             playing_text=" {track}",
-        #             paused_text=" Pause",
-        #             # display_metadata=['xesam:title', 'xesam:artist'], # fMrmat='{xesam:title}',
-        #             display_metadata=['xesam:title'], # fMrmat='{xesam:title}',
-        #             poll_interval=0.5,
-        #             objname=None
-        #             # objname="org.mpris.MediaPlayer2.firefox.instance*"
-        #         )
-
+        mpris2 = [
+                    mpris2_spotify,
+                    widget.Sep(
+                            linewidth=0,
+                            size_percent=60,
+                            # background=colors.get('background_unfocus')+'00',
+                            background=colors.get('border')+'00',
+                            foreground=colors.get('background'),
+                            # padding=(PAD-2)*2 - 3
+                            padding=4
+                        ),
+                    mpris2_firefox, 
+                  ]
 
         launchbar_config = {
             'progs': [(' \u23fb ', "/home/xuantung/.config/rofi/scripts/powermenu_t2", "Power menu")],
@@ -257,8 +270,7 @@ class SlashTop:
                             background=colors.get('background') + OPAQUE,
                         ),
 
-                        mpris2_spotify,
-                        # mpris2_player,
+                        *mpris2, 
 
                         _upper_right_triangle,
                         # thermal_sensor,
@@ -325,16 +337,7 @@ class SlashTop:
                             background=colors.get('background') + OPAQUE,
                         ),
 
-                        mpris2_spotify,
-                        # mpris2_player,
-
-                        # widget.Clipboard(
-                        #     foreground=colors.get('foreground_unfocus'),
-                        #     background=colors.get('background_unfocus') + '00',
-                        #     fontsize=widget_defaults.get('fontsize') - 1,
-                        #     max_width=35,
-                        #     timeout=None
-                        # ),
+                        *mpris2,
 
                         _upper_right_triangle,
                         thermal_sensor,
