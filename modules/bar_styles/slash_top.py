@@ -183,7 +183,7 @@ class SlashTop:
             update_interval=UPDATE_INTERVAL
         )
 
-        mpris2 = widget.Mpris2(
+        mpris2_spotify = widget.Mpris2(
                     foreground=colors.get('background'),
                     background=colors.get('background') + OPAQUE,
                     padding=0,
@@ -255,7 +255,7 @@ class SlashTop:
                             background=colors.get('background') + OPAQUE,
                         ),
 
-                        mpris2,
+                        mpris2_spotify,
                         # mpris2_player,
 
                         _upper_right_triangle,
@@ -323,7 +323,7 @@ class SlashTop:
                             background=colors.get('background') + OPAQUE,
                         ),
 
-                        mpris2,
+                        mpris2_spotify,
                         # mpris2_player,
 
                         # widget.Clipboard(
