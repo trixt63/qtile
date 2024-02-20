@@ -199,6 +199,26 @@ class SlashTop:
                     objname="org.mpris.MediaPlayer2.spotify"
                 )
 
+        # mpris2_player = widget.Mpris2(
+        #             foreground=colors.get('background'),
+        #             background=colors.get('background') + OPAQUE,
+        #             padding=0,
+        #             fontsize=widget_defaults.get('fontsize') - 1,
+        #             scroll=True,
+        #             scroll_clear=True,
+        #             scroll_delay=1,
+        #             width=180,
+        #             name="firefox",
+        #             playing_text=" {track}",
+        #             paused_text=" Pause",
+        #             # display_metadata=['xesam:title', 'xesam:artist'], # fMrmat='{xesam:title}',
+        #             display_metadata=['xesam:title'], # fMrmat='{xesam:title}',
+        #             poll_interval=0.5,
+        #             objname=None
+        #             # objname="org.mpris.MediaPlayer2.firefox.instance*"
+        #         )
+
+
         launchbar_config = {
             'progs': [(' \u23fb ', "/home/xuantung/.config/rofi/scripts/powermenu_t2", "Power menu")],
             'default_icon': icons_path + 'system-devices-panel.svg',
@@ -217,7 +237,7 @@ class SlashTop:
                         widget.CurrentLayoutIcon(
                                         background=colors.get('background_unfocus'),
                                         fontsize=widget_defaults.get('fontsize') - 2,
-                                        padding=4
+                                        padding=5
                                 ),
                         widget.GroupBox(
                             **groupbox_configs
@@ -236,6 +256,7 @@ class SlashTop:
                         ),
 
                         mpris2,
+                        # mpris2_player,
 
                         _upper_right_triangle,
                         # thermal_sensor,
@@ -284,7 +305,7 @@ class SlashTop:
                         widget.CurrentLayoutIcon(
                             background=colors.get('background_unfocus'),
                             fontsize=widget_defaults.get('fontsize') - 1,
-                            padding=4
+                            padding=5
                         ),
                         widget.GroupBox(
                             **groupbox_configs
@@ -303,6 +324,8 @@ class SlashTop:
                         ),
 
                         mpris2,
+                        # mpris2_player,
+
                         # widget.Clipboard(
                         #     foreground=colors.get('foreground_unfocus'),
                         #     background=colors.get('background_unfocus') + '00',

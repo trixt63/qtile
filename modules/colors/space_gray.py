@@ -56,6 +56,10 @@ class SpaceGray():
                 'white': self.white1
             }
 
+    def get(self, color: str):
+        return self.colors.get(color, None)
+
+
     #
     # @property
     # def background(self):
