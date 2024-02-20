@@ -2,7 +2,7 @@
 
 ## 1. Presiquities:
 - **python 3**: of course
-- **Font Awesome 5**
+- **[Font Awesome 5](https://fontawesome.com/v5/search)**
 - **feh**: to set wallpaper
 - **brightnessctl**: to mofify backlight brightness
 - **pavu**: to modify sound profile
