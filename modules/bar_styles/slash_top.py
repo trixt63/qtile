@@ -193,8 +193,10 @@ class SlashTop:
                     scroll_delay=1,
                     width=180,
                     name="spotify",
-                    playing_text=" {track}",
-                    paused_text=" Pause",
+                    # playing_text=" {track}",
+                    # paused_text=" Paused",
+                    playing_text=" {track}",
+                    paused_text=" Paused",
                     display_metadata=['xesam:title', 'xesam:artist'], # fMrmat='{xesam:title}',
                     objname="org.mpris.MediaPlayer2.spotify"
                 )
