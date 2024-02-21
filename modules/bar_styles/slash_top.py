@@ -184,20 +184,40 @@ class SlashTop:
             update_interval=UPDATE_INTERVAL
         )
 
+        mpris2_all = widget.Mpris2(
+                    foreground=colors.get('background'),
+                    background=colors.get('background') + OPAQUE,
+                    padding=PAD/2,
+                    font=widget_defaults.get('font'),
+                    fontsize=widget_defaults.get('fontsize') - 2,
+                    # fontshadow=colors.get('red'),
+                    scroll=True,
+                    scroll_clear=True,
+                    scroll_delay=1,
+                    width=180,
+                    # max_chars=20,
+                    name="mpris2",
+                    playing_text=" {track}",
+                    paused_text=" {track}",
+                    display_metadata=['xesam:title'], # fMrmat='{xesam:title}',
+                    poll_interval=1,
+                    objname=None
+                )
         mpris2_firefox = widget.Mpris2(
                     foreground=colors.get('background'),
                     background=colors.get('background') + OPAQUE,
                     padding=PAD/2,
-                    fontsize=widget_defaults.get('fontsize') - 1,
-                    scroll=False,
-                    max_chars=20,
-                    # scroll_clear=True,
-                    # scroll_delay=1,
-                    # width=160,
+                    font=widget_defaults.get('font'),
+                    fontsize=widget_defaults.get('fontsize') - 2,
+                    fontshadow=colors.get('red'),
+                    scroll=True,
+                    scroll_clear=True,
+                    scroll_delay=0.5,
+                    width=140,
+                    # max_chars=20,
                     name="firefox",
                     playing_text=" {track}",
-                    paused_text=" Paused",
-                    # display_metadata=['xesam:title', 'xesam:artist'], # fMrmat='{xesam:title}',
+                    paused_text=" Firefox",
                     display_metadata=['xesam:title'], # fMrmat='{xesam:title}',
                     poll_interval=1,
                     objname=f"org.mpris.MediaPlayer2.{get_firefox_instance()}"
@@ -206,17 +226,18 @@ class SlashTop:
                     foreground=colors.get('background'),
                     background=colors.get('background') + OPAQUE,
                     padding=PAD/2,
-                    fontsize=widget_defaults.get('fontsize') - 1,
+                    font=widget_defaults.get('font'),
+                    fontsize=widget_defaults.get('fontsize') - 2,
+                    fontshadow=colors.get('green'),
                     scroll=True,
                     scroll_clear=True,
                     scroll_delay=1,
                     width=160,
-                    # width=150,
                     name="spotify",
                     # playing_text=" {track}",
                     # paused_text=" Paused",
                     playing_text=" {track}",
-                    paused_text=" Paused",
+                    paused_text=" Spotify",
                     display_metadata=['xesam:title', 'xesam:artist'], # fMrmat='{xesam:title}',
                     objname="org.mpris.MediaPlayer2.spotify"
                 )
@@ -225,13 +246,12 @@ class SlashTop:
                     widget.Sep(
                             linewidth=0,
                             size_percent=60,
-                            # background=colors.get('background_unfocus')+'00',
-                            background=colors.get('border')+'00',
+                            background=colors.get('border')+OPAQUE,
                             foreground=colors.get('background'),
-                            # padding=(PAD-2)*2 - 3
-                            padding=4
+                            padding=int(PAD*1.1)
                         ),
-                    mpris2_firefox, 
+                    mpris2_firefox
+                    # mpris2_all
                   ]
 
         launchbar_config = {
@@ -294,14 +314,14 @@ class SlashTop:
                         # lower_left_triangle(foreground=colors.get('background_unfocus')),
                         _lower_left_triangle,
                         widget.Systray(
-                            padding=5,
+                            padding=int(PAD/2)+1,
                             background=colors.get('background') + OPAQUE,
                             # foreground=colors.get('background')
                         ),
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus') + OPAQUE,
-                            padding=PAD+2
+                            padding=PAD
                         )
                         # widget.LaunchBar(**launchbar_config)
                     ],
