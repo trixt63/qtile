@@ -61,6 +61,8 @@ keys = [
     # Change screen
     Key([mod], 'period', lazy.prev_screen(), desc='Previous monitor'),
     Key([mod], 'slash', lazy.next_screen(), desc='Next monitor'),
+    Key([mod], 'minus', lazy.prev_screen(), desc='Previous monitor'),
+    Key([mod], 'equal', lazy.next_screen(), desc='Next monitor'),
     # Rofi
     Key([mod], "d", lazy.spawn("/home/xuantung/.config/rofi/scripts/launcher_t1"), desc="Spawn app launcher"),
     Key([mod], "p", lazy.spawn("/home/xuantung/.config/rofi/scripts/powermenu_t2")),

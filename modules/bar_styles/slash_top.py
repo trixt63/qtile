@@ -198,26 +198,27 @@ class SlashTop:
                     # max_chars=20,
                     name="mpris2",
                     playing_text=" {track}",
-                    paused_text=" {track}",
+                    paused_text=' <span font_style="italic">{track}</span>',
                     display_metadata=['xesam:title'], # fMrmat='{xesam:title}',
-                    poll_interval=1,
+                    poll_interval=0.5,
                     objname=None
                 )
         mpris2_firefox = widget.Mpris2(
                     foreground=colors.get('background'),
                     background=colors.get('background') + OPAQUE,
-                    padding=PAD/2,
+                    padding=int(PAD/2),
                     font=widget_defaults.get('font'),
                     fontsize=widget_defaults.get('fontsize') - 2,
                     fontshadow=colors.get('red'),
                     scroll=True,
-                    scroll_clear=True,
+                    scroll_clear=False,
                     scroll_delay=0.5,
-                    width=140,
+                    width=150,
                     # max_chars=20,
                     name="firefox",
                     playing_text=" {track}",
                     paused_text=" Firefox",
+                    no_metadata_text=" Firefox playing",
                     display_metadata=['xesam:title'], # fMrmat='{xesam:title}',
                     poll_interval=1,
                     objname=f"org.mpris.MediaPlayer2.{get_firefox_instance()}"
@@ -225,7 +226,7 @@ class SlashTop:
         mpris2_spotify = widget.Mpris2(
                     foreground=colors.get('background'),
                     background=colors.get('background') + OPAQUE,
-                    padding=PAD/2,
+                    padding=int(PAD/2),
                     font=widget_defaults.get('font'),
                     fontsize=widget_defaults.get('fontsize') - 2,
                     fontshadow=colors.get('green'),
@@ -238,6 +239,7 @@ class SlashTop:
                     # paused_text=" Paused",
                     playing_text=" {track}",
                     paused_text=" Spotify",
+                    no_metadata_text=" Spotify playing",
                     display_metadata=['xesam:title', 'xesam:artist'], # fMrmat='{xesam:title}',
                     objname="org.mpris.MediaPlayer2.spotify"
                 )
@@ -248,7 +250,7 @@ class SlashTop:
                             size_percent=60,
                             background=colors.get('border')+OPAQUE,
                             foreground=colors.get('background'),
-                            padding=int(PAD*1.1)
+                            padding=int(PAD)
                         ),
                     mpris2_firefox
                     # mpris2_all
