@@ -18,12 +18,13 @@
 ## 3. For your setup:
 
 There are a few constants that I'm too lazy to refactor, so you will have to change them yourselves:
-- Wallpaper: Insert your path to your wallpaper into **```autorestart.sh```**, the ```feh``` line.
-- Audio sink name: use
+- **Wallpaper**: Insert your path to your wallpaper into **```autorestart.sh```**, the ```feh``` line.
+- **Audio sink name**: use
 
     ```pacmd list-sinks | grep -e 'name:' -e 'index:'``` 
 
     to find your audio sink's name, then assign it to the ```sink_name``` variable in **```modules/keys```**. Or else, you won't be able to change your volume with keyboards if when connect your laptop with an HDMI cable.
+- **Keyboard shortcuts**: some shortcuts are moved from ```modules/keys.py``` to ```xfce4-keyboard-shortcuts.xml```. Either uncomment shortcuts in keys.py, or put the .xml file to ```~/.config/xfce4/xfconf/xfce-perchannel-xml/```.
 
 ## 4. Notes
 - Quit command (to put into rofi): `qtile cmd-obj -o cmd -f shutdown`

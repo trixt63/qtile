@@ -64,13 +64,13 @@ keys = [
     Key([mod], 'minus', lazy.prev_screen(), desc='Previous monitor'),
     Key([mod], 'equal', lazy.next_screen(), desc='Next monitor'),
     # Rofi
-    Key([mod], "d", lazy.spawn("/home/xuantung/.config/rofi/scripts/launcher_t1"), desc="Spawn app launcher"),
+    # Key([mod], "d", lazy.spawn("/home/xuantung/.config/rofi/scripts/launcher_t1"), desc="Spawn app launcher"),
     Key([mod], "p", lazy.spawn("/home/xuantung/.config/rofi/scripts/powermenu_t2")),
     # Screenshot
     Key(["control", "mod3"], "super_r", lazy.spawn("xfce4-screenshooter -w"), desc="Screenshot a window"),
     Key(["control", "shift"], "super_r", lazy.spawn("xfce4-screenshooter -r"), desc="Screenshot part of the screen"),
     # Clipboard
-    Key(["mod1"], "c", lazy.spawn("xfce4-popup-clipman"), desc="Clipboard pop=up"),
+    # Key(["mod1"], "c", lazy.spawn("xfce4-popup-clipman"), desc="Clipboard pop=up"),
     # Sound
     Key([], "XF86AudioLowerVolume", lazy.spawn(f"pactl set-sink-volume {sink_name} -5%")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn(f"pactl set-sink-volume {sink_name} +5%")),
@@ -80,7 +80,7 @@ keys = [
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
     # Applications
-    Key([mod, "control"], "w", lazy.spawn("firefox"), desc="Web browser"),
-    Key([mod], "f", lazy.spawn("thunar"), desc="File manager"), Key([mod, "control"], "v", lazy.spawn("pavucontrol"), desc="Volume & sound manager"),
+    # Key([mod, "control"], "w", lazy.spawn("firefox"), desc="Web browser"),
+    # Key([mod], "f", lazy.spawn("thunar"), desc="File manager"), Key([mod, "control"], "v", lazy.spawn("pavucontrol"), desc="Volume & sound manager"),
     Key([mod, "control"], "m", lazy.spawn("xfce4-taskmanager"), desc="Task manager")
 ]
