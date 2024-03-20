@@ -64,7 +64,7 @@ keys = [
     Key([mod], 'minus', lazy.prev_screen(), desc='Previous monitor'),
     Key([mod], 'equal', lazy.next_screen(), desc='Next monitor'),
     # Rofi
-    # Key([mod], "d", lazy.spawn("/home/xuantung/.config/rofi/scripts/launcher_t1"), desc="Spawn app launcher"),
+    Key([mod], "d", lazy.spawn("/home/xuantung/.config/rofi/scripts/launcher_t1"), desc="Spawn app launcher"),
     Key([mod], "p", lazy.spawn("/home/xuantung/.config/rofi/scripts/powermenu_t2")),
     # Screenshot
     Key(["control", "mod3"], "super_r", lazy.spawn("xfce4-screenshooter -w"), desc="Screenshot a window"),

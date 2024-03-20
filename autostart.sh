@@ -25,6 +25,8 @@ discord &
 thunderbird &
 #Dictionary
 goldendict &
+#Anki
+flatpak run net.ankiweb.Anki &
 #Rclone
 rclone mount --daemon "Google Drive:" /home/xuantung/Google_Drive/xuantung.trinh.63/ &
 sleep 1 && xkbcomp /home/xuantung/.config/xkb/Xkeymap $DISPLAY &

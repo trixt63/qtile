@@ -5,7 +5,8 @@ from .keys import keys, mod
 # groups = [Group(i) for i in "123456789"]
 
 groups = [
-    Group("1", matches=[Match(wm_class=["firefox"])]),
+    Group("1", matches=[Match(wm_class=["firefox"]), 
+                        Match(wm_class=["anki"])]),
     Group("2", matches=[
         Match(wm_class=["vscodium"]),
         Match(wm_class=["jetbrains-pycharm-ce"]),
