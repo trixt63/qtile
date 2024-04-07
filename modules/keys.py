@@ -81,6 +81,7 @@ keys = [
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
     # Applications
     # Key([mod, "control"], "w", lazy.spawn("firefox"), desc="Web browser"),
-    # Key([mod], "f", lazy.spawn("thunar"), desc="File manager"), Key([mod, "control"], "v", lazy.spawn("pavucontrol"), desc="Volume & sound manager"),
+    Key([mod], "f", lazy.spawn("thunar"), desc="File manager"), 
+    Key([mod, "control"], "v", lazy.spawn("pavucontrol"), desc="Volume & sound manager"),
     Key([mod, "control"], "m", lazy.spawn("xfce4-taskmanager"), desc="Task manager")
 ]
