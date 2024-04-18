@@ -10,6 +10,7 @@ sink_name = "alsa_output.pci-0000_07_00.6.HiFi__hw_Generic_1__sink"
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
+    Key([mod, "control", "shift"], "q", lazy.spawn("qtile cmd-obj -o cmd -f shutdown"), desc="Exit Qtile"),
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
@@ -28,10 +29,6 @@ keys = [
     Key([mod, "control"], "l", lazy.layout.grow_main(), desc="Grow main window to the right"),
     Key([mod, "control"], "j", lazy.layout.grow(), desc="Grow window"),
     Key([mod, "control"], "k", lazy.layout.shrink(), desc="Shrink window"),
-    # Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    # Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
-    # Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    # Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset secondary window sizes"),
     Key([mod], "r", lazy.layout.reset(), desc="Reset all window sizes"),
     # Toggle between split and unsplit sides of stack.
@@ -64,8 +61,8 @@ keys = [
     Key([mod], 'minus', lazy.prev_screen(), desc='Previous monitor'),
     Key([mod], 'equal', lazy.next_screen(), desc='Next monitor'),
     # Rofi
-    Key([mod], "d", lazy.spawn("/home/xuantung/.config/rofi/scripts/launcher_t1"), desc="Spawn app launcher"),
-    Key([mod], "p", lazy.spawn("/home/xuantung/.config/rofi/scripts/powermenu_t2")),
+    Key([mod], "d", lazy.spawn("/home/trinhtung/.config/rofi/scripts/launcher_t1"), desc="Spawn app launcher"),
+    Key([mod], "p", lazy.spawn("/home/trinhtung/.config/rofi/scripts/powermenu_t2")),
     # Screenshot
     Key(["control", "mod3"], "super_r", lazy.spawn("xfce4-screenshooter -w"), desc="Screenshot a window"),
     Key(["control", "shift"], "super_r", lazy.spawn("xfce4-screenshooter -r"), desc="Screenshot part of the screen"),

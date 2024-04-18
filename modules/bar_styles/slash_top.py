@@ -244,15 +244,15 @@ class SlashTop:
                     objname="org.mpris.MediaPlayer2.spotify"
                 )
         mpris2 = [
-                    mpris2_spotify,
-                    widget.Sep(
-                            linewidth=0,
-                            size_percent=60,
-                            background=colors.get('border')+OPAQUE,
-                            foreground=colors.get('background'),
-                            padding=int(PAD)
-                        ),
-                    mpris2_firefox
+                    mpris2_spotify
+                    # widget.Sep(
+                    #         linewidth=0,
+                    #         size_percent=60,
+                    #         background=colors.get('border')+OPAQUE,
+                    #         foreground=colors.get('background'),
+                    #         padding=int(PAD)
+                    #     ), 
+                    # mpris2_firefox
                     # mpris2_all
                   ]
 

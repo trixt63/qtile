@@ -1,13 +1,17 @@
 # My Qtile configs
 
 ## 1. Presiquities:
-- **python 3**: of course
-- **[Font Awesome 5](https://fontawesome.com/v5/search)**
+- **python 3.11**: of course
+- python311-dbus_next
+- **[Font Awesome 5](https://fontawesome.com/v5/search)**r
+- playerctl
 - **feh**: to set wallpaper
 - **brightnessctl**: to mofify backlight brightness
 - **pavu**: to modify sound profile
 - **xfce4-goodies**: for notifications, power manager, task manager and screenshots
 - **[autorandr](https://github.com/phillipberndt/autorandr)**: Auto config monitors for X11
+- rofi and [rofi themes](https://github.com/adi1090x/rofi)
+- picom
 
 ## 2. Recommended packages:
 - **nm-applet**: to monitor network

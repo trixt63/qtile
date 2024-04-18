@@ -1,4 +1,4 @@
-from .color_scheme import ColorScheme
+# from .color_scheme import ColorScheme
 
 
 class SpaceGray():
