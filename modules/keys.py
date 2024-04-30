@@ -5,7 +5,7 @@ from libqtile.utils import guess_terminal
 mod = "mod4"
 terminal = guess_terminal()
 
-sink_name = "alsa_output.pci-0000_07_00.6.HiFi__hw_Generic_1__sink" 
+sink_name = "@DEFAULT_SINK@"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
