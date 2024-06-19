@@ -7,10 +7,7 @@
 #Settings (only needed on Tumbleweed so far)
 xfsettingsd &
 #input method
-# ibus-daemon &
 fcitx5 &
-# network manager
-nm-applet &
 #Power management
 xfce4-power-manager &
 #Bluetooth manager
@@ -25,6 +22,8 @@ discord &
 thunderbird &
 #Dictionary
 goldendict &
+# network manager
+nm-applet &
 #Anki
 flatpak run net.ankiweb.Anki &
 #Rclone
