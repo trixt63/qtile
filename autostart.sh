@@ -24,8 +24,6 @@ thunderbird &
 goldendict &
 # network manager
 nm-applet &
-#Anki
-flatpak run net.ankiweb.Anki &
 #Rclone
 #rclone mount --daemon "Google Drive:" /home/trinhtung/Google_Drive/xuantung.trinh.63/ &
 sleep 1 && xkbcomp /home/trinhtung/.config/Xkeymap $DISPLAY &
