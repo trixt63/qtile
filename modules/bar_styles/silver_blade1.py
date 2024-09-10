@@ -36,13 +36,13 @@ class SilverBlades1:
                         ),
                         lower_left_triangle(foreground=colors.background_unfocus),
                         widget.WindowName(
-                            foreground=colors.white2,
+                            foreground=colors.light1,
                             # padding=12,
                             fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=60
                         ),
                         widget.Mpris2(
-                            foreground=colors.white2,
+                            foreground=colors.light1,
                             name="spotify",
                             paused_text=" Pause",
                             playing_text=" {track}",
@@ -50,15 +50,15 @@ class SilverBlades1:
                             display_metadata=["xesam:title", "xesam:artist"],
                             objname="org.mpris.MediaPlayer2.spotify"
                         ),
-                        lower_right_triangle(foreground=colors.white2),
+                        lower_right_triangle(foreground=colors.light1),
                         widget.CPU(
                             format=' {load_percent}%',
                             foreground=colors.black[1:],
-                            background=colors.white2[1:],
+                            background=colors.light1[1:],
                             padding=0,
                             update_interval=5.0,
                         ),
-                        lower_right_triangle(foreground=colors.white, background=colors.white2),
+                        lower_right_triangle(foreground=colors.white, background=colors.light1),
                         widget.Memory(
                             format='{MemUsed: .2f}{mm}',
                             measure_mem='G',
@@ -67,21 +67,21 @@ class SilverBlades1:
                             padding=0,
                             update_interval=5.0,
                         ),
-                        lower_right_triangle(foreground=colors.white2, background=colors.white),
+                        lower_right_triangle(foreground=colors.light1, background=colors.white),
                         widget.Volume(
                             padding=2,
                             theme_path='/usr/share/icons/Papirus-Light/24x24/panel/',
-                            background=colors.white2[1:],
+                            background=colors.light1[1:],
                             foreground=colors.black[1:],
                         ),
                         widget.Volume(
                             fmt='{}',
                             font='Font Awesome 5 Free Solid',
                             # padding=0,
-                            background=colors.white2[1:],
+                            background=colors.light1[1:],
                             foreground=colors.black[1:],
                         ),
-                        lower_right_triangle(foreground=colors.white, background=colors.white2),
+                        lower_right_triangle(foreground=colors.white, background=colors.light1),
                         widget.BatteryIcon(
                             theme_path='/usr/share/icons/Papirus-Light/24x24/panel/',
                             padding=1,
@@ -99,16 +99,16 @@ class SilverBlades1:
                             background=colors.white,
                             foreground=colors.black
                         ),
-                        lower_right_triangle(foreground=colors.white2, background=colors.white),
+                        lower_right_triangle(foreground=colors.light1, background=colors.white),
                         widget.Clock(
                             # format="%Y-%m-%d %a %I:%M %p",
                             format=" %a, %b %d   %I:%M %p",
                             font='Font Awesome 5 Free Solid',
                             padding=0,
-                            background=colors.white2,
+                            background=colors.light1,
                             foreground=colors.black,
                         ),
-                        lower_right_triangle(foreground=colors.white3, background=colors.white2),
+                        lower_right_triangle(foreground=colors.white3, background=colors.light1),
                         widget.Systray(
                             padding=4,
                             background=colors.white3
@@ -151,13 +151,13 @@ class SilverBlades1:
                         ),
                         lower_left_triangle(foreground=colors.black3),
                         widget.WindowName(
-                            foreground=colors.white2,
+                            foreground=colors.light1,
                             # padding=12,
                             fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=60
                         ),
                         widget.Mpris2(
-                            foreground=colors.white2,
+                            foreground=colors.light1,
                             name="spotify",
                             stop_pause_text="Paused", scroll_chars=45,
                             display_metadata=["xesam:title", "xesam:artist"],

@@ -1,7 +1,7 @@
 # from .color_scheme import ColorScheme
 
 
-class SpaceGray():
+class SpaceGray:
     def __init__(self):
         self.white0 = '#ffffff'
         self.black0 = '#000000'
@@ -26,7 +26,6 @@ class SpaceGray():
 
         self.yellow2 = '#fecc66'
         self.cyan2 = '#85A7A5'
-
 
         self.colors = {
                 'background': self.black2,

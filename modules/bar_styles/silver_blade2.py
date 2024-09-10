@@ -37,7 +37,7 @@ class SilverBlades2:
                     ),
                     lower_left_triangle(foreground=colors.black3),
                     widget.WindowName(
-                        foreground=colors.white2,
+                        foreground=colors.light1,
                         # padding=12,
                         fontsize=widget_defaults.get('fontsize') - 1,
                         max_chars=60
@@ -47,15 +47,15 @@ class SilverBlades2:
                         icon_size=18
                     ),
 
-                    lower_right_triangle(foreground=colors.white2),
+                    lower_right_triangle(foreground=colors.light1),
                     widget.CPU(
                         format=' {load_percent}%',
                         foreground=colors.black[1:],
-                        background=colors.white2[1:],
+                        background=colors.light1[1:],
                         padding=0,
                         update_interval=5.0,
                     ),
-                    lower_right_triangle(foreground=colors.white, background=colors.white2),
+                    lower_right_triangle(foreground=colors.white, background=colors.light1),
                     widget.Memory(
                         format='{MemUsed: .2f}{mm}',
                         measure_mem='G',
@@ -64,21 +64,21 @@ class SilverBlades2:
                         padding=0,
                         update_interval=5.0,
                     ),
-                    lower_right_triangle(foreground=colors.white2, background=colors.white),
+                    lower_right_triangle(foreground=colors.light1, background=colors.white),
                     widget.Volume(
                         padding=2,
                         theme_path='/usr/share/icons/Papirus-Light/24x24/panel/',
-                        background=colors.white2[1:],
+                        background=colors.light1[1:],
                         foreground=colors.black[1:],
                     ),
                     widget.Volume(
                         fmt='{}',
                         font='Font Awesome 5 Free Solid',
                         # padding=0,
-                        background=colors.white2[1:],
+                        background=colors.light1[1:],
                         foreground=colors.black[1:],
                     ),
-                    lower_right_triangle(foreground=colors.white, background=colors.white2),
+                    lower_right_triangle(foreground=colors.white, background=colors.light1),
                     widget.BatteryIcon(
                         theme_path='/usr/share/icons/Papirus-Light/24x24/panel/',
                         padding=1,
@@ -96,17 +96,17 @@ class SilverBlades2:
                         background=colors.white,
                         foreground=colors.black
                     ),
-                    lower_right_triangle(foreground=colors.white2, background=colors.white),
+                    lower_right_triangle(foreground=colors.light1, background=colors.white),
                     widget.Clock(
                         # format="%Y-%m-%d %a %I:%M %p",
                         format=" %a, %b %d   %I:%M %p",
                         font='Font Awesome 5 Free Solid',
-                        background=colors.white2,
+                        background=colors.light1,
                         foreground=colors.black
                     ),
                     widget.Sep(
                         linewidth=0,
-                        background=colors.white2,
+                        background=colors.light1,
                         padding=10
                     )
                     # widget.QuickExit(),
@@ -142,13 +142,13 @@ class SilverBlades2:
                         ),
                         lower_left_triangle(foreground=colors.black3),
                         widget.WindowName(
-                            foreground=colors.white2,
+                            foreground=colors.light1,
                             # padding=12,
                             fontsize=widget_defaults.get('fontsize') - 1,
                             max_chars=60
                         ),
                         widget.Mpris2(
-                            foreground=colors.white2,
+                            foreground=colors.light1,
                             name="spotify",
                             paused_text=" Pause",
                             playing_text=" {track}",
@@ -173,18 +173,18 @@ class SilverBlades2:
                         #     padding=0,
                         #     update_interval=5.0,
                         # ),
-                        lower_right_triangle(foreground=colors.white2),
+                        lower_right_triangle(foreground=colors.light1),
                         widget.Volume(
                             padding=2,
                             theme_path='/usr/share/icons/Papirus-Light/24x24/panel/',
-                            background=colors.white2[1:],
+                            background=colors.light1[1:],
                             foreground=colors.black[1:],
                         ),
                         widget.Volume(
                             fmt='{}',
                             font='Font Awesome 5 Free Solid',
                             # padding=0,
-                            background=colors.white2[1:],
+                            background=colors.light1[1:],
                             foreground=colors.black[1:],
                         ),
                         # lower_right_triangle(foreground=colors.white, background=colors.white2),
@@ -205,7 +205,7 @@ class SilverBlades2:
                         #     background=colors.white,
                         #     foreground=colors.black
                         # ),
-                        lower_right_triangle(foreground=colors.white, background=colors.white2),
+                        lower_right_triangle(foreground=colors.white, background=colors.light1),
                         widget.Clock(
                             # format="%Y-%m-%d %a %I:%M %p",
                             format="  %I:%M %p",

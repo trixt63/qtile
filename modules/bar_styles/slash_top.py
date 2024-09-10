@@ -5,26 +5,13 @@ from libqtile.config import Screen
 from modules.bar_styles.decorators import *
 from modules.widgets import widget_defaults
 from modules.utils import get_firefox_instance
-
+from modules.bar_styles.constants import ICONS_PATH, APPS_ICONS_PATH, UPDATE_INTERVAL
 
 OPAQUE = '00'
-icons_path = '/usr/share/icons/Papirus/22x22/panel/'
-apps_icons_path = '/usr/share/icons/Papirus/'
-# icons_path = '/usr/share/icons/Zafiro-Icons-Dark/panel/22/'
-# apps_icons_path = '/usr/share/icons/Zafiro-Icons-Light/'
-BARSIZE = 29
+BARSIZE = 30
 PAD = 9
 _DECORATOR_PADDING = ceil(BARSIZE/10)
 _DECORATOR_SIZE = ceil(BARSIZE*1.1 + 1) * 2
-UPDATE_INTERVAL = 5.0
-
-
-def _parse_text(text):
-    for string in ["MongoDB Compass - "]:
-        if text.startswith(string):
-            text = text.replace(string, "")
-            text = text + string[-3:] + string[:-3]
-        return text
 
 
 class SlashTop:
@@ -100,7 +87,7 @@ class SlashTop:
             borderwidth=1.5,
             icon_size=widget_defaults.get('fontsize') - 1,
             theme_mode='preferred',
-            theme_path=apps_icons_path,
+            theme_path=APPS_ICONS_PATH,
             margin=3,
             padding=3,
             parse_text=_parse_text,
@@ -143,7 +130,7 @@ class SlashTop:
 
         widget_battery = (
             widget.BatteryIcon(
-                theme_path=icons_path,
+                theme_path=ICONS_PATH,
                 **widget_defaults
             ),
             widget.Battery(
@@ -190,7 +177,7 @@ class SlashTop:
                     padding=PAD/2,
                     font=widget_defaults.get('font'),
                     fontsize=widget_defaults.get('fontsize') - 2,
-                    # fontshadow=colors.get('red'),
+                    fontshadow=colors.get('red'),
                     scroll=True,
                     scroll_clear=True,
                     scroll_delay=1,
@@ -208,19 +195,19 @@ class SlashTop:
                     background=colors.get('background') + OPAQUE,
                     padding=int(PAD/2),
                     font=widget_defaults.get('font'),
-                    fontsize=widget_defaults.get('fontsize') - 2,
+                    fontsize=widget_defaults.get('fontsize') - 3,
                     fontshadow=colors.get('red'),
                     scroll=True,
                     scroll_clear=False,
-                    scroll_delay=0.5,
-                    width=150,
+                    scroll_delay=1,
+                    width=140,
                     # max_chars=20,
                     name="firefox",
                     playing_text=" {track}",
                     paused_text=" Firefox",
                     no_metadata_text=" Firefox playing",
-                    display_metadata=['xesam:title'], # fMrmat='{xesam:title}',
-                    poll_interval=1,
+                    display_metadata=['xesam:title'],
+                    poll_interval=1,  # prevent the widget from disappearing
                     objname=f"org.mpris.MediaPlayer2.{get_firefox_instance()}"
                 )
         mpris2_spotify = widget.Mpris2(
@@ -228,37 +215,36 @@ class SlashTop:
                     background=colors.get('background') + OPAQUE,
                     padding=int(PAD/2),
                     font=widget_defaults.get('font'),
-                    fontsize=widget_defaults.get('fontsize') - 2,
+                    fontsize=widget_defaults.get('fontsize') - 3,
                     fontshadow=colors.get('green'),
                     scroll=True,
                     scroll_clear=True,
-                    scroll_delay=1,
-                    width=160,
+                    scroll_delay=0.5,
+                    width=150,
                     name="spotify",
-                    # playing_text=" {track}",
-                    # paused_text=" Paused",
                     playing_text=" {track}",
                     paused_text=" Spotify",
                     no_metadata_text=" Spotify playing",
-                    display_metadata=['xesam:title', 'xesam:artist'], # fMrmat='{xesam:title}',
+                    display_metadata=['xesam:title', 'xesam:artist'],
+                    # poll_interval=1,
                     objname="org.mpris.MediaPlayer2.spotify"
                 )
         mpris2 = [
-                    mpris2_spotify
+                    mpris2_spotify, 
                     # widget.Sep(
                     #         linewidth=0,
-                    #         size_percent=60,
+                    #         size_percent=40,
                     #         background=colors.get('border')+OPAQUE,
                     #         foreground=colors.get('background'),
                     #         padding=int(PAD)
                     #     ), 
-                    # mpris2_firefox
+                    mpris2_firefox
                     # mpris2_all
                   ]
 
         launchbar_config = {
             'progs': [(' \u23fb ', "/home/xuantung/.config/rofi/scripts/powermenu_t2", "Power menu")],
-            'default_icon': icons_path + 'system-devices-panel.svg',
+            'default_icon': ICONS_PATH + 'system-devices-panel.svg',
             # 'text_only': True,
             'background': colors.get('cyan'),
             'padding': 2,
@@ -281,9 +267,6 @@ class SlashTop:
                         ),
                         _upper_left_triangle,
 
-                        # widget.WindowName(
-                        #     **windowname_config
-                        # ),
                         widget.TaskList(**tasklist_config),
 
                         *MIDDLE_WIDGETS,
@@ -295,8 +278,6 @@ class SlashTop:
                         *mpris2, 
 
                         _upper_right_triangle,
-                        # thermal_sensor,
-                        # separator,
                         cpu_percentage,
                         separator,
                         memory_usage,
@@ -313,7 +294,6 @@ class SlashTop:
                             background=colors.get('background_unfocus'),
                             padding=(PAD-2)*2 - 3
                         ),
-                        # lower_left_triangle(foreground=colors.get('background_unfocus')),
                         _lower_left_triangle,
                         widget.Systray(
                             padding=int(PAD/2)+1,
@@ -348,9 +328,6 @@ class SlashTop:
                         ),
                         _upper_left_triangle,
 
-                        # widget.WindowName(
-                        #     **windowname_config
-                        # ),
                         widget.TaskList(**tasklist_config),
 
                         *MIDDLE_WIDGETS,
@@ -386,8 +363,6 @@ class SlashTop:
                     ],
                     BARSIZE,
                     background=colors.get('background') + OPAQUE,
-                    # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-                    # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
                 ),
             )
 
@@ -395,6 +370,15 @@ class SlashTop:
             screen1,
             screen2
         ]
+
+
+def _parse_text(text):
+    """remove redundant texts in some window names"""
+    for string in ["MongoDB Compass - "]:
+        if text.startswith(string):
+            text = text.replace(string, "")
+            text = text + string[-3:] + string[:-3]
+        return text
 
 
 def _get_highlight_color(colors):
@@ -406,4 +390,3 @@ def _get_highlight_color(colors):
                    colors.get('background_unfocus'),
                    colors.get('background_alt')]
     return next(color for color in colors_list if color is not None)
-

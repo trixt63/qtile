@@ -8,16 +8,16 @@
 xfsettingsd &
 #input method
 fcitx5 &
-#Power management
-xfce4-power-manager &
-#Bluetooth manager
-blueman-applet &
 #Clipboard
 xfce4-clipman &
 #Redshift for eyestrain
 redshift-gtk &
 #Discord
 discord &
+#Power management
+xfce4-power-manager &
+#Bluetooth manager
+blueman-applet &
 #Mail client
 thunderbird &
 #Dictionary
