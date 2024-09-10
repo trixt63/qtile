@@ -11,6 +11,7 @@ icons_path = '/usr/share/icons/Papirus/24x24/panel/'
 
 
 class SimpleSlash:
+    """A solid bar, with two lighter-colored slashes at both ends. Bottom-made, but can be on top"""
     def __init__(self, colors) -> None:
         self.colors = colors
         # widgets

@@ -7,7 +7,7 @@ from modules.bar_styles.decorators import *
 
 
 class SilverBlades2:
-    """An array silver blades on the right corner.
+    """An array silver blades on the right corner - Top bar version.
     The middle of the bar is transparent. The Systray is also moved to
     the right of the middle part"""
     def __init__(self, colors) -> None:

@@ -49,31 +49,35 @@ class Gruvbox:
         self.faded_orange = '#af3a03'
 
         self.colors = {
-                'background': self.dark0,
-                'foreground': self.light0,
+            # normal fg & bg
+            'background': self.dark4,
+            'foreground': self.light0,
 
-                'foreground_unfocus': self.light3,
-                'background_unfocus': self.dark3,
+            # groupbox fg & bg
+            'foreground_unfocus': self.light0,
+            'background_unfocus': self.dark0,
 
-                'foreground_focus': self.white,
-                'background_focus': self.neutral_yellow,
-                'background_focus_highlight': self.dark2,  # incase using highlight_method = line
+            'foreground_focus': self.white,
+            'background_focus': self.neutral_yellow,
+            'background_focus_highlight': self.dark2,  # incase using highlight_method = line
 
-                'background_focus_alt': self.neutral_aqua,  # focused workspace on unfocused monitor
-                'background_alt': self.dark3,  # focused workspace of the other monitor (regardless if it's the focused or focused one)
-                # 'background_alt': self.bg3,  # focused workspace of the other monitor (regardless if it's the focused or focused one)
+            'background_focus_alt': self.neutral_aqua,  # focused workspace on unfocused monitor
+            'background_alt': self.dark3,  # focused workspace of the other monitor (regardless if it's the focused or focused one)
+            # 'background_alt': self.bg3,  # focused workspace of the other monitor (regardless if it's the focused or focused one)
 
-                'border': self.dark0,
-                'border_focus': self.neutral_yellow,
+            # border
+            'border': self.dark0,
+            'border_focus': self.neutral_yellow,
 
-                'urgent': self.neutral_red,
+            'urgent': self.neutral_red,
 
-                'red':'#bf616a',
-                'yellow': '#ebcb8b',
-                'cyan': '#96b5b4',
-                'blue': '#7d8fa4',
-                'green': self.neutral_green
-            }
+            # others
+            'red': '#bf616a',
+            'yellow': '#ebcb8b',
+            'cyan': '#96b5b4',
+            'blue': '#7d8fa4',
+            'green': self.neutral_green
+        }
 
     def get(self, key, default=None):
         return self.colors.get(key, default)

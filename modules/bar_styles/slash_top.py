@@ -15,6 +15,7 @@ _DECORATOR_SIZE = ceil(BARSIZE*1.1 + 1) * 2
 
 
 class SlashTop:
+    """Three-parted bar"""
     def __init__(self, colors) -> None:
         self.colors = colors
         self.highlight_method = 'line'
