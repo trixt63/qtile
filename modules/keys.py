@@ -4,8 +4,10 @@ from libqtile.utils import guess_terminal
 
 mod = "mod4"
 terminal = guess_terminal()
-
 sink_name = "@DEFAULT_SINK@"
+
+PATH_LAUNCHER = "/home/trinhtung/.config/rofi/scripts/launcher_t1"
+PATH_POWERMENU = "/home/trinhtung/.config/rofi/scripts/powermenu_t2"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -61,8 +63,8 @@ keys = [
     Key([mod], 'minus', lazy.prev_screen(), desc='Previous monitor'),
     Key([mod], 'equal', lazy.next_screen(), desc='Next monitor'),
     # Rofi
-    Key([mod], "d", lazy.spawn("/home/trinhtung/.config/rofi/scripts/launcher_t1"), desc="Spawn app launcher"),
-    Key([mod], "p", lazy.spawn("/home/trinhtung/.config/rofi/scripts/powermenu_t2")),
+    Key([mod], "d", lazy.spawn(PATH_LAUNCHER), desc="spawn app launcher"),
+    Key([mod], "p", lazy.spawn(PATH_POWERMENU), desc="spawn power menu"),
     # Screenshot
     Key(["control", "mod3"], "super_r", lazy.spawn("xfce4-screenshooter -w"), desc="Screenshot a window"),
     Key(["control", "shift"], "super_r", lazy.spawn("xfce4-screenshooter -r"), desc="Screenshot part of the screen"),
@@ -73,6 +75,11 @@ keys = [
     Key([], "XF86AudioRaiseVolume", lazy.spawn(f"pactl set-sink-volume {sink_name} +5%")),
     Key([], "XF86AudioMute", lazy.spawn(f"pactl set-sink-mute {sink_name} toggle")),
     Key([], "XF86AudioMicMute", lazy.spawn("pactl set-source-mute @DEFAULT_SOURCE@ toggle")),
+    # Media
+    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
+    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
+    Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
+    # Key([], "XF86Eject", lazy.spawn("")),
     # Brightness
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
