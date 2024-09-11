@@ -32,9 +32,10 @@ There are a few constants that I'm too lazy to refactor, so you will have to cha
 
 ## 4. Notes
 - Quit command (to put into rofi): `qtile cmd-obj -o cmd -f shutdown`
+- Config for bar and color schemes are in `modules/screens.py`
 
 ## 5. Example
-- A screenshot with *simple_slash_translucent* bar style, with a minimal wallpaper:
+- A screenshot with *simple_slash_top* bar style, with a minimal wallpaper:
     ![simple_slash_translucent](./assets/examples/simple_slash_translucent.png)
-- With *slash_top* bar with Saudi Rocks wallpaper:
+- With *cockpit* bar with Saudi Rocks wallpaper:
     ![simple_slash_translucent](./assets/examples/slash_top_with_saudi_rocks.png)
