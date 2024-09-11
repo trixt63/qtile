@@ -2,10 +2,10 @@ from math import ceil, floor
 from libqtile import bar
 from libqtile.config import Screen
 
-from modules.bar_styles.decorators import *
+from modules.bar_styles._decorators import *
 from modules.widgets import widget_defaults
 from modules.utils import get_firefox_instance
-from modules.bar_styles.constants import ICONS_PATH, APPS_ICONS_PATH, UPDATE_INTERVAL
+from modules.bar_styles._constants import ICONS_PATH, APPS_ICONS_PATH, UPDATE_INTERVAL
 
 OPAQUE = '00'
 BARSIZE = 30
@@ -14,7 +14,7 @@ _DECORATOR_PADDING = ceil(BARSIZE/10)
 _DECORATOR_SIZE = ceil(BARSIZE*1.1 + 1) * 2
 
 
-class SlashTop:
+class Cockpit:
     """Three-parted bar"""
     def __init__(self, colors) -> None:
         self.colors = colors

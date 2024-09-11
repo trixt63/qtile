@@ -1,10 +1,9 @@
 import os
 
 from libqtile import bar
-from modules.widgets import *
+from modules.widgets import widget, widget_defaults, extension_defaults
 from libqtile.config import Screen
-
-from modules.bar_styles.decorators import *
+from modules.bar_styles._decorators import *
 
 
 class SilverBlades1:

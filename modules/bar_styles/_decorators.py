@@ -1,8 +1,8 @@
-from modules.widgets import *
+from modules.widgets import widget, widget_defaults, extension_defaults
 
 
-"""Some how, lower triangles can't use Nerd font character, 
-so I'm stuck with standard unicode characters for the following 2"""
+# Somehow, lower triangles can't use Nerd font character,
+# so I'm stuck with standard unicode characters for the following 2
 def lower_right_triangle(background=None,
                          foreground='#ffffff',
                          fontsize=65):
@@ -54,7 +54,7 @@ def upper_left_triangle(background=None,
     )
 
 
-"""These 2 use Nerd font characters tho"""
+# These 2 use Nerd font characters though
 def left_triangle(background=None,
                   foreground='#ffffff',
                   fontsize=44):
@@ -69,8 +69,8 @@ def left_triangle(background=None,
 
 
 def right_triangle(background=None,
-                  foreground='#ffffff',
-                  fontsize=43):
+                   foreground='#ffffff',
+                   fontsize=43):
     return widget.TextBox(
         text='\uf44a',
         # text='\u25B6',  # unicode chracter

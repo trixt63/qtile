@@ -1,7 +1,7 @@
 from libqtile import bar
 from libqtile.config import Screen
 
-from modules.bar_styles.decorators import *
+from modules.bar_styles._decorators import *
 from modules.widgets import widget_defaults
 
 
