@@ -1,8 +1,10 @@
 from libqtile.config import Key, Group, Match
 from libqtile.lazy import lazy
-from .keys import keys, mod
 
-# groups = [Group(i) for i in "123456789"]
+from modules.keys import keys, mod
+
+# Assign a value for _LABEL if you want all your groups share a label (e.g.: _LABEL = "")
+_LABEL = None
 
 groups = [
     Group("1", matches=[Match(wm_class=["firefox"])]),
@@ -35,6 +37,10 @@ groups = [
     Group("9")
 ]
 
+if _LABEL:
+    for g in groups:
+        g.label = _LABEL
+
 for i in groups:
     keys.extend(
         [
@@ -54,7 +60,10 @@ for i in groups:
             # ),
             # Or, use below if you prefer not to switch to that group.
             # mod1 + shift + letter of group = move focused window to group
-            Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
+            Key(
+                [mod, "shift"],
+                i.name,
+                lazy.window.togroup(i.name),
                 desc="move focused window to group {}".format(i.name)),
         ]
     )

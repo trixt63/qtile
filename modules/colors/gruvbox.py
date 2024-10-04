@@ -70,13 +70,6 @@ class Gruvbox:
             'border_focus': self.neutral_yellow,
 
             'urgent': self.neutral_red,
-
-            # others
-            'red': '#bf616a',
-            'yellow': '#ebcb8b',
-            'cyan': '#96b5b4',
-            'blue': '#7d8fa4',
-            'green': self.neutral_green
         }
 
     def get(self, key, default=None):

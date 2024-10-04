@@ -13,7 +13,7 @@ UPDATE_INTERVAL = 5.0
 
 
 class SimpleSlashTop:
-    """Top bar, with 2 slashes on both ends, and a transparent middle part with Mpris2 widget at the center"""
+    """Top bar, with 2 slashes on both ends, and transparent middle parts with Mpris2 widget at the center"""
     def __init__(self, colors) -> None:
         self.colors = colors
         self.highlight_method = 'line'

@@ -3,7 +3,7 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 mod = "mod4"
-terminal = guess_terminal()
+terminal = guess_terminal(preference='xfce4-terminal')
 sink_name = "@DEFAULT_SINK@"
 
 PATH_LAUNCHER = "/home/trinhtung/.config/rofi/scripts/launcher_t1"

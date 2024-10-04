@@ -78,6 +78,7 @@ class Cockpit:
             # font='Lato',
             font=widget_defaults.get('font'),
             foreground=colors.get('background'),
+            # foreground=colors.get('foreground_unfocus'),
             background=colors.get('background') + OPAQUE,
             fontsize=widget_defaults.get('fontsize') - 2,
             max_title_width=210,
@@ -117,9 +118,10 @@ class Cockpit:
 
         widget_volume = (
                     widget.Volume(
-                        # theme_path=icons_path,
+                        font="Font Awesome 6 Free Solid",
+                        padding=PAD/2,
                         emoji=True,
-                        **widget_defaults
+                        emoji_list=['', '', '', ''],
                     ),
                     widget.Volume(
                         fmt='{}',
@@ -172,32 +174,33 @@ class Cockpit:
             update_interval=UPDATE_INTERVAL
         )
 
-        mpris2_all = widget.Mpris2(
-                    foreground=colors.get('background'),
-                    background=colors.get('background') + OPAQUE,
-                    padding=PAD/2,
-                    font=widget_defaults.get('font'),
-                    fontsize=widget_defaults.get('fontsize') - 2,
-                    fontshadow=colors.get('red'),
-                    scroll=True,
-                    scroll_clear=True,
-                    scroll_delay=1,
-                    width=180,
-                    # max_chars=20,
-                    name="mpris2",
-                    playing_text=" {track}",
-                    paused_text=' <span font_style="italic">{track}</span>',
-                    display_metadata=['xesam:title'], # fMrmat='{xesam:title}',
-                    poll_interval=0.5,
-                    objname=None
-                )
+        # mpris2_all = widget.Mpris2(
+        #             foreground=colors.get('background'),
+        #             background=colors.get('background') + OPAQUE,
+        #             padding=ceil(PAD),
+        #             font=widget_defaults.get('font'),
+        #             fontsize=widget_defaults.get('fontsize') - 2,
+        #             fontshadow=colors.get('red'),
+        #             scroll=True,
+        #             scroll_clear=True,
+        #             scroll_delay=1,
+        #             width=180,
+        #             # max_chars=20,
+        #             name="mpris2",
+        #             playing_text=" {track}",
+        #             paused_text=' <span font_style="italic">{track}</span>',
+        #             display_metadata=['xesam:title'], # fMrmat='{xesam:title}',
+        #             poll_interval=0.5,
+        #             objname=None
+        #         )
         mpris2_firefox = widget.Mpris2(
-                    foreground=colors.get('background'),
                     background=colors.get('background') + OPAQUE,
-                    padding=int(PAD/2),
+                    foreground=colors.get('background'),
+                    fontshadow=colors.get('red'),
+                    # foreground=colors.get('red'),
+                    padding=ceil(PAD),
                     font=widget_defaults.get('font'),
                     fontsize=widget_defaults.get('fontsize') - 3,
-                    fontshadow=colors.get('red'),
                     scroll=True,
                     scroll_clear=False,
                     scroll_delay=1,
@@ -212,12 +215,13 @@ class Cockpit:
                     objname=f"org.mpris.MediaPlayer2.{get_firefox_instance()}"
                 )
         mpris2_spotify = widget.Mpris2(
-                    foreground=colors.get('background'),
                     background=colors.get('background') + OPAQUE,
-                    padding=int(PAD/2),
+                    foreground=colors.get('background'),
+                    fontshadow=colors.get('green'),
+                    # foreground=colors.get('green'),
+                    padding=ceil(PAD/2),
                     font=widget_defaults.get('font'),
                     fontsize=widget_defaults.get('fontsize') - 3,
-                    fontshadow=colors.get('green'),
                     scroll=True,
                     scroll_clear=True,
                     scroll_delay=0.5,
@@ -234,22 +238,15 @@ class Cockpit:
                     mpris2_spotify, 
                     # widget.Sep(
                     #         linewidth=0,
-                    #         size_percent=40,
+                    #         size_percent=20,
                     #         background=colors.get('border')+OPAQUE,
                     #         foreground=colors.get('background'),
                     #         padding=int(PAD)
-                    #     ), 
+                    #     ),
                     mpris2_firefox
                     # mpris2_all
                   ]
 
-        launchbar_config = {
-            'progs': [(' \u23fb ', "/home/xuantung/.config/rofi/scripts/powermenu_t2", "Power menu")],
-            'default_icon': ICONS_PATH + 'system-devices-panel.svg',
-            # 'text_only': True,
-            'background': colors.get('cyan'),
-            'padding': 2,
-        }
         #####################
         #      Screens      #
         #####################
