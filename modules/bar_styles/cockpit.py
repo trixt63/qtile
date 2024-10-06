@@ -48,7 +48,7 @@ class Cockpit:
         _lower_left_triangle = lower_left_triangle(**_decorator_configs)
 
         groupbox_configs = dict(
-            # padding_y=6,
+            font=widget_defaults['font'],
             padding_x=PAD-1,
             background=colors.get('background_unfocus'),
             highlight_method=self.highlight_method,
@@ -119,7 +119,7 @@ class Cockpit:
         widget_volume = (
                     widget.Volume(
                         font="Font Awesome 6 Free Solid",
-                        padding=PAD/2,
+                        padding=PAD/2-1,
                         emoji=True,
                         emoji_list=['', '', '', ''],
                     ),
@@ -127,7 +127,7 @@ class Cockpit:
                         fmt='{}',
                         background=colors.get('background_unfocus'),
                         foreground=colors.get('foreground'),
-                        padding=0
+                        padding=1
                     )
         )
 
@@ -137,11 +137,6 @@ class Cockpit:
                 **widget_defaults
             ),
             widget.Battery(
-                # format='{char} {percent:2.0%}',
-                # charge_char='',
-                # discharge_char='',
-                # empty_char='',
-                # unknown_chFalsear='',
                 format='{percent:2.0%}',
                 **widget_defaults
             )
@@ -244,7 +239,6 @@ class Cockpit:
                     #         padding=int(PAD)
                     #     ),
                     mpris2_firefox
-                    # mpris2_all
                   ]
 
         #####################

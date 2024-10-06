@@ -2,40 +2,92 @@ from math import ceil, floor
 from libqtile import bar
 from libqtile.config import Screen
 
-from modules.bar_styles._decorators import *
+from qtile_extras import widget
+from qtile_extras.widget.decorations import PowerLineDecoration
+from qtile_extras.layout.decorations import ConditionalBorder, GradientBorder, GradientFrame, RoundedCorners
+from qtile_extras.widget.decorations import RectDecoration
+
 from modules.widgets import widget_defaults
 from modules.utils import get_firefox_instance
 from modules.bar_styles._constants import ICONS_PATH, APPS_ICONS_PATH, UPDATE_INTERVAL
+from modules.bar_styles._decorators import lower_left_triangle, lower_right_triangle
 
 OPAQUE = 'ff'
-BARSIZE = 30
+BARSIZE = 33
 PAD = 9
 _DECORATOR_PADDING = ceil(BARSIZE/10)
 _DECORATOR_SIZE = ceil(BARSIZE*1.1 + 1) * 2
 
 ICONS_PATH_SMALL = '/usr/share/icons/Papirus/16x16@2x/panel/'
 
+# memory = widget.Memory(
+#     format=' {MemPercent}%',
+# )
+#
+# cpu = widget.CPU(
+#     format='󰘚 {load_percent}%',
+# )
+
 class Simple:
     def __init__(self, colors):
         self.colors = colors
-        self.highlight_method = 'line'
+        self.highlight_method = 'block'
 
         widget_defaults.update({
-            'background': colors.get('background'),
-            'foreground': colors.get('foreground'),
-            'fontsize': floor(BARSIZE/2)
+            'padding': 10
         })
 
-        # configs
-        tasklist_config = dict(
-            font=widget_defaults.get('font'),
-            foreground=colors.get('foreground_unfocus'),
+        # widgets
+        current_layout_icon = widget.CurrentLayoutIcon(
+            background=colors.get('background_unfocus'),
+            fontsize=widget_defaults.get('fontsize') - 1,
+            padding=7
+        )
+
+        clock = widget.Clock(
+                format=" %H:%M",
+                **widget_defaults
+        )
+
+        _groupbox_config = dict(
+            # use _LABEL for group
+            fontsize=15,
+            foreground=colors.get('foreground'),
             background=colors.get('background'),
+            highlight_method='border',
+            borderwidth=0,
+            padding=7,
+            disable_drag=True,
+            # colors
+            active=colors.get('foreground_focus'),
+            inactive=colors.get('foreground_unfocus'),
+            # for the focused screen
+            this_current_screen_border=colors.get('background_focus'),
+            other_current_screen_border=colors.get('background_alt'),
+            # for the other screen
+            this_screen_border=colors.get('background_focus_alt'),
+            other_screen_border=colors.get('background_alt'),
+
+            block_highlight_text_color=colors['orange'],
+            # deco
+            decorations=[rectdeco(colors['background_unfocus'])]
+        )
+        groupbox = widget.GroupBox(**_groupbox_config)
+
+
+        _tasklist_config = dict(
+            # font='Lato',
+            font=widget_defaults.get('font'),
+            foreground=colors.get('background'),
+            # foreground=colors.get('foreground_unfocus'),
+            background=colors.get('background') + OPAQUE,
             fontsize=widget_defaults.get('fontsize') - 2,
             max_title_width=210,
             border=colors.get('background_focus'),
-            highlight_method='border',
-            borderwidth=1.5,
+            highlight_method='block',
+            # border=colors.get('foreground'),
+            # highlight_method='border',
+            # borderwidth=1.5,
             icon_size=widget_defaults.get('fontsize') - 1,
             theme_mode='preferred',
             theme_path=APPS_ICONS_PATH,
@@ -46,40 +98,12 @@ class Simple:
             markup_minimized='<span font_style="italic">_{}</span>',
             markup_maximized='<span>[] {}</span>'
         )
+        tasklist = widget.TaskList(**_tasklist_config)
 
-        # widgets
-        screen_widgets: list = [
-            widget.Clock(
-                # format=" %a, %b %d   %H:%M",
-                format="  %H:%M  %b %d",
-                # font='Font Awesome 5 Free Solid',
-                padding=6,
-                foreground=colors.get('foreground'),
-            ),
-            widget.TaskList(**tasklist_config),
-            widget.CurrentLayoutIcon(
-                # background=colors.get('background_unfocus'),
-                fontsize=widget_defaults.get('fontsize') - 1,
-                padding=7
-            ),
-            widget.GroupBox(
-                padding_y=6,
-                padding_x=6,
-                # background=colors.get('background_unfocus'),
-                highlight_method=self.highlight_method,
-                rounded=False,
-                active=colors.get('foreground_focus'),
-                inactive=colors.get('foreground_unfocus'),
-                # for the focused screen
-                this_current_screen_border=colors.get('background_focus'),
-                other_current_screen_border=colors.get('background_alt'),
-                highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
-                # for the other screen
-                this_screen_border=colors.get('background_focus_alt'),
-                other_screen_border=colors.get('background_alt'),
-                disable_drag=True
-            ),
-            widget.Spacer(),
+        widgets_list = [
+            current_layout_icon,
+            groupbox,
+            tasklist,
             widget.Mpris2(
                 foreground=colors.get('foreground_unfocus'),
                 padding=0,
@@ -92,17 +116,52 @@ class Simple:
                 display_metadata=["xesam:title", "xesam:artist"],
                 objname="org.mpris.MediaPlayer2.spotify"
             ),
-            widget.Volume(
-                # fontsize=,
-                font="Font Awesome 6 Free Solid",
+            lower_right_triangle(foreground=colors.get('background_unfocus')),
+            # widget.ThermalSensor(
+            #     format=' {temp:.0f}{unit}',
+            #     foreground=colors.get('foreground')[1:],
+            #     background=colors.get('background_unfocus')[1:],
+            #     update_interval=UPDATE_INTERVAL,
+            #     padding=PAD
+            # ),
+            widget.Sep(
+                linewidth=0,
+                background=colors.get('background_unfocus'),
+                padding=PAD + 1
+            ),
+            widget.CPU(
+                format=' {load_percent}%',
+                foreground=colors.get('foreground')[1:],
+                background=colors.get('background_unfocus')[1:],
+                padding=0,
+                update_interval=UPDATE_INTERVAL,
+            ),
+            widget.Sep(
+                linewidth=0,
+                background=colors.get('background_unfocus'),
+                padding=PAD + 1
+            ),
+            widget.Memory(
+                format=' {MemUsed:.2f}{mm}',
+                measure_mem='G',
+                foreground=colors.get('foreground')[1:],
+                background=colors.get('background_unfocus')[1:],
                 padding=PAD,
+                update_interval=UPDATE_INTERVAL,
+            ),
+            widget.Sep(
+                linewidth=0,
+                background=colors.get('background_unfocus'),
+                padding=PAD - 2
+            ),
+            widget.Volume(
+                padding=2,
+                # theme_path=icons_path,
                 emoji=True,
-                emoji_list=['🔇', '', '', ''],
                 background=colors.get('background_unfocus')[1:],
             ),
             widget.Volume(
                 fmt='{}',
-                mute_format='Muted',
                 padding=2,
                 background=colors.get('background_unfocus')[1:],
                 foreground=colors.get('foreground')[1:],
@@ -111,9 +170,16 @@ class Simple:
             widget.Sep(
                 linewidth=0,
                 background=colors.get('background_unfocus'),
-                padding=0
+                padding=PAD
             ),
-
+            widget.Clock(
+                # format=" %a, %b %d   %H:%M",
+                format=" %b %d   %H:%M",
+                # font='Font Awesome 5 Free Solid',
+                padding=PAD,
+                background=colors.get('background_unfocus'),
+                foreground=colors.get('foreground'),
+            ),
             widget.Systray(
                 padding=6,
                 background=colors.get('background_unfocus'),
@@ -121,6 +187,13 @@ class Simple:
             widget.Sep(
                 linewidth=0,
                 background=colors.get('background_unfocus'),
+                padding=int(PAD / 3)
+            ),
+            widget.LaunchBar(
+                progs=[('Power', "/home/xuantung/.config/rofi/bin/menu_powermenu", "Power menu")],
+                default_icon='/usr/share/icons/Papirus/22x22/panel/system-devices-panel.svg',
+                background=colors.get('background_unfocus'),
+                foreground=colors.get('foreground'),
                 padding=int(PAD / 3)
             ),
             widget.Sep(
@@ -134,9 +207,11 @@ class Simple:
         # screen 1
         screen1 = Screen(
             top=bar.Bar(
-                widgets=screen_widgets,
+                widgets=widgets_list,
                 size=BARSIZE,
                 background=colors.get('background') + OPAQUE,
+                # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+                # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
             ),
         )
 
@@ -149,21 +224,7 @@ class Simple:
                         padding=6
                     ),
                     widget.GroupBox(
-                        padding_y=6,
-                        padding_x=7,
-                        background=colors.get('background_unfocus'),
-                        highlight_method=self.highlight_method,
-                        rounded=False,
-                        active=colors.get('foreground_focus'),
-                        inactive=colors.get('foreground_unfocus'),
-                        # for the focused screen
-                        this_current_screen_border=colors.get('background_focus'),
-                        other_current_screen_border=colors.get('background_alt'),
-                        highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
-                        # for the other screen
-                        this_screen_border=colors.get('background_focus_alt'),
-                        other_screen_border=colors.get('background_alt'),
-                        disable_drag=True
+                        **_groupbox_config
                     ),
                     lower_left_triangle(foreground=colors.get('background_unfocus')),
                     widget.WindowName(
@@ -240,6 +301,16 @@ class Simple:
             screen1,
             screen2
         ]
+
+
+def rectdeco(hexcolor):
+    return RectDecoration(
+        filled=True,
+        colour=hexcolor,
+        padding_y= 5,
+        padding_x= 0,
+        radius=4
+    )
 
 
 def _parse_text(text):

@@ -4,6 +4,7 @@ from libqtile.lazy import lazy
 from modules.keys import keys, mod
 
 # Assign a value for _LABEL if you want all your groups share a label (e.g.: _LABEL = "")
+# _LABEL = ''
 _LABEL = None
 
 groups = [

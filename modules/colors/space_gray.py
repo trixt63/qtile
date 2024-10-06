@@ -23,7 +23,10 @@ class SpaceGray:
         self.green = '#87b379'
         self.blue = '#7d8fa4'
         self.cyan = '#96b5b4'
-        self.purple = '#a47996'
+        self.magenta = '#a47996'
+
+        self.orange = '#c5735e'
+        self.grey = "#4b5056"
 
         self.yellow2 = '#fecc66'
         self.cyan2 = '#85A7A5'
@@ -51,12 +54,14 @@ class SpaceGray:
 
             # others
             'black': self.black1,
-            'red': '#bf616a',
-            'yellow': '#ebcb8b',
-            'cyan': '#96b5b4',
-            'blue': '#7d8fa4',
+            'red': self.red,
+            'yellow': self.yellow,
+            'cyan': self.cyan,
+            'blue': self.blue,
             'green': self.green,
-            'white': self.white1
+            'white': self.white1,
+            'magenta': self.magenta,
+            'orange': self.orange
         }
 
     def get(self, color: str):
