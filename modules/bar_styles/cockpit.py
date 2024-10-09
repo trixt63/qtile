@@ -119,6 +119,8 @@ class Cockpit:
         widget_volume = (
                     widget.Volume(
                         font="Font Awesome 6 Free Solid",
+                        foreground=colors.get('foreground'),
+                        background=colors.get('background_unfocus'),
                         padding=PAD/2-1,
                         emoji=True,
                         emoji_list=['', '', '', ''],
