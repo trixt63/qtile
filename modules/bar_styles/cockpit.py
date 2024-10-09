@@ -143,13 +143,13 @@ class Cockpit:
         )
 
         cpu_percentage = widget.CPU(
-            format='󰻠 {load_percent}%',
+            format=' {load_percent}%',
             update_interval=UPDATE_INTERVAL,
             **widget_defaults
         )
 
         memory_usage = widget.Memory(
-            format='{MemUsed: .2f}{mm}',
+            format='󰘚{MemUsed: .2f}{mm}',
             measure_mem='G',
             update_interval=UPDATE_INTERVAL,
             **widget_defaults
@@ -238,7 +238,7 @@ class Cockpit:
                     #         foreground=colors.get('background'),
                     #         padding=int(PAD)
                     #     ),
-                    mpris2_firefox
+                    # mpris2_firefox
                   ]
 
         #####################

@@ -39,12 +39,14 @@ class SpaceGray:
             # groupbox fg & bg
             'foreground_unfocus': self.white4,
             'background_unfocus': self.black3,
+
+            # TODO: rename: background_alt -> background_focus_other, etc.
             'foreground_focus': self.white0,
             'background_focus': self.yellow2,
-            'background_focus_highlight': self.black5,  # incase using highlight_method = line
-
-            'background_focus_alt': self.cyan,  # focused workspace on unfocused monitor
             'background_alt': self.white5,  # focused workspace of the other monitor (regardless if it's the focused or focused one)
+            'background_focus_alt': self.cyan,  # focused workspace on unfocused monitor
+
+            'background_focus_highlight': self.black5,  # incase using highlight_method = line
 
             # border
             'border': self.black3,

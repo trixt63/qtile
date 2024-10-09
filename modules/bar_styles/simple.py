@@ -6,6 +6,8 @@ from qtile_extras import widget
 from qtile_extras.widget.decorations import PowerLineDecoration
 from qtile_extras.layout.decorations import ConditionalBorder, GradientBorder, GradientFrame, RoundedCorners
 from qtile_extras.widget.decorations import RectDecoration
+from qtile_extras.widget.groupbox2 import GroupBox2, GroupBoxRule, ScreenRule
+
 
 from modules.widgets import widget_defaults
 from modules.utils import get_firefox_instance
@@ -18,15 +20,20 @@ PAD = 9
 _DECORATOR_PADDING = ceil(BARSIZE/10)
 _DECORATOR_SIZE = ceil(BARSIZE*1.1 + 1) * 2
 
-ICONS_PATH_SMALL = '/usr/share/icons/Papirus/16x16@2x/panel/'
 
-# memory = widget.Memory(
-#     format=' {MemPercent}%',
-# )
-#
-# cpu = widget.CPU(
-#     format='󰘚 {load_percent}%',
-# )
+def set_label(rule, box):
+    if box.focused:
+        rule.text = "◉"
+    elif box.occupied:
+        rule.text = "◎"
+    else:
+        rule.text = "○"
+
+    return True
+
+
+GroupBoxRule().when(func=set_label)
+
 
 class Simple:
     def __init__(self, colors):
@@ -54,26 +61,40 @@ class Simple:
             fontsize=15,
             foreground=colors.get('foreground'),
             background=colors.get('background'),
-            highlight_method='border',
-            borderwidth=0,
+            highlight_method='text',
+            borderwidth=3,
             padding=7,
             disable_drag=True,
             # colors
             active=colors.get('foreground_focus'),
             inactive=colors.get('foreground_unfocus'),
-            # for the focused screen
+            # on the focused screen
             this_current_screen_border=colors.get('background_focus'),
             other_current_screen_border=colors.get('background_alt'),
-            # for the other screen
+            # on the not focused screen(s)
             this_screen_border=colors.get('background_focus_alt'),
             other_screen_border=colors.get('background_alt'),
 
-            block_highlight_text_color=colors['orange'],
+            # block_highlight_text_color=colors['orange'],
+            # highlight_color=colors.get("background_unfocus"),
+
             # deco
             decorations=[rectdeco(colors['background_unfocus'])]
         )
         groupbox = widget.GroupBox(**_groupbox_config)
 
+        _groupbox2_config = dict(
+            fontsize=20,
+            padding_x=5,
+            rules=[
+                  GroupBoxRule().when(func=set_label),
+                  GroupBoxRule(text_colour=colors['background_focus']).when(screen=ScreenRule.THIS),
+                  GroupBoxRule(text_colour=colors['background_focus_alt']).when(screen=ScreenRule.OTHER),
+                  GroupBoxRule(text_colour=colors['background_alt'][1:]).when()
+            ]
+        )
+        groupbox2_1 = widget.GroupBox2(**_groupbox2_config)
+        groupbox2_2 = widget.GroupBox2(**_groupbox2_config)
 
         _tasklist_config = dict(
             # font='Lato',
@@ -102,7 +123,8 @@ class Simple:
 
         widgets_list = [
             current_layout_icon,
-            groupbox,
+            # groupbox,
+            groupbox2_1,
             tasklist,
             widget.Mpris2(
                 foreground=colors.get('foreground_unfocus'),
@@ -223,9 +245,10 @@ class Simple:
                         fontsize=widget_defaults.get('fontsize') - 1,
                         padding=6
                     ),
-                    widget.GroupBox(
-                        **_groupbox_config
-                    ),
+                    # widget.GroupBox(
+                    #     **_groupbox_config
+                    # ),
+                    groupbox2_2,
                     lower_left_triangle(foreground=colors.get('background_unfocus')),
                     widget.WindowName(
                         foreground=colors.get('foreground_unfocus'),
