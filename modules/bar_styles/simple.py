@@ -1,6 +1,7 @@
 from math import ceil, floor
 from libqtile import bar
 from libqtile.config import Screen
+from libqtile import widget as widget_og  # for mpris widget
 
 from qtile_extras import widget
 from qtile_extras.widget.decorations import PowerLineDecoration
@@ -43,24 +44,46 @@ class Simple:
 
         # widgets
         current_layout_icon = widget.CurrentLayoutIcon(
-            background=colors.get('background_unfocus'),
-            fontsize=widget_defaults.get('fontsize') - 1,
-            padding=7
+            background=colors.get('background'),
+            scale=0.8,
+            padding=PAD
         )
 
         _groupbox2_config = dict(
+            # font="Font Awesome 6 Free Solid",
+            font="Hack Nerd Font",
             fontsize=20,
             padding_x=6,
             rules=[
-                  GroupBoxRule(text=''),
+                  GroupBoxRule().when(func=set_label),
                   GroupBoxRule(text_colour=colors['background_focus']).when(screen=ScreenRule.THIS),
                   GroupBoxRule(text_colour=colors['background_focus_alt']).when(screen=ScreenRule.OTHER),
-                  GroupBoxRule(text_colour=colors['foreground']).when(occupied=True),
-                  GroupBoxRule(text_colour=colors['background_alt']).when(occupied=False),
+                  GroupBoxRule(text_colour=colors['foreground']).when(),
                   GroupBoxRule(text_colour=colors['urgent']).when(urgent=False)
+                  # GroupBoxRule(text_colour=colors['foreground']).when(occupied=True),
+                  # GroupBoxRule(text_colour=colors['background_alt']).when(occupied=False),
             ]
         )
-        groupbox2_2 = widget.GroupBox2(**_groupbox2_config)
+
+        # _groupbox_config = dict(
+        #     font=widget_defaults['font'],
+        #     padding_x=PAD-1,
+        #     background=colors.get('background_unfocus'),
+        #     highlight_method=self.highlight_method,
+        #     rounded=False,
+        #     active=colors.get('foreground_focus'),
+        #     inactive=colors.get('foreground_unfocus'),
+        #     urgent_border=colors.get('urgent'),
+        #     # for the focused screen
+        #     this_current_screen_border=colors.get('background_focus'),
+        #     other_current_screen_border=colors.get('background_alt'),
+        #     highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
+        #     # for the other screen
+        #     this_screen_border=colors.get('background_focus_alt'),
+        #     other_screen_border=colors.get('background_alt'),
+        #     disable_drag=True,
+        #     use_mouse_wheel=False,
+        # )
 
         _tasklist_config = dict(
             font=widget_defaults.get('font'),
@@ -151,25 +174,40 @@ class Simple:
             update_interval=UPDATE_INTERVAL
         )
 
-        _mpris2_spotify_config = dict(background=colors.get('background'),
-                                      foreground=colors.get('foreground_unfocus'),
-                                      # fontshadow=colors.get('green'),
-                                      padding=PAD,
-                                      font=widget_defaults.get('font'),
-                                      fontsize=widget_defaults.get('fontsize') - 1,
-                                      scroll=True,
-                                      scroll_clear=True,
-                                      scroll_delay=0.5,
-                                      width=170,
-                                      name="spotify",
-                                      playing_text=" {track}",
-                                      paused_text=" Spotify",
-                                      no_metadata_text=" Spotify playing",
-                                      display_metadata=['xesam:title', 'xesam:artist'],
-                                      # poll_interval=1,
-                                      objname="org.mpris.MediaPlayer2.spotify")
+        _mpris2_spotify_config = dict(
+            background=colors.get('background') + OPAQUE,
+            foreground=colors.get('foreground_unfocus'),
+            padding=ceil(PAD/2),
+            font=widget_defaults.get('font'),
+            fontsize=widget_defaults.get('fontsize') - 3,
+            scroll=True,
+            scroll_clear=True,
+            scroll_delay=0.5,
+            width=150,
+            name="spotify",
+            playing_text=" {track}",
+            paused_text=" Spotify",
+            no_metadata_text=" Spotify playing",
+            display_metadata=['xesam:title', 'xesam:artist'],
+            # poll_interval=1,
+            objname="org.mpris.MediaPlayer2.spotify")
 
-        mpris2_spotify = widget.Mpris2(**_mpris2_spotify_config)
+        mpris2_spotify = widget_og.Mpris2(
+            background=colors.get('background') + OPAQUE,
+            foreground=colors.get('foreground_unfocus'),
+            padding=PAD,
+            font=widget_defaults.get('font'),
+            fontsize=widget_defaults.get('fontsize') - 1,
+            scroll=True,
+            scroll_clear=False,
+            scroll_delay=0.5,
+            width=180,
+            name="spotify",
+            playing_text=" {track}",
+            paused_text=" Spotify",
+            no_metadata_text=" Spotify playing",
+            display_metadata=['xesam:title', 'xesam:artist'],
+            objname="org.mpris.MediaPlayer2.spotify")
 
         systray = widget.Systray(padding=6,
                                  background=colors.get('background'))
@@ -182,15 +220,24 @@ class Simple:
         spacer = widget.Spacer()
 
         widgets_list_1 = [
-                current_layout_icon, widget.GroupBox2(**_groupbox2_config), sep, widget.TaskList(**_tasklist_config),
-                clock, spacer,
-                mpris2_spotify, sep, *volume_widgets, sep, *battery_widgets, sep, systray, sep
+                current_layout_icon,
+                widget.GroupBox2(**_groupbox2_config),
+                # widget_og.GroupBox(**_groupbox_config),
+                sep, widget.TaskList(**_tasklist_config),
+                clock,
+                spacer,
+                mpris2_spotify,
+                sep, *volume_widgets, sep, *battery_widgets, sep, systray, sep
         ]
 
         widgets_list_2 = [
-                current_layout_icon, widget.GroupBox2(**_groupbox2_config), sep, widget.TaskList(**_tasklist_config),
-                clock, spacer,
-                widget.Mpris2(**_mpris2_spotify_config),
+                current_layout_icon,
+                widget.GroupBox2(**_groupbox2_config),
+                # widget_og.GroupBox(**_groupbox_config),
+                sep, widget.TaskList(**_tasklist_config),
+                clock,
+                spacer,
+                mpris2_spotify,
                 sep, thermal, sep, cpu, sep, memory, sep, *volume_widgets, sep, *battery_widgets, sep
             ]
 
