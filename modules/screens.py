@@ -15,8 +15,8 @@ from modules.colors.gruvbox import Gruvbox
 
 
 colors = SpaceGray().colors
-screens = Cockpit(colors=colors).screens
-# screens = Simple(colors=colors).screens
+# screens = Cockpit(colors=colors).screens
+screens = Simple(colors=colors).screens
 
 
 # colors = Gruvbox()

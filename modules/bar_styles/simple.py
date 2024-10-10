@@ -14,9 +14,10 @@ from modules.utils import get_firefox_instance
 from modules.bar_styles._constants import ICONS_PATH, APPS_ICONS_PATH, UPDATE_INTERVAL
 from modules.bar_styles._decorators import lower_left_triangle, lower_right_triangle
 
+
 OPAQUE = 'ff'
 BARSIZE = 33
-PAD = 9
+PAD = 10
 _DECORATOR_PADDING = ceil(BARSIZE/10)
 _DECORATOR_SIZE = ceil(BARSIZE*1.1 + 1) * 2
 
@@ -40,10 +41,6 @@ class Simple:
         self.colors = colors
         self.highlight_method = 'block'
 
-        widget_defaults.update({
-            'padding': 10
-        })
-
         # widgets
         current_layout_icon = widget.CurrentLayoutIcon(
             background=colors.get('background_unfocus'),
@@ -51,53 +48,21 @@ class Simple:
             padding=7
         )
 
-        clock = widget.Clock(
-                format=" %H:%M",
-                **widget_defaults
-        )
-
-        _groupbox_config = dict(
-            # use _LABEL for group
-            fontsize=15,
-            foreground=colors.get('foreground'),
-            background=colors.get('background'),
-            highlight_method='text',
-            borderwidth=3,
-            padding=7,
-            disable_drag=True,
-            # colors
-            active=colors.get('foreground_focus'),
-            inactive=colors.get('foreground_unfocus'),
-            # on the focused screen
-            this_current_screen_border=colors.get('background_focus'),
-            other_current_screen_border=colors.get('background_alt'),
-            # on the not focused screen(s)
-            this_screen_border=colors.get('background_focus_alt'),
-            other_screen_border=colors.get('background_alt'),
-
-            # block_highlight_text_color=colors['orange'],
-            # highlight_color=colors.get("background_unfocus"),
-
-            # deco
-            decorations=[rectdeco(colors['background_unfocus'])]
-        )
-        groupbox = widget.GroupBox(**_groupbox_config)
-
         _groupbox2_config = dict(
             fontsize=20,
-            padding_x=5,
+            padding_x=6,
             rules=[
-                  GroupBoxRule().when(func=set_label),
+                  GroupBoxRule(text=''),
                   GroupBoxRule(text_colour=colors['background_focus']).when(screen=ScreenRule.THIS),
                   GroupBoxRule(text_colour=colors['background_focus_alt']).when(screen=ScreenRule.OTHER),
-                  GroupBoxRule(text_colour=colors['background_alt'][1:]).when()
+                  GroupBoxRule(text_colour=colors['foreground']).when(occupied=True),
+                  GroupBoxRule(text_colour=colors['background_alt']).when(occupied=False),
+                  GroupBoxRule(text_colour=colors['urgent']).when(urgent=False)
             ]
         )
-        groupbox2_1 = widget.GroupBox2(**_groupbox2_config)
         groupbox2_2 = widget.GroupBox2(**_groupbox2_config)
 
         _tasklist_config = dict(
-            # font='Lato',
             font=widget_defaults.get('font'),
             foreground=colors.get('background'),
             # foreground=colors.get('foreground_unfocus'),
@@ -119,117 +84,120 @@ class Simple:
             markup_minimized='<span font_style="italic">_{}</span>',
             markup_maximized='<span>[] {}</span>'
         )
-        tasklist = widget.TaskList(**_tasklist_config)
 
-        widgets_list = [
-            current_layout_icon,
-            # groupbox,
-            groupbox2_1,
-            tasklist,
-            widget.Mpris2(
-                foreground=colors.get('foreground_unfocus'),
-                padding=0,
-                fontsize=widget_defaults.get('fontsize') - 1,
-                max_chars=35,
-                name="spotify",
-                playing_text=' {track}',
-                paused_text=" Pause",
-                # format="{xesam:title} - {xesam:artist}",
-                display_metadata=["xesam:title", "xesam:artist"],
-                objname="org.mpris.MediaPlayer2.spotify"
-            ),
-            lower_right_triangle(foreground=colors.get('background_unfocus')),
-            # widget.ThermalSensor(
-            #     format=' {temp:.0f}{unit}',
-            #     foreground=colors.get('foreground')[1:],
-            #     background=colors.get('background_unfocus')[1:],
-            #     update_interval=UPDATE_INTERVAL,
-            #     padding=PAD
-            # ),
-            widget.Sep(
-                linewidth=0,
-                background=colors.get('background_unfocus'),
-                padding=PAD + 1
-            ),
-            widget.CPU(
-                format=' {load_percent}%',
-                foreground=colors.get('foreground')[1:],
-                background=colors.get('background_unfocus')[1:],
-                padding=0,
-                update_interval=UPDATE_INTERVAL,
-            ),
-            widget.Sep(
-                linewidth=0,
-                background=colors.get('background_unfocus'),
-                padding=PAD + 1
-            ),
-            widget.Memory(
-                format=' {MemUsed:.2f}{mm}',
-                measure_mem='G',
-                foreground=colors.get('foreground')[1:],
-                background=colors.get('background_unfocus')[1:],
-                padding=PAD,
-                update_interval=UPDATE_INTERVAL,
-            ),
-            widget.Sep(
-                linewidth=0,
-                background=colors.get('background_unfocus'),
-                padding=PAD - 2
-            ),
-            widget.Volume(
-                padding=2,
-                # theme_path=icons_path,
-                emoji=True,
-                background=colors.get('background_unfocus')[1:],
-            ),
-            widget.Volume(
-                fmt='{}',
-                padding=2,
-                background=colors.get('background_unfocus')[1:],
-                foreground=colors.get('foreground')[1:],
-            ),
+        clock = widget.Clock(
+            format=" %a %b %d  %H:%M",
+            # fontsize=widget_defaults.get('fontsize') - 1
+        )
 
-            widget.Sep(
-                linewidth=0,
-                background=colors.get('background_unfocus'),
-                padding=PAD
+        cpu = widget.CPU(
+            foreground=colors.get('foreground'),
+            format=' {load_percent}%',
+            update_interval=UPDATE_INTERVAL,
+            padding=PAD/2,
+            **widget_defaults
+        )
+
+        memory = widget.Memory(
+            foreground=colors.get('foreground'),
+            format='󰘚 {MemUsed:.2f}{mm}',
+            measure_mem='G',
+            update_interval=UPDATE_INTERVAL,
+            padding=PAD/2,
+            **widget_defaults
+        )
+
+        thermal = widget.ThermalSensor(
+                            format=' {temp:.0f}{unit}',
+                            tag_sensor="CPU",
+                            padding=PAD/2,
+                            foreground=colors.get('foreground')[1:],
+                            background=colors.get('background')[1:],
+                            update_interval=UPDATE_INTERVAL)
+
+        volume_widgets = (
+                    widget.Volume(
+                        font="Font Awesome 6 Free Solid",
+                        foreground=colors.get('foreground'),
+                        background=colors.get('background'),
+                        padding=PAD/2-1,
+                        emoji=True,
+                        emoji_list=['', '', '', ''],
+                    ),
+                    widget.Volume(
+                        fmt='{}',
+                        foreground=colors.get('foreground'),
+                        background=colors.get('background'),
+                        padding=1
+                    )
+        )
+
+        battery_widgets = (
+            widget.BatteryIcon(
+                theme_path=ICONS_PATH,
+                padding=-2,
             ),
-            widget.Clock(
-                # format=" %a, %b %d   %H:%M",
-                format=" %b %d   %H:%M",
-                # font='Font Awesome 5 Free Solid',
-                padding=PAD,
-                background=colors.get('background_unfocus'),
-                foreground=colors.get('foreground'),
-            ),
-            widget.Systray(
-                padding=6,
-                background=colors.get('background_unfocus'),
-            ),
-            widget.Sep(
-                linewidth=0,
-                background=colors.get('background_unfocus'),
-                padding=int(PAD / 3)
-            ),
-            widget.LaunchBar(
-                progs=[('Power', "/home/xuantung/.config/rofi/bin/menu_powermenu", "Power menu")],
-                default_icon='/usr/share/icons/Papirus/22x22/panel/system-devices-panel.svg',
-                background=colors.get('background_unfocus'),
-                foreground=colors.get('foreground'),
-                padding=int(PAD / 3)
-            ),
-            widget.Sep(
-                linewidth=0,
-                background=colors.get('background_unfocus'),
-                padding=int(PAD / 3)
-            ),
-            # widget.QuickExit(),
+            widget.Battery(
+                format='{percent:2.0%}',
+                padding=0
+            )
+        )
+
+        net = widget.Net(
+            foreground=colors.get('foreground')[1:],
+            background=colors.get('background')[1:],
+            padding=PAD*2,
+            format='󰓅 {down:.0f}{down_suffix} ↓↑ {up:.0f}{up_suffix}',
+            update_interval=UPDATE_INTERVAL
+        )
+
+        _mpris2_spotify_config = dict(background=colors.get('background'),
+                                      foreground=colors.get('foreground_unfocus'),
+                                      # fontshadow=colors.get('green'),
+                                      padding=PAD,
+                                      font=widget_defaults.get('font'),
+                                      fontsize=widget_defaults.get('fontsize') - 1,
+                                      scroll=True,
+                                      scroll_clear=True,
+                                      scroll_delay=0.5,
+                                      width=170,
+                                      name="spotify",
+                                      playing_text=" {track}",
+                                      paused_text=" Spotify",
+                                      no_metadata_text=" Spotify playing",
+                                      display_metadata=['xesam:title', 'xesam:artist'],
+                                      # poll_interval=1,
+                                      objname="org.mpris.MediaPlayer2.spotify")
+
+        mpris2_spotify = widget.Mpris2(**_mpris2_spotify_config)
+
+        systray = widget.Systray(padding=6,
+                                 background=colors.get('background'))
+
+        sep = widget.Sep(
+            linewidth=0,
+            background=colors.get('background'),
+            padding=PAD)
+
+        spacer = widget.Spacer()
+
+        widgets_list_1 = [
+                current_layout_icon, widget.GroupBox2(**_groupbox2_config), sep, widget.TaskList(**_tasklist_config),
+                clock, spacer,
+                mpris2_spotify, sep, *volume_widgets, sep, *battery_widgets, sep, systray, sep
         ]
+
+        widgets_list_2 = [
+                current_layout_icon, widget.GroupBox2(**_groupbox2_config), sep, widget.TaskList(**_tasklist_config),
+                clock, spacer,
+                widget.Mpris2(**_mpris2_spotify_config),
+                sep, thermal, sep, cpu, sep, memory, sep, *volume_widgets, sep, *battery_widgets, sep
+            ]
 
         # screen 1
         screen1 = Screen(
             top=bar.Bar(
-                widgets=widgets_list,
+                widgets=widgets_list_1,
                 size=BARSIZE,
                 background=colors.get('background') + OPAQUE,
                 # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
@@ -239,87 +207,12 @@ class Simple:
 
         screen2 = Screen(
             top=bar.Bar(
-                [
-                    widget.CurrentLayoutIcon(
-                        background=colors.get('background_unfocus'),
-                        fontsize=widget_defaults.get('fontsize') - 1,
-                        padding=6
-                    ),
-                    # widget.GroupBox(
-                    #     **_groupbox_config
-                    # ),
-                    groupbox2_2,
-                    lower_left_triangle(foreground=colors.get('background_unfocus')),
-                    widget.WindowName(
-                        foreground=colors.get('foreground_unfocus'),
-                        # padding=12,
-                        fontsize=widget_defaults.get('fontsize') - 1,
-                        max_chars=50
-                    ),
-                    widget.Mpris2(
-                        foreground=colors.get('foreground_unfocus'),
-                        fontsize=widget_defaults.get('fontsize') - 1,
-                        padding=0,
-                        scroll=True,
-                        scroll_clear=True,
-                        width=185,
-                        name="spotify",
-                        playing_text=" {track}",
-                        paused_text=" Pause",
-                        display_metadata=["xesam:title", "xesam:artist"],
-                        objname="org.mpris.MediaPlayer2.spotify"
-                    ),
-                    widget.Spacer(
-                        background=colors.get('background'),
-                    ),
-                    widget.Clipboard(
-                        foreground=colors.get('foreground_unfocus'),
-                        max_width=30,
-                        timeout=None
-                    ),
-                    lower_right_triangle(foreground=colors.get('background_unfocus')),
-                    widget.Volume(
-                        padding=1,
-                        # theme_path=icons_path,
-                        emoji=True,
-                        background=colors.get('background_unfocus')[1:],
-                        foreground=colors.get('foreground')[1:],
-                    ),
-                    widget.Volume(
-                        fmt='{}',
-                        padding=1,
-                        background=colors.get('background_unfocus')[1:],
-                        foreground=colors.get('foreground')[1:],
-                    ),
-                    widget.Sep(
-                        linewidth=0,
-                        background=colors.get('background_unfocus'),
-                        padding=12
-                    ),
-                    widget.Clock(
-                        format=" %H:%M",
-                        # font='Font Awesome 5 Free Solid',
-                        padding=PAD,
-                        background=colors.get('background_unfocus'),
-                        foreground=colors.get('foreground'),
-                    ),
-                    widget.LaunchBar(
-                        progs=[('Power', "/home/xuantung/.config/rofi/bin/menu_powermenu", "Power menu")],
-                        default_icon='/usr/share/icons/Papirus/22x22/panel/system-devices-panel.svg',
-                        background=colors.get('background_unfocus'),
-                        foreground=colors.get('foreground'),
-                        padding=int(PAD / 3)
-                    ),
-                    widget.Sep(
-                        linewidth=0,
-                        background=colors.get('background_unfocus'),
-                        padding=int(PAD / 3)
-                    ),
-                ],
-                BARSIZE,
-                background=colors.get('background'),
-            ),
+                widgets=widgets_list_2,
+                size=BARSIZE,
+                background=colors.get('background') + OPAQUE,
+            )
         )
+
         self.screens = [
             screen1,
             screen2
