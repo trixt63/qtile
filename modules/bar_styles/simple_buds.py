@@ -11,7 +11,7 @@ from modules.widgets import widget_defaults
 from modules.bar_styles._constants import ICONS_PATH, APPS_ICONS_PATH, UPDATE_INTERVAL
 
 OPAQUE = 'ff'
-BARSIZE = 31
+BARSIZE = 29
 PAD = 10
 _DECORATOR_PADDING = ceil(BARSIZE/10)
 _DECORATOR_SIZE = ceil(BARSIZE*1.1 + 1) * 2
@@ -44,8 +44,9 @@ class SimpleBuds:
         _groupbox2_config = dict(
             # font="Font Awesome 6 Free Solid",
             font="Hack Nerd Font",
-            fontsize=25,
+            fontsize=21,
             padding_x=7,
+            padding_y=0,
             rules=[
                   GroupBoxRule().when(func=set_label),
                   GroupBoxRule(text_colour=colors['background_focus']).when(screen=ScreenRule.THIS),
@@ -69,9 +70,9 @@ class SimpleBuds:
             borderwidth=1.2,
             theme_mode='preferred',
             theme_path=APPS_ICONS_PATH,
-            spacing=5,
-            padding_x=5,
-            padding_y=5,
+            # spacing=5,
+            padding_x=4,
+            padding_y=3,
             parse_text=_parse_text,
             markup_focused='<span font_weight="600">{}</span>',
             markup_minimized='<span font_style="italic">_{}</span>',

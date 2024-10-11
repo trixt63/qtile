@@ -42,7 +42,7 @@ class SpaceGray:
 
             'foreground_focus': self.white,
             'background_focus': self._accent,
-            'background_focus_noncurrent': self.cyan2,  # focused workspace on unfocused monitor
+            'background_focus_noncurrent': self.magenta,  # focused workspace on unfocused monitor
             'background_other': self.grey2,  # focused workspace of the other monitor (regardless of monitor )
             'background_line_highlight': self.grey,  # incase using highlight_method = line
 
