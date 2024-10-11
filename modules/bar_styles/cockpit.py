@@ -2,10 +2,10 @@ from math import ceil, floor
 from libqtile import bar
 from libqtile.config import Screen
 
-from modules.bar_styles.decorators import *
+from modules.bar_styles._decorators import *
 from modules.widgets import widget_defaults
 from modules.utils import get_firefox_instance
-from modules.bar_styles.constants import ICONS_PATH, APPS_ICONS_PATH, UPDATE_INTERVAL
+from modules.bar_styles._constants import ICONS_PATH, APPS_ICONS_PATH, UPDATE_INTERVAL
 
 OPAQUE = '00'
 BARSIZE = 30
@@ -14,7 +14,7 @@ _DECORATOR_PADDING = ceil(BARSIZE/10)
 _DECORATOR_SIZE = ceil(BARSIZE*1.1 + 1) * 2
 
 
-class SlashTop:
+class Cockpit:
     """Three-parted bar"""
     def __init__(self, colors) -> None:
         self.colors = colors
@@ -33,7 +33,7 @@ class SlashTop:
                         linewidth=0,
                         background=colors.get('background_unfocus'),
                         size_percent=70,
-                        padding=PAD*2 - 2
+                        padding=PAD-1
                     )
 
         _decorator_configs = dict(
@@ -47,8 +47,8 @@ class SlashTop:
         _upper_right_triangle = upper_right_triangle(**_decorator_configs)
         _lower_left_triangle = lower_left_triangle(**_decorator_configs)
 
-        groupbox_configs = dict(
-            # padding_y=6,
+        groupbox_config = dict(
+            font=widget_defaults['font'],
             padding_x=PAD-1,
             background=colors.get('background_unfocus'),
             highlight_method=self.highlight_method,
@@ -58,26 +58,20 @@ class SlashTop:
             urgent_border=colors.get('urgent'),
             # for the focused screen
             this_current_screen_border=colors.get('background_focus'),
-            other_current_screen_border=colors.get('background_alt'),
+            other_current_screen_border=colors.get('background_other'),
             highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
             # for the other screen
-            this_screen_border=colors.get('background_focus_alt'),
-            other_screen_border=colors.get('background_alt'),
+            this_screen_border=colors.get('background_focus_noncurrent'),
+            other_screen_border=colors.get('background_other'),
             disable_drag=True,
             use_mouse_wheel=False,
-        )
-
-        windowname_config = dict(
-            foreground=colors.get('background'),
-            background=colors.get('background') + OPAQUE,
-            fontsize=widget_defaults.get('fontsize') - 1,
-            max_chars=36
         )
 
         tasklist_config = dict(
             # font='Lato',
             font=widget_defaults.get('font'),
             foreground=colors.get('background'),
+            # foreground=colors.get('foreground_unfocus'),
             background=colors.get('background') + OPAQUE,
             fontsize=widget_defaults.get('fontsize') - 2,
             max_title_width=210,
@@ -85,7 +79,7 @@ class SlashTop:
             # highlight_method='block',
             # border=colors.get('foreground'),
             highlight_method='border',
-            borderwidth=1.5,
+            borderwidth=1.7,
             icon_size=widget_defaults.get('fontsize') - 1,
             theme_mode='preferred',
             theme_path=APPS_ICONS_PATH,
@@ -117,42 +111,40 @@ class SlashTop:
 
         widget_volume = (
                     widget.Volume(
-                        # theme_path=icons_path,
+                        font="Font Awesome 6 Free Solid",
+                        foreground=colors.get('foreground'),
+                        background=colors.get('background_unfocus'),
+                        padding=PAD/2-1,
                         emoji=True,
-                        **widget_defaults
+                        emoji_list=['', '', '', ''],
                     ),
                     widget.Volume(
                         fmt='{}',
                         background=colors.get('background_unfocus'),
                         foreground=colors.get('foreground'),
-                        padding=0
+                        padding=1
                     )
         )
 
         widget_battery = (
             widget.BatteryIcon(
                 theme_path=ICONS_PATH,
-                **widget_defaults
+                padding=0
             ),
             widget.Battery(
-                # format='{char} {percent:2.0%}',
-                # charge_char='',
-                # discharge_char='',
-                # empty_char='',
-                # unknown_chFalsear='',
                 format='{percent:2.0%}',
-                **widget_defaults
+                padding=0
             )
         )
 
         cpu_percentage = widget.CPU(
-            format='󰻠 {load_percent}%',
+            format=' {load_percent}%',
             update_interval=UPDATE_INTERVAL,
             **widget_defaults
         )
 
         memory_usage = widget.Memory(
-            format='{MemUsed: .2f}{mm}',
+            format='󰘚{MemUsed: .2f}{mm}',
             measure_mem='G',
             update_interval=UPDATE_INTERVAL,
             **widget_defaults
@@ -172,32 +164,33 @@ class SlashTop:
             update_interval=UPDATE_INTERVAL
         )
 
-        mpris2_all = widget.Mpris2(
-                    foreground=colors.get('background'),
-                    background=colors.get('background') + OPAQUE,
-                    padding=PAD/2,
-                    font=widget_defaults.get('font'),
-                    fontsize=widget_defaults.get('fontsize') - 2,
-                    fontshadow=colors.get('red'),
-                    scroll=True,
-                    scroll_clear=True,
-                    scroll_delay=1,
-                    width=180,
-                    # max_chars=20,
-                    name="mpris2",
-                    playing_text=" {track}",
-                    paused_text=' <span font_style="italic">{track}</span>',
-                    display_metadata=['xesam:title'], # fMrmat='{xesam:title}',
-                    poll_interval=0.5,
-                    objname=None
-                )
+        # mpris2_all = widget.Mpris2(
+        #             foreground=colors.get('background'),
+        #             background=colors.get('background') + OPAQUE,
+        #             padding=ceil(PAD),
+        #             font=widget_defaults.get('font'),
+        #             fontsize=widget_defaults.get('fontsize') - 2,
+        #             fontshadow=colors.get('red'),
+        #             scroll=True,
+        #             scroll_clear=True,
+        #             scroll_delay=1,
+        #             width=180,
+        #             # max_chars=20,
+        #             name="mpris2",
+        #             playing_text=" {track}",
+        #             paused_text=' <span font_style="italic">{track}</span>',
+        #             display_metadata=['xesam:title'], # fMrmat='{xesam:title}',
+        #             poll_interval=0.5,
+        #             objname=None
+        #         )
         mpris2_firefox = widget.Mpris2(
-                    foreground=colors.get('background'),
                     background=colors.get('background') + OPAQUE,
-                    padding=int(PAD/2),
+                    foreground=colors.get('background'),
+                    fontshadow=colors.get('red'),
+                    # foreground=colors.get('red'),
+                    padding=ceil(PAD),
                     font=widget_defaults.get('font'),
                     fontsize=widget_defaults.get('fontsize') - 3,
-                    fontshadow=colors.get('red'),
                     scroll=True,
                     scroll_clear=False,
                     scroll_delay=1,
@@ -212,12 +205,13 @@ class SlashTop:
                     objname=f"org.mpris.MediaPlayer2.{get_firefox_instance()}"
                 )
         mpris2_spotify = widget.Mpris2(
-                    foreground=colors.get('background'),
                     background=colors.get('background') + OPAQUE,
-                    padding=int(PAD/2),
+                    foreground=colors.get('background'),
+                    fontshadow=colors.get('green'),
+                    # foreground=colors.get('green'),
+                    padding=ceil(PAD/2),
                     font=widget_defaults.get('font'),
                     fontsize=widget_defaults.get('fontsize') - 3,
-                    fontshadow=colors.get('green'),
                     scroll=True,
                     scroll_clear=True,
                     scroll_delay=0.5,
@@ -234,22 +228,14 @@ class SlashTop:
                     mpris2_spotify, 
                     # widget.Sep(
                     #         linewidth=0,
-                    #         size_percent=40,
+                    #         size_percent=20,
                     #         background=colors.get('border')+OPAQUE,
                     #         foreground=colors.get('background'),
                     #         padding=int(PAD)
-                    #     ), 
-                    mpris2_firefox
-                    # mpris2_all
+                    #     ),
+                    # mpris2_firefox
                   ]
 
-        launchbar_config = {
-            'progs': [(' \u23fb ', "/home/xuantung/.config/rofi/scripts/powermenu_t2", "Power menu")],
-            'default_icon': ICONS_PATH + 'system-devices-panel.svg',
-            # 'text_only': True,
-            'background': colors.get('cyan'),
-            'padding': 2,
-        }
         #####################
         #      Screens      #
         #####################
@@ -264,7 +250,7 @@ class SlashTop:
                                         padding=5
                                 ),
                         widget.GroupBox(
-                            **groupbox_configs
+                            **groupbox_config
                         ),
                         _upper_left_triangle,
 
@@ -284,17 +270,19 @@ class SlashTop:
                         memory_usage,
                         separator,
                         *widget_volume,
-                        widget.Sep(
-                            linewidth=0,
-                            background=colors.get('background_unfocus'),
-                            padding=(PAD - 2) * 2 - 3
-                        ),
+                        # widget.Sep(
+                        #     linewidth=0,
+                        #     background=colors.get('background_unfocus'),
+                        #     padding=PAD-1
+                        # ),
+                        separator,
                         *widget_battery,
-                        widget.Sep(
-                            linewidth=0,
-                            background=colors.get('background_unfocus'),
-                            padding=(PAD-2)*2 - 3
-                        ),
+                        # widget.Sep(
+                        #     linewidth=0,
+                        #     background=colors.get('background_unfocus'),
+                        #     padding=(PAD-2)*2 - 3
+                        # ),
+                        separator,
                         _lower_left_triangle,
                         widget.Systray(
                             padding=int(PAD/2)+1,
@@ -325,7 +313,7 @@ class SlashTop:
                             padding=5
                         ),
                         widget.GroupBox(
-                            **groupbox_configs
+                            **groupbox_config
                         ),
                         _upper_left_triangle,
 
@@ -347,13 +335,19 @@ class SlashTop:
                         memory_usage,
                         separator,
                         *widget_volume,
+                        # widget.Sep(
+                        #     linewidth=0,
+                        #     background=colors.get('background_unfocus'),
+                        #     padding=(PAD - 2) * 2 - 3
+                        # ),
+                        separator,
+                        *widget_battery,
+                        # separator,
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
-                            padding=(PAD - 2) * 2 - 3
+                            padding=PAD
                         ),
-                        *widget_battery,
-                        separator,
                         net,
                         widget.Sep(
                             linewidth=0,
@@ -387,7 +381,7 @@ def _get_highlight_color(colors):
     for the GroupBox when highlight_method='line',
     in case the color scheme does not have 'background_focus_2'
     """
-    colors_list = [colors.get('background_focus_highlight'),
+    colors_list = [colors.get('background_line_highlight'),
                    colors.get('background_unfocus'),
-                   colors.get('background_alt')]
+                   colors.get('background_other')]
     return next(color for color in colors_list if color is not None)

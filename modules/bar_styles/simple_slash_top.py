@@ -1,7 +1,7 @@
 from libqtile import bar
 from libqtile.config import Screen
 
-from modules.bar_styles.decorators import *
+from modules.bar_styles._decorators import *
 from modules.widgets import widget_defaults
 
 
@@ -13,7 +13,7 @@ UPDATE_INTERVAL = 5.0
 
 
 class SimpleSlashTop:
-    """Top bar, with 2 slashes on both ends, and a transparent middle part with Mpris2 widget at the center"""
+    """Top bar, with 2 slashes on both ends, and transparent middle parts with Mpris2 widget at the center"""
     def __init__(self, colors) -> None:
         self.colors = colors
         self.highlight_method = 'line'
@@ -51,11 +51,11 @@ class SimpleSlashTop:
             urgent_border=colors.get('urgent'),
             # for the focused screen
             this_current_screen_border=colors.get('background_focus'),
-            other_current_screen_border=colors.get('background_alt'),
+            other_current_screen_border=colors.get('background_other'),
             highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
             # for the other screen
-            this_screen_border=colors.get('background_focus_alt'),
-            other_screen_border=colors.get('background_alt'),
+            this_screen_border=colors.get('background_focus_noncurrent'),
+            other_screen_border=colors.get('background_other'),
             disable_drag=True,
             use_mouse_wheel=False,
         )
@@ -271,8 +271,8 @@ def _get_highlight_color(colors):
     for the GroupBox when highlight_method='line',
     in case the color scheme does not have 'background_focus_2'
     """
-    colors_list = [colors.get('background_focus_highlight'),
+    colors_list = [colors.get('background_line_highlight'),
                    colors.get('background_unfocus'),
-                   colors.get('background_alt')]
+                   colors.get('background_other')]
     return next(color for color in colors_list if color is not None)
 

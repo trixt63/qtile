@@ -23,9 +23,9 @@ thunderbird &
 #Dictionary
 goldendict &
 # network manager
-nm-applet &
+nm-applet
 #Rclone
 #rclone mount --daemon "Google Drive:" /home/trinhtung/Google_Drive/xuantung.trinh.63/ &
-sleep 1 && xkbcomp /home/trinhtung/.config/Xkeymap $DISPLAY &
-killall xcape &
-xcape -e 'Control_L=Escape;'
+# sleep 1 && xkbcomp /home/trinhtung/.config/Xkeymap $DISPLAY &
+# killall xcape &
+# xcape -e 'Control_L=Escape;'
