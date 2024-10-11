@@ -33,7 +33,8 @@ def set_label(rule, box):
     return True
 
 
-class Simple:
+class SimpleBuds:
+    """Simple bar using qtile-extras' GroupBox2, with labels being circles"""
     def __init__(self, colors):
         self.colors = colors
         self.highlight_method = 'block'
