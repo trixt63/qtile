@@ -37,11 +37,11 @@ class SimpleSlash:
                             inactive=colors.get('foreground_unfocus'),
                             # for the focused screen
                             this_current_screen_border=colors.get('background_focus'),
-                            other_current_screen_border=colors.get('background_alt'),
+                            other_current_screen_border=colors.get('background_other'),
                             highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
                             # for the other screen
-                            this_screen_border=colors.get('background_focus_alt'),
-                            other_screen_border=colors.get('background_alt'),
+                            this_screen_border=colors.get('background_focus_noncurrent'),
+                            other_screen_border=colors.get('background_other'),
                             disable_drag=True
                         ),
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
@@ -175,11 +175,11 @@ class SimpleSlash:
                             inactive=colors.get('foreground_unfocus'),
                             # for the focused screen
                             this_current_screen_border=colors.get('background_focus'),
-                            other_current_screen_border=colors.get('background_alt'),
+                            other_current_screen_border=colors.get('background_other'),
                             highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
                             # for the other screen
-                            this_screen_border=colors.get('background_focus_alt'),
-                            other_screen_border=colors.get('background_alt'),
+                            this_screen_border=colors.get('background_focus_noncurrent'),
+                            other_screen_border=colors.get('background_other'),
                             disable_drag=True
                         ),
                         lower_left_triangle(foreground=colors.get('background_unfocus')),
@@ -266,5 +266,5 @@ def _get_highlight_color(colors):
     """
     colors_list = [colors.get('background_focus_2'),
                    colors.get('background_unfocus'),
-                   colors.get('background_alt')]
+                   colors.get('background_other')]
     return next(color for color in colors_list if color is not None)

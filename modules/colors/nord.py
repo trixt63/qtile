@@ -32,8 +32,8 @@ class Nord(ColorScheme):
             'foreground_focus': self.white,
             'background_focus': self.cyan,
 
-            'background_focus_alt': self.blue2,  # focused workspace on unfocused monitor
-            'background_alt': self.black4,  # focused workspace of other monitor, on the focused monitor
+            'background_focus_noncurrent': self.blue2,  # focused workspace on unfocused monitor
+            'background_other': self.black4,  # focused workspace of other monitor, on the focused monitor
 
             'border': self.black3,
             'border_focus': self.yellow,
@@ -51,7 +51,7 @@ class Nord(ColorScheme):
         return self.white
 
     @property
-    def background_alt(self):
+    def background_other(self):
         return self.black4
 
     @property

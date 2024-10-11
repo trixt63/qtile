@@ -4,16 +4,11 @@ from libqtile.config import Screen
 from libqtile import widget as widget_og  # for mpris widget
 
 from qtile_extras import widget
-from qtile_extras.widget.decorations import PowerLineDecoration
-from qtile_extras.layout.decorations import ConditionalBorder, GradientBorder, GradientFrame, RoundedCorners
 from qtile_extras.widget.decorations import RectDecoration
-from qtile_extras.widget.groupbox2 import GroupBox2, GroupBoxRule, ScreenRule
+from qtile_extras.widget.groupbox2 import GroupBoxRule, ScreenRule
 
 from modules.widgets import widget_defaults
-from modules.utils import get_firefox_instance
 from modules.bar_styles._constants import ICONS_PATH, APPS_ICONS_PATH, UPDATE_INTERVAL
-from modules.bar_styles._decorators import lower_left_triangle, lower_right_triangle
-
 
 OPAQUE = 'ff'
 BARSIZE = 31
@@ -54,7 +49,7 @@ class SimpleBuds:
             rules=[
                   GroupBoxRule().when(func=set_label),
                   GroupBoxRule(text_colour=colors['background_focus']).when(screen=ScreenRule.THIS),
-                  GroupBoxRule(text_colour=colors['background_focus_alt']).when(screen=ScreenRule.OTHER),
+                  GroupBoxRule(text_colour=colors['background_focus_noncurrent']).when(screen=ScreenRule.OTHER),
                   GroupBoxRule(text_colour=colors['foreground']).when(),
                   GroupBoxRule(text_colour=colors['urgent']).when(urgent=False)
                   # GroupBoxRule(text_colour=colors['foreground']).when(occupied=True),

@@ -59,10 +59,10 @@ class Gruvbox:
 
             'foreground_focus': self.white,
             'background_focus': self.neutral_yellow,
-            'background_focus_highlight': self.dark2,  # incase using highlight_method = line
+            'background_line_highlight': self.dark2,  # incase using highlight_method = line
 
-            'background_focus_alt': self.neutral_aqua,  # focused workspace on unfocused monitor
-            'background_alt': self.dark3,  # focused workspace of the other monitor (regardless if it's the focused or focused one)
+            'background_focus_noncurrent': self.neutral_aqua,  # focused workspace on unfocused monitor
+            'background_other': self.dark3,  # focused workspace of the other monitor (regardless if it's the focused or focused one)
             # 'background_alt': self.bg3,  # focused workspace of the other monitor (regardless if it's the focused or focused one)
 
             # border

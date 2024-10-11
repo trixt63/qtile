@@ -47,7 +47,7 @@ class Cockpit:
         _upper_right_triangle = upper_right_triangle(**_decorator_configs)
         _lower_left_triangle = lower_left_triangle(**_decorator_configs)
 
-        groupbox_configs = dict(
+        groupbox_config = dict(
             font=widget_defaults['font'],
             padding_x=PAD-1,
             background=colors.get('background_unfocus'),
@@ -58,20 +58,13 @@ class Cockpit:
             urgent_border=colors.get('urgent'),
             # for the focused screen
             this_current_screen_border=colors.get('background_focus'),
-            other_current_screen_border=colors.get('background_alt'),
+            other_current_screen_border=colors.get('background_other'),
             highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
             # for the other screen
-            this_screen_border=colors.get('background_focus_alt'),
-            other_screen_border=colors.get('background_alt'),
+            this_screen_border=colors.get('background_focus_noncurrent'),
+            other_screen_border=colors.get('background_other'),
             disable_drag=True,
             use_mouse_wheel=False,
-        )
-
-        windowname_config = dict(
-            foreground=colors.get('background'),
-            background=colors.get('background') + OPAQUE,
-            fontsize=widget_defaults.get('fontsize') - 1,
-            max_chars=36
         )
 
         tasklist_config = dict(
@@ -257,7 +250,7 @@ class Cockpit:
                                         padding=5
                                 ),
                         widget.GroupBox(
-                            **groupbox_configs
+                            **groupbox_config
                         ),
                         _upper_left_triangle,
 
@@ -318,7 +311,7 @@ class Cockpit:
                             padding=5
                         ),
                         widget.GroupBox(
-                            **groupbox_configs
+                            **groupbox_config
                         ),
                         _upper_left_triangle,
 
@@ -380,7 +373,7 @@ def _get_highlight_color(colors):
     for the GroupBox when highlight_method='line',
     in case the color scheme does not have 'background_focus_2'
     """
-    colors_list = [colors.get('background_focus_highlight'),
+    colors_list = [colors.get('background_line_highlight'),
                    colors.get('background_unfocus'),
-                   colors.get('background_alt')]
+                   colors.get('background_other')]
     return next(color for color in colors_list if color is not None)
