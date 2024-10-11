@@ -9,7 +9,6 @@ from qtile_extras.layout.decorations import ConditionalBorder, GradientBorder, G
 from qtile_extras.widget.decorations import RectDecoration
 from qtile_extras.widget.groupbox2 import GroupBox2, GroupBoxRule, ScreenRule
 
-
 from modules.widgets import widget_defaults
 from modules.utils import get_firefox_instance
 from modules.bar_styles._constants import ICONS_PATH, APPS_ICONS_PATH, UPDATE_INTERVAL
@@ -17,7 +16,7 @@ from modules.bar_styles._decorators import lower_left_triangle, lower_right_tria
 
 
 OPAQUE = 'ff'
-BARSIZE = 33
+BARSIZE = 31
 PAD = 10
 _DECORATOR_PADDING = ceil(BARSIZE/10)
 _DECORATOR_SIZE = ceil(BARSIZE*1.1 + 1) * 2
@@ -32,9 +31,6 @@ def set_label(rule, box):
         rule.text = "○"
 
     return True
-
-
-GroupBoxRule().when(func=set_label)
 
 
 class Simple:
@@ -52,9 +48,8 @@ class Simple:
         _groupbox2_config = dict(
             # font="Font Awesome 6 Free Solid",
             font="Hack Nerd Font",
-            fontsize=20,
-            padding_x=6,
-            # padding_y=11,
+            fontsize=25,
+            padding_x=7,
             rules=[
                   GroupBoxRule().when(func=set_label),
                   GroupBoxRule(text_colour=colors['background_focus']).when(screen=ScreenRule.THIS),
@@ -65,26 +60,6 @@ class Simple:
                   # GroupBoxRule(text_colour=colors['background_alt']).when(occupied=False),
             ]
         )
-
-        # _groupbox_config = dict(
-        #     font=widget_defaults['font'],
-        #     padding_x=PAD-1,
-        #     background=colors.get('background_unfocus'),
-        #     highlight_method=self.highlight_method,
-        #     rounded=False,
-        #     active=colors.get('foreground_focus'),
-        #     inactive=colors.get('foreground_unfocus'),
-        #     urgent_border=colors.get('urgent'),
-        #     # for the focused screen
-        #     this_current_screen_border=colors.get('background_focus'),
-        #     other_current_screen_border=colors.get('background_alt'),
-        #     highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
-        #     # for the other screen
-        #     this_screen_border=colors.get('background_focus_alt'),
-        #     other_screen_border=colors.get('background_alt'),
-        #     disable_drag=True,
-        #     use_mouse_wheel=False,
-        # )
 
         _tasklist_config = dict(
             foreground=colors.get('foreground_unfocus'),
@@ -117,7 +92,6 @@ class Simple:
             format=' {load_percent}%',
             update_interval=UPDATE_INTERVAL,
             padding=PAD/2,
-            **widget_defaults
         )
 
         memory = widget.Memory(
@@ -126,7 +100,6 @@ class Simple:
             measure_mem='G',
             update_interval=UPDATE_INTERVAL,
             padding=PAD/2,
-            **widget_defaults
         )
 
         thermal = widget.ThermalSensor(
@@ -172,24 +145,6 @@ class Simple:
             format='󰓅 {down:.0f}{down_suffix} ↓↑ {up:.0f}{up_suffix}',
             update_interval=UPDATE_INTERVAL
         )
-
-        _mpris2_spotify_config = dict(
-            background=colors.get('background') + OPAQUE,
-            foreground=colors.get('foreground_unfocus'),
-            padding=ceil(PAD/2),
-            font=widget_defaults.get('font'),
-            fontsize=widget_defaults.get('fontsize') - 3,
-            scroll=True,
-            scroll_clear=True,
-            scroll_delay=0.5,
-            width=150,
-            name="spotify",
-            playing_text=" {track}",
-            paused_text=" Spotify",
-            no_metadata_text=" Spotify playing",
-            display_metadata=['xesam:title', 'xesam:artist'],
-            # poll_interval=1,
-            objname="org.mpris.MediaPlayer2.spotify")
 
         mpris2_spotify = widget_og.Mpris2(
             background=colors.get('background') + OPAQUE,
@@ -283,13 +238,3 @@ def _parse_text(text):
             text = text + string[-3:] + string[:-3]
         return text
 
-
-def _get_highlight_color(colors):
-    """Get the highlight_color (the background color)
-    for the GroupBox when highlight_method='line',
-    in case the color scheme does not have 'background_focus_2'
-    """
-    colors_list = [colors.get('background_focus_2'),
-                   colors.get('background_unfocus'),
-                   colors.get('background_alt')]
-    return next(color for color in colors_list if color is not None)
