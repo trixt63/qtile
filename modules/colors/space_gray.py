@@ -29,6 +29,8 @@ class SpaceGray:
         self.cyan2 = '#85A7A5'
         self.grey2 = '#65737e'
 
+        self._accent = self.yellow2
+
         self.colors = {
             # normal fg & bg
             'background': self.black2,
@@ -39,14 +41,14 @@ class SpaceGray:
             'background_unfocus': self.black3,
 
             'foreground_focus': self.white,
-            'background_focus': self.yellow2,
-            'background_focus_noncurrent': self.cyan,  # focused workspace on unfocused monitor
+            'background_focus': self._accent,
+            'background_focus_noncurrent': self.cyan2,  # focused workspace on unfocused monitor
             'background_other': self.grey2,  # focused workspace of the other monitor (regardless of monitor )
             'background_line_highlight': self.grey,  # incase using highlight_method = line
 
             # border
             'border': self.black3,
-            'border_focus': self.yellow2,
+            'border_focus': self._accent,
 
             'urgent': self.red,
 

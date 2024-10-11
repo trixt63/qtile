@@ -47,7 +47,7 @@ class Gruvbox:
         # self.faded_aqua = '#427b58'
         # self.faded_orange = '#af3a03'
 
-        self._highlight = self.green2
+        self._accent = self.green2
 
         self.colors = {
             # normal fg & bg
@@ -59,15 +59,15 @@ class Gruvbox:
             'background_unfocus': self.dark0_soft,
 
             'foreground_focus': self.light0,
-            'background_focus': self._highlight,
+            'background_focus': self._accent,
             'background_line_highlight': self.dark2,  # incase using highlight_method = line
 
-            'background_focus_noncurrent': self.aqua,  # focused workspace on unfocused monitor
+            'background_focus_noncurrent': self.blue,  # focused workspace on unfocused monitor
             'background_other': self.dark3,  # focused workspace of the other monitor (regardless if it's the focused or focused one)
 
             # border
             'border': self.dark0,
-            'border_focus': self._highlight,
+            'border_focus': self._accent,
 
             'urgent': self.red,
         }

@@ -1,7 +1,4 @@
-from .color_scheme import ColorScheme
-
-
-class Nord(ColorScheme):
+class Nord:
     def __init__(self):
         self.black = '#2e3440'
         self.black2 = '#3b4252'
