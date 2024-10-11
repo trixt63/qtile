@@ -33,7 +33,7 @@ class Cockpit:
                         linewidth=0,
                         background=colors.get('background_unfocus'),
                         size_percent=70,
-                        padding=PAD*2 - 2
+                        padding=PAD-1
                     )
 
         _decorator_configs = dict(
@@ -79,7 +79,7 @@ class Cockpit:
             # highlight_method='block',
             # border=colors.get('foreground'),
             highlight_method='border',
-            borderwidth=1.5,
+            borderwidth=1.7,
             icon_size=widget_defaults.get('fontsize') - 1,
             theme_mode='preferred',
             theme_path=APPS_ICONS_PATH,
@@ -129,11 +129,11 @@ class Cockpit:
         widget_battery = (
             widget.BatteryIcon(
                 theme_path=ICONS_PATH,
-                **widget_defaults
+                padding=0
             ),
             widget.Battery(
                 format='{percent:2.0%}',
-                **widget_defaults
+                padding=0
             )
         )
 
@@ -270,17 +270,19 @@ class Cockpit:
                         memory_usage,
                         separator,
                         *widget_volume,
-                        widget.Sep(
-                            linewidth=0,
-                            background=colors.get('background_unfocus'),
-                            padding=(PAD - 2) * 2 - 3
-                        ),
+                        # widget.Sep(
+                        #     linewidth=0,
+                        #     background=colors.get('background_unfocus'),
+                        #     padding=PAD-1
+                        # ),
+                        separator,
                         *widget_battery,
-                        widget.Sep(
-                            linewidth=0,
-                            background=colors.get('background_unfocus'),
-                            padding=(PAD-2)*2 - 3
-                        ),
+                        # widget.Sep(
+                        #     linewidth=0,
+                        #     background=colors.get('background_unfocus'),
+                        #     padding=(PAD-2)*2 - 3
+                        # ),
+                        separator,
                         _lower_left_triangle,
                         widget.Systray(
                             padding=int(PAD/2)+1,
@@ -333,13 +335,19 @@ class Cockpit:
                         memory_usage,
                         separator,
                         *widget_volume,
+                        # widget.Sep(
+                        #     linewidth=0,
+                        #     background=colors.get('background_unfocus'),
+                        #     padding=(PAD - 2) * 2 - 3
+                        # ),
+                        separator,
+                        *widget_battery,
+                        # separator,
                         widget.Sep(
                             linewidth=0,
                             background=colors.get('background_unfocus'),
-                            padding=(PAD - 2) * 2 - 3
+                            padding=PAD
                         ),
-                        *widget_battery,
-                        separator,
                         net,
                         widget.Sep(
                             linewidth=0,

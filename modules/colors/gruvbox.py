@@ -1,14 +1,11 @@
 class Gruvbox:
     def __init__(self):
-        self.white = '#ffffff'
-        self.black = '#000000'
-
-        self.dark0_h = '#1d2021'
+        self.dark0_hard = '#1d2021'
         self.dark0 = '#282828'
-        self.dark0_s = '#32302f'
+        self.dark0_soft = '#32302f'
         self.dark1 = '#3c3836'
         self.dark2 = '#504945'
-        self.dark3 = '#65737e'
+        self.dark3 = '#665c54'
         self.dark4 = '#7c6f64'
 
         self.gray = '#928374'
@@ -22,54 +19,57 @@ class Gruvbox:
         self.light4 = '#a89984'
 
         # standard colors
-        self.neutral_red = '#cc241d'
-        self.neutral_green = '#98971a'
-        self.neutral_yellow = '#d79921'
-        self.neutral_blue = '#458588'
-        self.neutral_purple = '#b16286'
-        self.neutral_aqua = '#689d6a'
-        self.neutral_orange = '#d65d0e'
+        self.red = '#cc241d'
+        self.green = '#98971a'
+        self.yellow = '#d79921'
+        self.blue = '#458588'
+        self.purple = '#b16286'
+        self.aqua = '#689d6a'
+        self.gray = '#a89984'
+        self.orange = '#d65d0e'
 
         # dark mode colors
-        self.bright_red = '#fb4934'
-        self.bright_green = '#b8bb26'
-        self.bright_yellow = '#fabd2f'
-        self.bright_blue = '#83a598'
-        self.bright_purple = '#d3869b'
-        self.bright_aqua = '#8ec07c'
-        self.bright_orange = '#fe8019'
+        self.red2 = '#fb4934'
+        self.green2 = '#b8bb26'
+        self.yellow2 = '#fabd2f'
+        self.blue2 = '#83a598'
+        self.purple2 = '#d3869b'
+        self.aqua2 = '#8ec07c'
+        self.gray2 = '#928374'
+        self.orange2 = '#fe8019'
 
         # light mode colors
-        self.faded_red = '#9d0006'
-        self.faded_green = '#79740e'
-        self.faded_yellow = '#b57614'
-        self.faded_blue = '#076678'
-        self.faded_purple = '#8f3f71'
-        self.faded_aqua = '#427b58'
-        self.faded_orange = '#af3a03'
+        # self.faded_red = '#9d0006'
+        # self.faded_green = '#79740e'
+        # self.faded_yellow = '#b57614'
+        # self.faded_blue = '#076678'
+        # self.faded_purple = '#8f3f71'
+        # self.faded_aqua = '#427b58'
+        # self.faded_orange = '#af3a03'
+
+        self._highlight = self.green2
 
         self.colors = {
             # normal fg & bg
-            'background': self.dark4,
+            'background': self.dark0,
             'foreground': self.light0,
 
             # groupbox fg & bg
-            'foreground_unfocus': self.light0,
-            'background_unfocus': self.dark0,
+            'foreground_unfocus': self.light4,
+            'background_unfocus': self.dark0_soft,
 
-            'foreground_focus': self.white,
-            'background_focus': self.neutral_yellow,
+            'foreground_focus': self.light0,
+            'background_focus': self._highlight,
             'background_line_highlight': self.dark2,  # incase using highlight_method = line
 
-            'background_focus_noncurrent': self.neutral_aqua,  # focused workspace on unfocused monitor
+            'background_focus_noncurrent': self.aqua,  # focused workspace on unfocused monitor
             'background_other': self.dark3,  # focused workspace of the other monitor (regardless if it's the focused or focused one)
-            # 'background_alt': self.bg3,  # focused workspace of the other monitor (regardless if it's the focused or focused one)
 
             # border
             'border': self.dark0,
-            'border_focus': self.neutral_yellow,
+            'border_focus': self._highlight,
 
-            'urgent': self.neutral_red,
+            'urgent': self.red,
         }
 
     def get(self, key, default=None):

@@ -79,6 +79,7 @@ class SimpleBuds:
         )
 
         clock = widget.Clock(
+            foreground=colors.get('foreground'),
             format=" %a %b %d  %H:%M",
             # fontsize=widget_defaults.get('fontsize') - 1
         )
@@ -125,10 +126,12 @@ class SimpleBuds:
 
         battery_widgets = (
             widget.BatteryIcon(
+                foreground=colors.get('foreground'),
                 theme_path=ICONS_PATH,
                 padding=-2,
             ),
             widget.Battery(
+                foreground=colors.get('foreground'),
                 format='{percent:2.0%}',
                 padding=0
             )
