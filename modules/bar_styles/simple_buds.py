@@ -72,7 +72,7 @@ class SimpleBuds:
             theme_path=APPS_ICONS_PATH,
             # spacing=5,
             padding_x=4,
-            padding_y=3,
+            padding_y=4,
             parse_text=_parse_text,
             markup_focused='<span font_weight="600">{}</span>',
             markup_minimized='<span font_style="italic">_{}</span>',
@@ -113,7 +113,7 @@ class SimpleBuds:
                         font="Font Awesome 6 Free Solid",
                         foreground=colors.get('foreground'),
                         background=colors.get('background'),
-                        padding=PAD/2-1,
+                        padding=PAD/2,
                         emoji=True,
                         emoji_list=['', '', '', ''],
                     ),
@@ -126,6 +126,7 @@ class SimpleBuds:
         )
 
         battery_widgets = (
+            widget.Sep(linewidth=0, padding=PAD-4),
             widget.BatteryIcon(
                 foreground=colors.get('foreground'),
                 theme_path=ICONS_PATH,
@@ -135,7 +136,8 @@ class SimpleBuds:
                 foreground=colors.get('foreground'),
                 format='{percent:2.0%}',
                 padding=0
-            )
+            ),
+            widget.Sep(linewidth=0, padding=PAD-2),
         )
 
         net = widget.Net(
@@ -181,7 +183,7 @@ class SimpleBuds:
                 clock,
                 spacer,
                 mpris2_spotify,
-                sep, *volume_widgets, sep, *battery_widgets, sep, systray, sep
+                sep, *volume_widgets, sep, *battery_widgets, systray, sep
         ]
 
         widgets_list_2 = [
@@ -192,7 +194,8 @@ class SimpleBuds:
                 clock,
                 spacer,
                 mpris2_spotify,
-                sep, thermal, sep, cpu, sep, memory, sep, *volume_widgets, sep, *battery_widgets, sep
+                # sep, thermal, sep, cpu, sep, memory, sep, *volume_widgets, sep, *battery_widgets, sep
+                sep, *volume_widgets, sep, *battery_widgets, sep, thermal, sep, cpu, sep, memory, sep
             ]
 
         # screen 1
