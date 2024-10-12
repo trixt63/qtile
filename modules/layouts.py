@@ -5,7 +5,7 @@ from libqtile.config import Match
 
 from modules.screens import colors
 
-MG = 7  # margin
+MG = 6  # margin
 BW = 4  # border width
 
 layouts = [
