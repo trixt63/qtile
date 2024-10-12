@@ -44,8 +44,8 @@ class SimpleBuds:
         _groupbox2_config = dict(
             # font="Font Awesome 6 Free Solid",
             font="Hack Nerd Font",
-            fontsize=21,
-            padding_x=7,
+            fontsize=23,
+            padding_x=8,
             padding_y=0,
             rules=[
                   GroupBoxRule().when(func=set_label),
