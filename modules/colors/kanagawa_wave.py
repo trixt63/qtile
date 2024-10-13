@@ -9,7 +9,7 @@ class Kanagawa:
         self.white2 = '#dcd7ba'
 
         self.red = '#c34043'
-        self.yellow = '#c0a36e'
+        self.yellow = "#c0a36e"
         self.green = '#76946a'
         self.blue = '#7e9cd8'
         self.cyan = '#6a9589'
@@ -51,7 +51,7 @@ class Kanagawa:
             'background_line_highlight': self.gray,  # incase using highlight_method = line
 
             # border
-            'border': self.black_s,
+            'border': self.gray,
             'border_focus': self._accent,
 
             'urgent': self.red2,
