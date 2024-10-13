@@ -40,12 +40,17 @@ class SimpleBuds:
             scale=0.8,
             padding=PAD
         )
+        _current_layout_config = dict(
+            background=colors.get('background'),
+            scale=0.8,
+            padding=PAD
+        )
 
         _groupbox2_config = dict(
             # font="Font Awesome 6 Free Solid",
             font="Hack Nerd Font",
-            fontsize=21,
-            padding_x=7,
+            fontsize=23,
+            padding_x=8,
             padding_y=0,
             rules=[
                   GroupBoxRule().when(func=set_label),
@@ -66,13 +71,13 @@ class SimpleBuds:
             icon_size=widget_defaults.get('fontsize') - 1,
             max_title_width=180,
             highlight_method='border',
-            border=colors.get('background_focus'),
+            border=colors.get('border_focus'),
             borderwidth=1.2,
             theme_mode='preferred',
             theme_path=APPS_ICONS_PATH,
             # spacing=5,
             padding_x=4,
-            padding_y=3,
+            padding_y=4,
             parse_text=_parse_text,
             markup_focused='<span font_weight="600">{}</span>',
             markup_minimized='<span font_style="italic">_{}</span>',
@@ -82,6 +87,7 @@ class SimpleBuds:
         clock = widget.Clock(
             foreground=colors.get('foreground'),
             format=" %a %b %d  %H:%M",
+            padding=PAD*2
             # fontsize=widget_defaults.get('fontsize') - 1
         )
 
@@ -113,7 +119,7 @@ class SimpleBuds:
                         font="Font Awesome 6 Free Solid",
                         foreground=colors.get('foreground'),
                         background=colors.get('background'),
-                        padding=PAD/2-1,
+                        padding=PAD/2,
                         emoji=True,
                         emoji_list=['', '', '', ''],
                     ),
@@ -126,6 +132,7 @@ class SimpleBuds:
         )
 
         battery_widgets = (
+            widget.Sep(linewidth=0, padding=PAD-4),
             widget.BatteryIcon(
                 foreground=colors.get('foreground'),
                 theme_path=ICONS_PATH,
@@ -135,7 +142,8 @@ class SimpleBuds:
                 foreground=colors.get('foreground'),
                 format='{percent:2.0%}',
                 padding=0
-            )
+            ),
+            widget.Sep(linewidth=0, padding=PAD-2),
         )
 
         net = widget.Net(
@@ -174,25 +182,26 @@ class SimpleBuds:
         spacer = widget.Spacer()
 
         widgets_list_1 = [
-                current_layout_icon,
+                widget.CurrentLayoutIcon(**_current_layout_config),
                 widget.GroupBox2(**_groupbox2_config),
                 # widget_og.GroupBox(**_groupbox_config),
                 sep, widget.TaskList(**_tasklist_config),
                 clock,
                 spacer,
                 mpris2_spotify,
-                sep, *volume_widgets, sep, *battery_widgets, sep, systray, sep
+                sep, *volume_widgets, sep, *battery_widgets, systray, sep
         ]
 
         widgets_list_2 = [
-                current_layout_icon,
+                widget.CurrentLayoutIcon(**_current_layout_config),
                 widget.GroupBox2(**_groupbox2_config),
                 # widget_og.GroupBox(**_groupbox_config),
                 sep, widget.TaskList(**_tasklist_config),
                 clock,
                 spacer,
                 mpris2_spotify,
-                sep, thermal, sep, cpu, sep, memory, sep, *volume_widgets, sep, *battery_widgets, sep
+                # sep, thermal, sep, cpu, sep, memory, sep, *volume_widgets, sep, *battery_widgets, sep
+                sep, *volume_widgets, sep, *battery_widgets, sep, thermal, sep, cpu, sep, memory, sep
             ]
 
         # screen 1

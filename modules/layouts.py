@@ -6,7 +6,7 @@ from libqtile.config import Match
 from modules.screens import colors
 
 MG = 7  # margin
-BW = 4  # border width
+BW = 5  # border width
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
@@ -17,7 +17,7 @@ layouts = [
                      single_border_width=0,
                      # single_margin=MG,
                      single_margin=0,
-                     ratio=0.6),
+                     ratio=0.65),
     # Try more layouts by unleashing below layouts.
     # layout.Slice(),
     # layout.Bsp(),
@@ -32,7 +32,7 @@ layouts = [
                    # place_right=True,
                    vspace=5,
                    bg_color=colors.get('background'),
-                   active_bg=colors.get('background_focus'),
+                   active_bg=colors.get('border_focus'),
                    urgent_bg=colors.get('urgent')
                    ),
 
@@ -58,7 +58,7 @@ layouts = [
 floating_layout = layout.Floating(
     border_focus=colors.get('border_focus'),
     border_normal=colors.get('black'),
-    border_width=BW-1,
+    border_width=BW-2,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,

@@ -12,9 +12,11 @@ from modules.bar_styles.simple_buds import SimpleBuds
 
 from modules.colors.space_gray import SpaceGray
 from modules.colors.gruvbox import Gruvbox
+from modules.colors.kanagawa_wave import Kanagawa
 
 
-colors = SpaceGray().colors
+colors = Kanagawa().colors
+# colors = SpaceGray().colors
 # colors = Gruvbox().colors
 
 # screens = Cockpit(colors=colors).screens
