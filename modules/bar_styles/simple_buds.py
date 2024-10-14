@@ -18,12 +18,23 @@ _DECORATOR_SIZE = ceil(BARSIZE*1.1 + 1) * 2
 
 
 def set_label(rule, box):
+    _originals = ["◉", "◎", "○"]
+
+    _nf_circles = ["󰪥",  #\uf0aa4 nf-md-circle_slice_8
+                   "󰺕",  #\uf0e95 nf-md-circle_double
+                   "󰄰"]  #\uf0130 nf-md-checkbox_blank_circle_outline
+
+    _nf_bullseye = ["",  #\uf140 nf-fa-bullseye
+                    "",  #\uf192 nf-fa-circle_dot
+                    ""]  #\uf4aa nf-oct-circle
+    labels = _nf_circles
+    # labels = _originals
     if box.focused:
-        rule.text = "◉"
+        rule.text = labels[0]
     elif box.occupied:
-        rule.text = "◎"
+        rule.text = labels[1]
     else:
-        rule.text = "○"
+        rule.text = labels[2]
 
     return True
 
@@ -47,10 +58,11 @@ class SimpleBuds:
         )
 
         _groupbox2_config = dict(
-            # font="Font Awesome 6 Free Solid",
-            font="Hack Nerd Font",
-            fontsize=23,
-            padding_x=8,
+            # font="Hack Nerd Font",
+            # font="FiraCode Nerd Font",
+            # font="Iosevka Nerd Font",
+            fontsize=20,
+            padding_x=9,
             padding_y=0,
             rules=[
                   GroupBoxRule().when(func=set_label),

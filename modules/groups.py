@@ -13,6 +13,7 @@ groups = [
         Match(wm_class=["vscodium"]),
         Match(wm_class=["jetbrains-pycharm-ce"]),
         Match(wm_class=["jetbrains-pycharm"]),
+        Match(wm_class=["jetbrains-rustrover"]),
         Match(wm_class=["jetbrains-webstorm"])
     ]),
     Group("3"),
