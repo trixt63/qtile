@@ -19,32 +19,28 @@ _DECORATOR_SIZE = ceil(BARSIZE*1.1 + 1) * 2
 # Labels for GroupBox2
 _originals = ["◉", "◎", "○"]
 
-_nf_circles = ["󰪥",  #\uf0aa4 nf-md-circle_slice_8
-               "󰺕",  #\uf0e95 nf-md-circle_double
-               "󰄰"]  #\uf0130 nf-md-checkbox_blank_circle_outline
+_nf_circles = ["󰪥",  # \uf0aa4 nf-md-circle_slice_8
+               "󰺕",  # \uf0e95 nf-md-circle_double
+               "󰄰"]  # \uf0130 nf-md-checkbox_blank_circle_outline
 
-_nf_bullseye = ["",  #\uf140 nf-fa-bullseye
-                "",  #\uf192 nf-fa-circle_dot
-                ""]  #\uf4aa nf-oct-circle
+_nf_bullseye = ["",  # \uf140 nf-fa-bullseye
+                "",  # \uf192 nf-fa-circle_dot
+                ""]  # \uf4aa nf-oct-circle
 
-_nf_disco = ["",  #\uf140 nf-fa-bullseye
-             "",  #\uf192 nf-fa-circle_dot
-             ""]  #\uf4aa nf-oct-circle
-labels = _nf_circles
+_nf_disco = ["",  # \uf140 nf-fa-bullseye
+             "",  # \uf192 nf-fa-circle_dot
+             ""]  # \uf4aa nf-oct-circle
+_LABELS = _nf_circles
 
 
-class SimpleBuds:
-    """Simple bar using qtile-extras' GroupBox2, with labels being circles"""
+class Spring:
+    """Simple bar using qtile-extras' GroupBox2, with labels being circles.
+    Inspired by u/-basilios-'s Spring dwm rice"""
     def __init__(self, colors):
         self.colors = colors
         self.highlight_method = 'block'
 
         # widgets
-        current_layout_icon = widget.CurrentLayoutIcon(
-            background=colors.get('background'),
-            scale=0.8,
-            padding=PAD
-        )
         _current_layout_config = dict(
             background=colors.get('background'),
             scale=0.8,
@@ -59,19 +55,12 @@ class SimpleBuds:
             padding_x=10,
             padding_y=0,
             rules=[
-                # GroupBoxRule(text=labels[0], text_colour=colors['background_focus']).when(focused=True, screen=ScreenRule.THIS),
-                # GroupBoxRule(text=labels[0], text_colour=colors['background_focus_noncurrent']).when(focused=False, screen=ScreenRule.THIS),
-                # GroupBoxRule(text=labels[1]).when(occupied=True),
-                # GroupBoxRule(text_colour=colors['background_focus']).when(focused=True, screen=ScreenRule.OTHER),
-                # GroupBoxRule(text_colour=colors['background_focus_noncurrent']).when(focused=False, screen=ScreenRule.OTHER),
-                # GroupBoxRule(text=labels[2], text_colour=colors['foreground']).when(),
-                # GroupBoxRule(text_colour=colors['urgent']).when(urgent=True),
-                GroupBoxRule(text=labels[0]).when(screen=ScreenRule.THIS),
+                GroupBoxRule(text=_LABELS[0]).when(screen=ScreenRule.THIS),
                 GroupBoxRule(text_colour=colors['background_focus']).when(focused=True),
                 GroupBoxRule(text_colour=colors['foreground']).when(screen=ScreenRule.NONE),
                 GroupBoxRule(text_colour=colors['background_focus_noncurrent']).when(),  # not focused, screen not None
-                GroupBoxRule(text=labels[1]).when(occupied=True),
-                GroupBoxRule(text=labels[2]).when(),
+                GroupBoxRule(text=_LABELS[1]).when(occupied=True),
+                GroupBoxRule(text=_LABELS[2]).when(),
                 GroupBoxRule(text_colour=colors['urgent']).when(urgent=True),
             ]
         )
@@ -101,7 +90,6 @@ class SimpleBuds:
             foreground=colors.get('foreground'),
             format=" %a %b %d  %H:%M",
             padding=PAD*2
-            # fontsize=widget_defaults.get('fontsize') - 1
         )
 
         cpu = widget.CPU(
@@ -197,7 +185,6 @@ class SimpleBuds:
         widgets_list_1 = [
                 widget.CurrentLayoutIcon(**_current_layout_config),
                 widget.GroupBox2(**_groupbox2_config),
-                # widget_og.GroupBox(**_groupbox_config),
                 sep, widget.TaskList(**_tasklist_config),
                 clock,
                 spacer,
@@ -208,12 +195,10 @@ class SimpleBuds:
         widgets_list_2 = [
                 widget.CurrentLayoutIcon(**_current_layout_config),
                 widget.GroupBox2(**_groupbox2_config),
-                # widget_og.GroupBox(**_groupbox_config),
                 sep, widget.TaskList(**_tasklist_config),
                 clock,
                 spacer,
                 mpris2_spotify,
-                # sep, thermal, sep, cpu, sep, memory, sep, *volume_widgets, sep, *battery_widgets, sep
                 sep, *volume_widgets, sep, *battery_widgets, sep, thermal, sep, cpu, sep, memory, sep
             ]
 
@@ -240,16 +225,6 @@ class SimpleBuds:
             screen1,
             screen2
         ]
-
-
-def rectdeco(hexcolor):
-    return RectDecoration(
-        filled=True,
-        colour=hexcolor,
-        padding_y= 5,
-        padding_x= 0,
-        radius=4
-    )
 
 
 def _parse_text(text):
