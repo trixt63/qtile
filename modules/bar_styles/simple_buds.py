@@ -16,6 +16,7 @@ PAD = 10
 _DECORATOR_PADDING = ceil(BARSIZE/10)
 _DECORATOR_SIZE = ceil(BARSIZE*1.1 + 1) * 2
 
+# Labels for GroupBox2
 _originals = ["◉", "◎", "○"]
 
 _nf_circles = ["󰪥",  #\uf0aa4 nf-md-circle_slice_8
@@ -30,30 +31,6 @@ _nf_disco = ["",  #\uf140 nf-fa-bullseye
              "",  #\uf192 nf-fa-circle_dot
              ""]  #\uf4aa nf-oct-circle
 labels = _nf_circles
-
-
-def set_label(rule, box):
-    labels = _nf_circles
-    if box.focused:
-        rule.text = labels[0]
-    elif box.occupied:
-        rule.text = labels[1]
-    else:
-        rule.text = labels[2]
-
-    return True
-
-
-def set_color(rule, box):
-    labels = _nf_circles
-    if box.focused:
-        rule.text = labels[0]
-    elif box.occupied:
-        rule.text = labels[1]
-    else:
-        rule.text = labels[2]
-
-    return True
 
 
 class SimpleBuds:
@@ -79,19 +56,23 @@ class SimpleBuds:
             # font="FiraCode Nerd Font",
             # font="Iosevka Nerd Font",
             fontsize=19,
-            padding_x=9,
+            padding_x=10,
             padding_y=0,
             rules=[
-                  # GroupBoxRule().when(func=set_label),
-                  GroupBoxRule(text=labels[0], text_colour=colors['background_focus']).when(focused=True, screen=ScreenRule.THIS),
-                  GroupBoxRule(text=labels[0], text_colour=colors['background_focus_noncurrent']).when(focused=False, screen=ScreenRule.THIS),
-                  GroupBoxRule(text=labels[1]).when(occupied=True),
-                  GroupBoxRule(text_colour=colors['background_focus']).when(focused=True, screen=ScreenRule.OTHER),
-                  GroupBoxRule(text_colour=colors['background_focus_noncurrent']).when(focused=False, screen=ScreenRule.OTHER),
-                  GroupBoxRule(text=labels[2], text_colour=colors['foreground']).when(),
-                  GroupBoxRule(text_colour=colors['urgent']).when(urgent=True)
-                  # GroupBoxRule(text_colour=colors['foreground']).when(occupied=True),
-                  # GroupBoxRule(text_colour=colors['background_alt']).when(occupied=False),
+                # GroupBoxRule(text=labels[0], text_colour=colors['background_focus']).when(focused=True, screen=ScreenRule.THIS),
+                # GroupBoxRule(text=labels[0], text_colour=colors['background_focus_noncurrent']).when(focused=False, screen=ScreenRule.THIS),
+                # GroupBoxRule(text=labels[1]).when(occupied=True),
+                # GroupBoxRule(text_colour=colors['background_focus']).when(focused=True, screen=ScreenRule.OTHER),
+                # GroupBoxRule(text_colour=colors['background_focus_noncurrent']).when(focused=False, screen=ScreenRule.OTHER),
+                # GroupBoxRule(text=labels[2], text_colour=colors['foreground']).when(),
+                # GroupBoxRule(text_colour=colors['urgent']).when(urgent=True),
+                GroupBoxRule(text=labels[0]).when(screen=ScreenRule.THIS),
+                GroupBoxRule(text_colour=colors['background_focus']).when(focused=True),
+                GroupBoxRule(text_colour=colors['foreground']).when(screen=ScreenRule.NONE),
+                GroupBoxRule(text_colour=colors['background_focus_noncurrent']).when(),  # not focused, screen not None
+                GroupBoxRule(text=labels[1]).when(occupied=True),
+                GroupBoxRule(text=labels[2]).when(),
+                GroupBoxRule(text_colour=colors['urgent']).when(urgent=True),
             ]
         )
 
