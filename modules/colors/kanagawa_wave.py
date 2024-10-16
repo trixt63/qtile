@@ -31,7 +31,6 @@ class Kanagawa:
         self.blue3 = "#72A7BC"  # bold color
 
         # self._accent = self.orange
-        # self._accent2 = self.magenta2
         self._accent = self.blue
         self._accent2 = self.green
 

@@ -56,12 +56,12 @@ class Spring:
             padding_y=0,
             rules=[
                 GroupBoxRule(text=_LABELS[0]).when(screen=ScreenRule.THIS),
-                GroupBoxRule(text_colour=colors['background_focus']).when(focused=True),
-                GroupBoxRule(text_colour=colors['foreground']).when(screen=ScreenRule.NONE),
-                GroupBoxRule(text_colour=colors['background_focus_noncurrent']).when(),  # not focused, screen not None
                 GroupBoxRule(text=_LABELS[1]).when(occupied=True),
                 GroupBoxRule(text=_LABELS[2]).when(),
-                GroupBoxRule(text_colour=colors['urgent']).when(urgent=True),
+                GroupBoxRule(text_colour=colors['background_focus']).when(focused=True),
+                GroupBoxRule(text_colour=colors['foreground']).when(screen=ScreenRule.NONE),
+                GroupBoxRule(text_colour=colors['background_focus_noncurrent']).when(urgent=False),  # not focused, screen not None
+                GroupBoxRule(text_colour=colors['urgent']).when(),
             ]
         )
 
