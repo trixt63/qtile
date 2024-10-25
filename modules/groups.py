@@ -32,10 +32,11 @@ groups = [
         # Match(wm_class=["Microsoft Teams - Preview"]),
         Match(wm_class=["discord"])
     ]),
-    Group("7", matches=[Match(wm_class=["spotify"])]),
+    Group("7", matches=[
+        Match(wm_class=["Stremio"]),
+        Match(wm_class=["spotify"])]),
     Group("8", matches=[
         Match(wm_class=["steam"]),
-        Match(wm_class=["Stremio"]),
         Match(wm_class=["Lutris"])]),
     Group("9")
 ]
