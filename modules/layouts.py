@@ -5,7 +5,7 @@ from libqtile.config import Match
 
 from modules.screens import colors
 
-MG = 7  # margin
+MG = 6  # margin
 BW = 5  # border width
 
 layouts = [
@@ -45,7 +45,7 @@ layouts = [
     layout.Columns(num_colums=1,
                    insert_position=1,
                    border_width=BW,
-                   # border_on_single=True,
+                   border_on_single=True,
                    border_focus=colors.get('border_focus'),
                    border_normal=colors.get('border'),
                    margin=[MG, ceil(MG/2), MG, ceil(MG/2)],

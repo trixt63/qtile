@@ -28,8 +28,7 @@ groups = [
     # ]),
     Group("5"),
     Group("6", matches=[
-        Match(wm_class=["thunderbird"]),
-        # Match(wm_class=["Microsoft Teams - Preview"]),
+        Match(wm_class=["thunderbird-esr"]),
         Match(wm_class=["discord"])
     ]),
     Group("7", matches=[

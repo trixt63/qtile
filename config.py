@@ -43,3 +43,9 @@ wl_input_rules = None
 # wmname = "LG3D"
 wmname = "qtile"
 
+"""
+(\(\                   \|/
+( -.-)                 -o-
+o_(")(")               /|\
+"""
+
