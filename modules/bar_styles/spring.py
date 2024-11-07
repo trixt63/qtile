@@ -23,6 +23,9 @@ _nf_circles = ["󰪥",  # \uf0aa4 nf-md-circle_slice_8
                "󰺕",  # \uf0e95 nf-md-circle_double
                "󰄰"]  # \uf0130 nf-md-checkbox_blank_circle_outline
 
+_nf_circles2 = ["",  # \uf192 nf-fa-circle_dot
+                ""]  # \uf4aa nf-oct-circle
+
 _nf_bullseye = ["",  # \uf140 nf-fa-bullseye
                 "",  # \uf192 nf-fa-circle_dot
                 ""]  # \uf4aa nf-oct-circle
@@ -30,6 +33,7 @@ _nf_bullseye = ["",  # \uf140 nf-fa-bullseye
 _nf_disco = ["",  # \uf140 nf-fa-bullseye
              "",  # \uf192 nf-fa-circle_dot
              ""]  # \uf4aa nf-oct-circle
+
 _LABELS = _nf_circles
 
 
@@ -52,12 +56,13 @@ class Spring:
             # font="FiraCode Nerd Font",
             # font="Iosevka Nerd Font",
             fontsize=19,
+            # fontsize=18,
             padding_x=10,
             padding_y=0,
             rules=[
                 GroupBoxRule(text=_LABELS[0]).when(screen=ScreenRule.THIS),
-                GroupBoxRule(text=_LABELS[1]).when(occupied=True),
-                GroupBoxRule(text=_LABELS[2]).when(),
+                GroupBoxRule(text=_LABELS[-2]).when(occupied=True),
+                GroupBoxRule(text=_LABELS[-1]).when(),
                 GroupBoxRule(text_colour=colors['background_focus']).when(focused=True),
                 GroupBoxRule(text_colour=colors['foreground']).when(screen=ScreenRule.NONE),
                 GroupBoxRule(text_colour=colors['background_focus_noncurrent']).when(urgent=False),  # not focused, screen not None
