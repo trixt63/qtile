@@ -44,7 +44,10 @@ class Spring:
         self.colors = colors
         self.highlight_method = 'block'
 
-        # widgets
+        ###############
+        ### WIDGETS ###
+        ###############
+
         _current_layout_config = dict(
             background=colors.get('background'),
             scale=0.8,
@@ -98,14 +101,15 @@ class Spring:
         )
 
         cpu = widget.CPU(
-            foreground=colors.get('foreground'),
+            # foreground=colors.get('foreground'),
+            foreground=colors.get('orange'),
             format=' {load_percent}%',
             update_interval=UPDATE_INTERVAL,
             padding=PAD/2,
         )
 
         memory = widget.Memory(
-            foreground=colors.get('foreground'),
+            foreground=colors.get('green'),
             format='󰘚 {MemUsed:.2f}{mm}',
             measure_mem='G',
             update_interval=UPDATE_INTERVAL,
@@ -207,7 +211,10 @@ class Spring:
                 sep, *volume_widgets, sep, *battery_widgets, sep, thermal, sep, cpu, sep, memory, sep
             ]
 
-        # screen 1
+        ###############
+        ### SCREENS ###
+        ###############
+
         screen1 = Screen(
             top=bar.Bar(
                 widgets=widgets_list_1,
