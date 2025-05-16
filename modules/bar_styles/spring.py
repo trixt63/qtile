@@ -1,7 +1,7 @@
 from math import ceil, floor
 from libqtile import bar
 from libqtile.config import Screen
-from libqtile import widget as widget_og  # for mpris widget
+from libqtile.widget import Mpris2  # og, not from qtile-extras
 
 from qtile_extras import widget
 from qtile_extras.widget.decorations import RectDecoration
@@ -101,8 +101,7 @@ class Spring:
         )
 
         cpu = widget.CPU(
-            # foreground=colors.get('foreground'),
-            foreground=colors.get('orange'),
+            foreground=colors.get('yellow'),
             format=' {load_percent}%',
             update_interval=UPDATE_INTERVAL,
             padding=PAD/2,
@@ -120,7 +119,7 @@ class Spring:
                             format=' {temp:.0f}{unit}',
                             tag_sensor="CPU",
                             padding=PAD/2,
-                            foreground=colors.get('foreground')[1:],
+                            foreground=colors.get('orange')[1:],
                             background=colors.get('background')[1:],
                             update_interval=UPDATE_INTERVAL)
 
@@ -164,7 +163,7 @@ class Spring:
             update_interval=UPDATE_INTERVAL
         )
 
-        mpris2_spotify = widget_og.Mpris2(
+        mpris2_spotify = Mpris2(
             background=colors.get('background') + OPAQUE,
             foreground=colors.get('foreground_unfocus'),
             padding=PAD,

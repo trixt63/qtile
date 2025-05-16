@@ -1,9 +1,10 @@
 # My Qtile configs
 
 ## 1. Presiquities:
-- **python 3.11**: of course
-- python311-dbus_next
-- **[Font Awesome 5](https://fontawesome.com/v5/search)**r
+- **python 3.13**: of course
+- python313-dbus_next
+- **[Font Awesome 5](https://fontawesome.com/v5/search)**
+- **qtile-extras**
 - playerctl
 - **feh**: to set wallpaper
 - **brightnessctl**: to mofify backlight brightness
