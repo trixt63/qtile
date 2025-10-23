@@ -190,6 +190,10 @@ class Spring:
 
         spacer = widget.Spacer()
 
+        #####################
+        ### WIDGETS ORDER ###
+        #####################
+
         widgets_list_1 = [
                 widget.CurrentLayoutIcon(**_current_layout_config),
                 widget.GroupBox2(**_groupbox2_config),
@@ -207,7 +211,7 @@ class Spring:
                 clock,
                 spacer,
                 mpris2_spotify,
-                sep, *volume_widgets, sep, *battery_widgets, sep, thermal, sep, cpu, sep, memory, sep
+                sep, *volume_widgets, sep, *battery_widgets, sep, cpu, sep, memory, sep, thermal, sep
             ]
 
         ###############

@@ -61,14 +61,19 @@ floating_layout = layout.Floating(
     border_width=BW-2,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
-        *layout.Floating.default_float_rules,
+        # *layout.Floating.default_float_rules,
         Match(wm_class="confirmreset"),  # gitk
         Match(wm_class="makebranch"),  # gitk
         Match(wm_class="maketag"),  # gitk
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(wm_class="anki"),  # Anki
+        Match(wm_class="goldendict"),  # GPG key password entry
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
-        # Match(wm_class="calibre-ebook-viewer"),
+    ], 
+    no_reposition_rules=[
+        # So that the pop-up follow the mouse. In GoldenDict preference for Popup: leave everything off, except Track Selection change.
+        # also resize the floating windows as you wish
+        Match(wm_class="goldendict"), 
     ]
 )
