@@ -1,0 +1,3 @@
+# only for reference purposes. You should install them with sudo pip install
+dbus-next
+qtile-extras

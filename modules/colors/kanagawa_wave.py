@@ -45,7 +45,7 @@ class Kanagawa:
 
             'foreground_focus': self.white2,
             'background_focus': self._accent,
-            'background_focus_noncurrent': self._accent2,  # focused workspace on unfocused monitor
+            'background_focus_noncurrent': self.gray2,  # focused workspace on unfocused monitor
             'background_other': self.black2,  # focused workspace of the other monitor (regardless of monitor )
             'background_line_highlight': self.gray,  # incase using highlight_method = line
 

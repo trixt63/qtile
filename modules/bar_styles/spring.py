@@ -23,9 +23,6 @@ _nf_circles = ["󰪥",  # \uf0aa4 nf-md-circle_slice_8
                "󰺕",  # \uf0e95 nf-md-circle_double
                "󰄰"]  # \uf0130 nf-md-checkbox_blank_circle_outline
 
-_nf_circles2 = ["",  # \uf192 nf-fa-circle_dot
-                ""]  # \uf4aa nf-oct-circle
-
 _nf_bullseye = ["",  # \uf140 nf-fa-bullseye
                 "",  # \uf192 nf-fa-circle_dot
                 ""]  # \uf4aa nf-oct-circle
@@ -190,6 +187,13 @@ class Spring:
 
         spacer = widget.Spacer()
 
+        # def _claude_usage():
+        #     return ClaudeUsage(
+        #         foreground=colors.get('blue'),
+        #         background=colors.get('background'),
+        #         **widget_defaults,
+        #     )
+
         #####################
         ### WIDGETS ORDER ###
         #####################
@@ -201,6 +205,8 @@ class Spring:
                 clock,
                 spacer,
                 mpris2_spotify,
+                sep, 
+                # _claude_usage(), 
                 sep, *volume_widgets, sep, *battery_widgets, systray, sep
         ]
 
@@ -211,6 +217,8 @@ class Spring:
                 clock,
                 spacer,
                 mpris2_spotify,
+                sep, 
+                # _claude_usage(), 
                 sep, *volume_widgets, sep, *battery_widgets, sep, cpu, sep, memory, sep, thermal, sep
             ]
 

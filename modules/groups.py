@@ -8,35 +8,36 @@ from modules.keys import keys, mod
 _LABEL = None
 
 groups = [
-    Group("1", matches=[Match(wm_class=["firefox"])]),
+    # Group("1", matches=[Match(wm_class=["firefox"])]),
+    Group("1"),
     Group("2", matches=[
-        Match(wm_class=["vscodium"]),
-        Match(wm_class=["jetbrains-pycharm-ce"]),
-        Match(wm_class=["jetbrains-pycharm"]),
-        Match(wm_class=["jetbrains-rustrover"]),
-        Match(wm_class=["jetbrains-webstorm"])
+        Match(wm_class="vscodium"),
+        Match(wm_class="jetbrains-pycharm-ce"),
+        Match(wm_class="jetbrains-pycharm"),
+        Match(wm_class="jetbrains-rustrover"),
+        Match(wm_class="jetbrains-webstorm")
     ]),
     Group("3"),
     Group("4", matches=[
-        Match(wm_class=["MongoDB Compass"]),
-        Match(wm_class=["Postman"]),
-        Match(wm_class=["pgadmin4"]),
-        # Match(wm_class=["google-chrome"])
+        Match(wm_class="MongoDB Compass"),
+        Match(wm_class="Postman"),
+        Match(wm_class="pgadmin4")
     ]),
     # Group("5", matches=[Match(wm_class=["libreoffice"]),
     #                     Match(wm_class=["calibre"])
     # ]),
     Group("5"),
     Group("6", matches=[
-        Match(wm_class=["thunderbird-esr"]),
-        Match(wm_class=["discord"])
+        Match(wm_class="thunderbird-esr"),
+        Match(wm_class="discord"),
+        Match(wm_class="wasistlos")
     ]),
     Group("7", matches=[
-        Match(wm_class=["Stremio"]),
-        Match(wm_class=["spotify"])]),
+        Match(wm_class="Stremio"),
+        Match(wm_class="spotify")]),
     Group("8", matches=[
-        Match(wm_class=["steam"]),
-        Match(wm_class=["Lutris"])]),
+        Match(wm_class="steam"),
+        Match(wm_class="Lutris")]),
     Group("9")
 ]
 
