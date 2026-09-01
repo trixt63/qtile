@@ -29,7 +29,7 @@ class Nord:
             'foreground_focus': self.white,
             'background_focus': self.cyan,
 
-            'background_focus_noncurrent': self.blue2,  # focused workspace on unfocused monitor
+            'foreground_focus_noncurrent': self.blue2,  # focused workspace on unfocused monitor
             'background_other': self.black4,  # focused workspace of other monitor, on the focused monitor
 
             'border': self.black3,

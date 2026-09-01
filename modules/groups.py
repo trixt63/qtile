@@ -3,9 +3,10 @@ from libqtile.lazy import lazy
 
 from modules.keys import keys, mod
 
-# Assign a value for _LABEL if you want all your groups share a label (e.g.: _LABEL = "")
-# _LABEL = ''
-_LABEL = None
+# Assign a value for _LABELS_LIST if you want to config group labels (e.g.: _LABEL = "")
+# _LABELS_LIST = None
+# _LABELS_LIST = ["1: ", "2: " , "3: ", "4: ", "5: ", "6: ", "7: ", "8: ", "9: "]
+_LABELS_LIST = [" ", " " , " ", " ", " ", " ", " ", " ", " "]
 
 groups = [
     # Group("1", matches=[Match(wm_class=["firefox"])]),
@@ -41,9 +42,9 @@ groups = [
     Group("9")
 ]
 
-if _LABEL:
-    for g in groups:
-        g.label = _LABEL
+if _LABELS_LIST:
+    for _i, g in enumerate(groups):
+        g.label = _LABELS_LIST[_i]
 
 for i in groups:
     keys.extend(

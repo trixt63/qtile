@@ -9,6 +9,7 @@ from qtile_extras.widget.groupbox2 import GroupBoxRule, ScreenRule
 
 from modules.widgets import widget_defaults
 from modules.bar_styles._constants import ICONS_PATH, APPS_ICONS_PATH, UPDATE_INTERVAL
+from modules.utils import get_highlight_color
 
 OPAQUE = 'ff'
 BARSIZE = 29
@@ -16,30 +17,13 @@ PAD = 10
 _DECORATOR_PADDING = ceil(BARSIZE/10)
 _DECORATOR_SIZE = ceil(BARSIZE*1.1 + 1) * 2
 
-# Labels for GroupBox2
-_originals = ["◉", "◎", "○"]
-
-_nf_circles = ["󰪥",  # \uf0aa4 nf-md-circle_slice_8
-               "󰺕",  # \uf0e95 nf-md-circle_double
-               "󰄰"]  # \uf0130 nf-md-checkbox_blank_circle_outline
-
-_nf_bullseye = ["",  # \uf140 nf-fa-bullseye
-                "",  # \uf192 nf-fa-circle_dot
-                ""]  # \uf4aa nf-oct-circle
-
-_nf_disco = ["",  # \uf140 nf-fa-bullseye
-             "",  # \uf192 nf-fa-circle_dot
-             ""]  # \uf4aa nf-oct-circle
-
-_LABELS = _nf_circles
-
-
-class Spring:
-    """Simple bar using qtile-extras' GroupBox2, with labels being circles.
-    Inspired by u/-basilios-'s Spring dwm rice"""
+class SimpleBar:
+    """Simple bar using qtile-extras' GroupBox2, with labels being icons.
+    Just a copy of Spring theme, but with icon groupbox
+    """
     def __init__(self, colors):
         self.colors = colors
-        self.highlight_method = 'block'
+        self.highlight_method = None
 
         ###############
         ### WIDGETS ###
@@ -55,18 +39,18 @@ class Spring:
             # font="Hack Nerd Font",
             # font="FiraCode Nerd Font",
             # font="Iosevka Nerd Font",
-            fontsize=19,
-            # fontsize=18,
-            padding_x=10,
+            fontsize=14,
+            padding_x=7,
             padding_y=0,
             rules=[
-                GroupBoxRule(text=_LABELS[0]).when(screen=ScreenRule.THIS),
-                GroupBoxRule(text=_LABELS[-2]).when(occupied=True),
-                GroupBoxRule(text=_LABELS[-1]).when(),
-                GroupBoxRule(text_colour=colors['background_focus']).when(focused=True),
-                GroupBoxRule(text_colour=colors['foreground']).when(screen=ScreenRule.NONE),
-                GroupBoxRule(text_colour=colors['foreground_focus_noncurrent']).when(urgent=False),  # not focused, screen not None
-                GroupBoxRule(text_colour=colors['urgent']).when(),
+                GroupBoxRule(line_colour=colors['background_focus'], line_width=3).when(screen=ScreenRule.THIS, focused=True),
+                GroupBoxRule(text_colour=colors['background_focus'], visible=True).when(focused=True),
+                
+                GroupBoxRule(line_colour=colors['foreground'], line_width=3).when(screen=ScreenRule.THIS, focused=False),
+                GroupBoxRule(text_colour=colors['foreground'], visible=True).when(occupied=True, urgent=False), # has windows
+                
+                GroupBoxRule(text_colour=colors['background_other'], visible=True).when(urgent=False),  # not focused, screen not None
+                GroupBoxRule(text_colour=colors['urgent'], visible=True).when(urgent=True),
             ]
         )
 
