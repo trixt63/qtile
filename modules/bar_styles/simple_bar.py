@@ -9,6 +9,7 @@ from qtile_extras.widget.groupbox2 import GroupBoxRule, ScreenRule
 
 from modules.widgets import widget_defaults
 from modules.bar_styles._constants import ICONS_PATH, APPS_ICONS_PATH, UPDATE_INTERVAL
+from modules.utils import get_highlight_color
 
 OPAQUE = 'ff'
 BARSIZE = 29
@@ -22,7 +23,7 @@ class SimpleBar:
     """
     def __init__(self, colors):
         self.colors = colors
-        self.highlight_method = 'block'
+        self.highlight_method = None
 
         ###############
         ### WIDGETS ###
@@ -38,19 +39,18 @@ class SimpleBar:
             # font="Hack Nerd Font",
             # font="FiraCode Nerd Font",
             # font="Iosevka Nerd Font",
-            fontsize=15,
-            padding_x=12,
+            fontsize=14,
+            padding_x=7,
             padding_y=0,
             rules=[
-                # GroupBoxRule(text=_LABELS[0]).when(screen=ScreenRule.THIS),
-                # GroupBoxRule(text=_LABELS[-2]).when(occupied=True),
-                # GroupBoxRule(text=_LABELS[-1]).when(),
-                GroupBoxRule(text_colour=colors['background_focus']).when(focused=True),
-                # GroupBoxRule(text_colour=colors['foreground']).when(screen=ScreenRule.NONE),
-                GroupBoxRule(text_colour=colors['foreground']).when(occupied=True, urgent=False),
-                # GroupBoxRule(text_colour=colors['foreground']).when(screen=ScreenRule.NONE),
-                GroupBoxRule(text_colour=colors['background_other']).when(urgent=False),  # not focused, screen not None
-                GroupBoxRule(text_colour=colors['urgent']).when(),
+                GroupBoxRule(line_colour=colors['background_focus'], line_width=3).when(screen=ScreenRule.THIS, focused=True),
+                GroupBoxRule(text_colour=colors['background_focus'], visible=True).when(focused=True),
+                
+                GroupBoxRule(line_colour=colors['foreground'], line_width=3).when(screen=ScreenRule.THIS, focused=False),
+                GroupBoxRule(text_colour=colors['foreground'], visible=True).when(occupied=True, urgent=False), # has windows
+                
+                GroupBoxRule(text_colour=colors['background_other'], visible=True).when(urgent=False),  # not focused, screen not None
+                GroupBoxRule(text_colour=colors['urgent'], visible=True).when(urgent=True),
             ]
         )
 

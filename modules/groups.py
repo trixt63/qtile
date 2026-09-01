@@ -5,7 +5,8 @@ from modules.keys import keys, mod
 
 # Assign a value for _LABELS_LIST if you want to config group labels (e.g.: _LABEL = "")
 # _LABELS_LIST = None
-_LABELS_LIST = ["", "" , "", "", "", "", "", "", ""]
+# _LABELS_LIST = ["1: ", "2: " , "3: ", "4: ", "5: ", "6: ", "7: ", "8: ", "9: "]
+_LABELS_LIST = [" ", " " , " ", " ", " ", " ", " ", " ", " "]
 
 groups = [
     # Group("1", matches=[Match(wm_class=["firefox"])]),
