@@ -16,27 +16,10 @@ PAD = 10
 _DECORATOR_PADDING = ceil(BARSIZE/10)
 _DECORATOR_SIZE = ceil(BARSIZE*1.1 + 1) * 2
 
-# Labels for GroupBox2
-_originals = ["◉", "◎", "○"]
-
-_nf_circles = ["󰪥",  # \uf0aa4 nf-md-circle_slice_8
-               "󰺕",  # \uf0e95 nf-md-circle_double
-               "󰄰"]  # \uf0130 nf-md-checkbox_blank_circle_outline
-
-_nf_bullseye = ["",  # \uf140 nf-fa-bullseye
-                "",  # \uf192 nf-fa-circle_dot
-                ""]  # \uf4aa nf-oct-circle
-
-_nf_disco = ["",  # \uf140 nf-fa-bullseye
-             "",  # \uf192 nf-fa-circle_dot
-             ""]  # \uf4aa nf-oct-circle
-
-_LABELS = _nf_circles
-
-
-class Spring:
-    """Simple bar using qtile-extras' GroupBox2, with labels being circles.
-    Inspired by u/-basilios-'s Spring dwm rice"""
+class SimpleBar:
+    """Simple bar using qtile-extras' GroupBox2, with labels being icons.
+    Just a copy of Spring theme, but with icon groupbox
+    """
     def __init__(self, colors):
         self.colors = colors
         self.highlight_method = 'block'
@@ -55,17 +38,18 @@ class Spring:
             # font="Hack Nerd Font",
             # font="FiraCode Nerd Font",
             # font="Iosevka Nerd Font",
-            fontsize=19,
-            # fontsize=18,
-            padding_x=10,
+            fontsize=15,
+            padding_x=12,
             padding_y=0,
             rules=[
-                GroupBoxRule(text=_LABELS[0]).when(screen=ScreenRule.THIS),
-                GroupBoxRule(text=_LABELS[-2]).when(occupied=True),
-                GroupBoxRule(text=_LABELS[-1]).when(),
+                # GroupBoxRule(text=_LABELS[0]).when(screen=ScreenRule.THIS),
+                # GroupBoxRule(text=_LABELS[-2]).when(occupied=True),
+                # GroupBoxRule(text=_LABELS[-1]).when(),
                 GroupBoxRule(text_colour=colors['background_focus']).when(focused=True),
-                GroupBoxRule(text_colour=colors['foreground']).when(screen=ScreenRule.NONE),
-                GroupBoxRule(text_colour=colors['foreground_focus_noncurrent']).when(urgent=False),  # not focused, screen not None
+                # GroupBoxRule(text_colour=colors['foreground']).when(screen=ScreenRule.NONE),
+                GroupBoxRule(text_colour=colors['foreground']).when(occupied=True, urgent=False),
+                # GroupBoxRule(text_colour=colors['foreground']).when(screen=ScreenRule.NONE),
+                GroupBoxRule(text_colour=colors['background_other']).when(urgent=False),  # not focused, screen not None
                 GroupBoxRule(text_colour=colors['urgent']).when(),
             ]
         )

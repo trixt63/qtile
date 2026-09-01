@@ -61,7 +61,7 @@ class Cockpit:
             other_current_screen_border=colors.get('background_other'),
             highlight_color=[_get_highlight_color(self.colors)],  # background for highlight_method='line'
             # for the other screen
-            this_screen_border=colors.get('background_focus_noncurrent'),
+            this_screen_border=colors.get('foreground_focus_noncurrent'),
             other_screen_border=colors.get('background_other'),
             disable_drag=True,
             use_mouse_wheel=False,
