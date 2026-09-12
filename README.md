@@ -22,6 +22,14 @@
 
 ## 3. For your setup:
 
+### 3.1 `xdg-desktop-portal`
+
+- Put [qtile-session.target](./assets/qtile-session.target) into `~/.config/systemd/user/qtile-session.target`.
+- Put [portas.conf](./assets/portals.conf) into `~/.config/xdg-desktop-portal/`.
+
+These, combines with the two starting commands in [autostart.sh](./autostart.sh) will run and configure the xdk-desktop-portal.
+
+### 3.2 Constants
 There are a few constants that I'm too lazy to refactor, so you will have to change them yourselves:
 - **Wallpaper**: Insert your path to your wallpaper into **```autorestart.sh```**, the ```feh``` line.
 - **Audio sink name**: use

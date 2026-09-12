@@ -36,11 +36,11 @@ class SimpleBar:
         )
 
         _groupbox2_config = dict(
-            # font="Hack Nerd Font",
+            font="Hack Nerd Font",
             # font="FiraCode Nerd Font",
             # font="Iosevka Nerd Font",
             fontsize=14,
-            padding_x=7,
+            padding_x=9,
             padding_y=0,
             rules=[
                 GroupBoxRule(line_colour=colors['background_focus'], line_width=3).when(screen=ScreenRule.THIS, focused=True),
