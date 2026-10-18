@@ -70,6 +70,7 @@ floating_layout = layout.Floating(
         Match(wm_class="goldendict"),  # GPG key password entry
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
+        Match(wm_class="gcr-prompter")
     ], 
     no_reposition_rules=[
         # So that the pop-up follow the mouse. In GoldenDict preference for Popup: leave everything off, except Track Selection change.

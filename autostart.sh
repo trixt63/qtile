@@ -6,6 +6,11 @@
 export XDG_CURRENT_DESKTOP=qtile
 systemctl --user set-environment XDG_CURRENT_DESKTOP=qtile
 # systemctl --user import-environment DISPLAY XAUTHORITY
+
+# Attach to the keyring that PAM unlocked at login. Under GNOME/XFCE the
+# gnome-keyring-secrets autostart entry does this, but it skips qtile; without it
+# the login daemon is gone later and apps get an "unlock keyring" prompt.
+gnome-keyring-daemon --start --components=secrets &
 systemctl --user start qtile-session.target
 
 #Policy-kit
@@ -20,8 +25,6 @@ fcitx5 &
 xfce4-clipman &
 #Redshift for eyestrain
 redshift-gtk &
-#Discord
-discord &
 #Power management
 xfce4-power-manager &
 #Bluetooth manager
@@ -31,7 +34,9 @@ thunderbird &
 #Dictionary
 goldendict &
 # network manager
-nm-applet
+nm-applet &
+
+flatpak run com.spotify.Client
 #Rclone
 #rclone mount --daemon "Google Drive:" /home/trinhtung/Google_Drive/xuantung.trinh.63/ &
 # sleep 1 && xkbcomp /home/trinhtung/.config/Xkeymap $DISPLAY &
