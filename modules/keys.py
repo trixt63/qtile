@@ -53,23 +53,14 @@ keys = [
     Key([mod, "shift"], "m", lazy.window.toggle_maximize(), desc="Maximize window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control", "shift"], "r", lazy.restart(), desc="Reload all the config and modules"),
-    Key([mod, "mod1", "shift"], "q", lazy.shutdown(), desc="Close Windows"),
+    # Key([mod, "mod1", "shift"], "q", lazy.shutdown(), desc="Close Windows"),
     Key([mod, "control"], "x", lazy.spawn("$HOME/.local/bin/betterlockscreen -l --off 120"), desc="Lock screen"),
-    # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Change screen
     Key([mod], 'period', lazy.prev_screen(), desc='Previous monitor'),
     Key([mod], 'slash', lazy.next_screen(), desc='Next monitor'),
     Key([mod], 'minus', lazy.prev_screen(), desc='Previous monitor'),
     Key([mod], 'equal', lazy.next_screen(), desc='Next monitor'),
-    # Rofi
-    Key([mod], "d", lazy.spawn(PATH_LAUNCHER), desc="spawn app launcher"),
-    Key([mod], "p", lazy.spawn(PATH_POWERMENU), desc="spawn power menu"),
-    # Screenshot
-    Key(["control", "mod3"], "super_r", lazy.spawn("xfce4-screenshooter -w"), desc="Screenshot a window"),
-    Key(["control", "shift"], "super_r", lazy.spawn("xfce4-screenshooter -r"), desc="Screenshot part of the screen"),
-    # Clipboard
-    # Key(["super"], "v", lazy.spawn("xfce4-popup-clipman"), desc="Clipboard pop=up"),
     # Sound
     Key([], "XF86AudioLowerVolume", lazy.spawn(f"pactl set-sink-volume {sink_name} -5%")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn(f"pactl set-sink-volume {sink_name} +5%")),
@@ -84,8 +75,23 @@ keys = [
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
     # Applications
+   
+    # Moved to XFCE Keyboard Shortcuts 
+    # The following are moved to XFCE Keyboard shortcuts, so that it would be more convenient to use under XFCE session:
+   
+    # Launchers 
+    # Key([mod], "a", lazy.spawn("/home/trinhtung/.config/qtile/scripts/audio_switch.sh"), desc="Switch audio output"),
+    # Key([mod], "d", lazy.spawn(PATH_LAUNCHER), desc="Rofi app launcher"),
+    Key([mod], "p", lazy.spawn(PATH_POWERMENU), desc="Rofi power menu"),
+   
+    # Applications 
     # Key([mod, "control"], "w", lazy.spawn("firefox"), desc="Web browser"),
-    Key([mod], "f", lazy.spawn("thunar"), desc="File manager"), 
+    # Key(["super"], "v", lazy.spawn("xfce4-popup-clipman"), desc="Clipboard pop=up"),
+    # Key([mod], "f", lazy.spawn("thunar"), desc="File manager"), 
     Key([mod, "control"], "v", lazy.spawn("pavucontrol"), desc="Volume & sound manager"),
-    Key([mod, "control"], "m", lazy.spawn("xfce4-taskmanager"), desc="Task manager")
+    # Key([mod, "control"], "m", lazy.spawn("xfce4-taskmanager"), desc="Task manager"),
+    
+    # Screenshot
+    Key(["control", "mod3"], "super_r", lazy.spawn("xfce4-screenshooter -w"), desc="Screenshot a window"),
+    Key(["control", "shift"], "super_r", lazy.spawn("xfce4-screenshooter -r"), desc="Screenshot part of the screen"),
 ]
