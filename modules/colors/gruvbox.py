@@ -47,12 +47,13 @@ class Gruvbox:
         # self.faded_aqua = '#427b58'
         # self.faded_orange = '#af3a03'
 
-        self._accent = self.green2
+        # ACCENT
+        self._accent = self.yellow2
 
         self.colors = {
             # normal fg & bg
             'background': self.dark0,
-            'foreground': self.light0,
+            'foreground': self.light3,
 
             # groupbox fg & bg
             'foreground_unfocus': self.light4,
@@ -60,16 +61,26 @@ class Gruvbox:
 
             'foreground_focus': self.light0,
             'background_focus': self._accent,
-            'background_line_highlight': self.dark2,  # incase using highlight_method = line
-
             'foreground_focus_noncurrent': self.blue,  # focused workspace on unfocused monitor
             'background_other': self.dark3,  # focused workspace of the other monitor (regardless if it's the focused or focused one)
+            'background_line_highlight': self.dark2,  # incase using highlight_method = line
 
             # border
             'border': self.dark0,
             'border_focus': self._accent,
 
             'urgent': self.red,
+            
+            # others
+            'black': self.dark0,
+            'red': self.red,
+            'yellow': self.yellow,
+            'cyan': self.aqua,
+            'blue': self.blue,
+            'green': self.green,
+            'white': self.light0,
+            'magenta': self.purple,
+            'orange': self.orange
         }
 
     def get(self, key, default=None):

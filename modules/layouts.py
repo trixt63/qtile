@@ -31,6 +31,7 @@ layouts = [
                    panel_width=100,
                    # place_right=True,
                    vspace=5,
+                   active_fg=colors.get('background'),
                    bg_color=colors.get('background'),
                    active_bg=colors.get('border_focus'),
                    urgent_bg=colors.get('urgent')
